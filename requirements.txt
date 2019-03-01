@@ -1,9 +1,6 @@
 numpy
 sklearn
-codecs
-io
 matplotlib
 tqdm
-glob
 random
-sys
+pandas

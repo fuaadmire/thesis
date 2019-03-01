@@ -54,4 +54,4 @@ print(score)
 
 allcoefs = pd.DataFrame.from_records(clf.coef_.tolist()[0], columns=feats) #add ngrams as colnames
 
-allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_+'.csv', sep='\t', index=False)
+allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
