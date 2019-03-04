@@ -48,10 +48,10 @@ clf=None
 clf = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=1000).fit(X_tr, trlab) #terne, du skal skrive dit træningssæt her
 print("done")
 
-y_hat = clf.predict(X_te)
-score=f1_score(te_lab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
-print(score)
-
 allcoefs = pd.DataFrame.from_records(clf.coef_.tolist()[0], columns=feats) #add ngrams as colnames
 
 allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
+
+y_hat = clf.predict(X_te)
+score=f1_score(telab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
+print(score)
