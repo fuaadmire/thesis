@@ -27,6 +27,7 @@ data = [s.lower() for s in data]
 
 labels = codecs.open("data/kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
 labels = labels[:20800]
+labels = [int(i) for i in labels]
 
 tr, te, trlab, telab = train_test_split(data, labels, test_size=0.33, random_state=42)
 
@@ -52,13 +53,13 @@ coefs = clf.coef_
 
 
 
-with open("coefs.txt", "w+") as file:
-    for c, f in zip(coefs[0],feats):
-        file.write(f+"\t"+str(c)+"\n")
+#with open("coefs.txt", "w+") as file:
+#    for c, f in zip(coefs[0],feats):
+#        file.write(f+"\t"+str(c)+"\n")
 
-#allcoefs = pd.DataFrame.from_records(clf.coef_.tolist()[0], columns=feats) #add ngrams as colnames
+allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
-#allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
+allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
 y_hat = clf.predict(X_te)
 score=f1_score(telab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
 print(score)
