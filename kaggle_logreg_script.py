@@ -30,7 +30,7 @@ labels = labels[:20800]
 
 tr, te, trlab, telab = train_test_split(data, labels, test_size=0.33, random_state=42)
 
-# remove empty entries and their corrosponding label
+# encode labels?
 
 
 vectorizer = CountVectorizer(ngram_range=(v,k), max_features=m)
@@ -50,14 +50,15 @@ print("done")
 
 coefs = clf.coef_
 
-y_hat = clf.predict(X_te)
-score=f1_score(telab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
-print(score)
 
-with open("coefs.txt", w+) as file:
+
+with open("coefs.txt", "w+") as file:
     for c, f in zip(coefs[0],feats):
-        file.write(f+"\t"+c+"\n")
+        file.write(f+"\t"+str(c)+"\n")
 
 #allcoefs = pd.DataFrame.from_records(clf.coef_.tolist()[0], columns=feats) #add ngrams as colnames
 
 #allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
+y_hat = clf.predict(X_te)
+score=f1_score(telab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
+print(score)
