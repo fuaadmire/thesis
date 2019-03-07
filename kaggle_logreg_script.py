@@ -46,7 +46,8 @@ feats = ['_'.join(s.split()) for s in vectorizer.get_feature_names()] #de m ngra
 
 print("fitting log reg")
 clf=None
-clf = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=1000).fit(X_tr, trlab) #terne, du skal skrive dit træningssæt her
+# changed to larger max_iter from 1000 to 10000.
+clf = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_tr, trlab) #terne, du skal skrive dit træningssæt her
 print("done")
 
 coefs = clf.coef_
