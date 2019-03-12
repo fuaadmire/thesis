@@ -11,23 +11,24 @@ import matplotlib.pyplot as plt
 import sys
 
 
-#tr = codecs.open("kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
+print("liar logreg")
+
 tr = codecs.open("data/liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
 #print(len(tr))
-tr = [s.lower() for s in tr if len(s) > 1] #NOTE: I cannot do this with the kaggle data!
-# Instead, remove last element and accept af few empty elements, or go through the elements and match the
-# empty ones with their labels and remove both. Do a thorough check of what is going on (find empty element
-# and print corropsonding element in dataframe).
-#print(len(tr))
+tr = [s.lower() for s in tr if len(s) > 1]
 trlab = codecs.open('data/liar_ytrain.txt', 'r', 'utf-8').read().split('\n')
 trlab = [s for s in trlab if len(s) > 1]
 
+
 val = codecs.open("data/liar_xval.txt", 'r', 'utf-8').read().split('\n')
+#print(len(val))
 val = [s.lower() for s in val if len(s) > 1]
 vallab = codecs.open("data/liar_yval.txt", 'r', 'utf-8').read().split('\n')
 vallab = [s for s in vallab if len(s) > 1]
 
-# check
+
+
+
 assert len(tr) == len(trlab)
 
 assert len(val) == len(vallab)
@@ -61,7 +62,12 @@ coefs = clf.coef_
 
 allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
-allcoefs.to_csv('liar_coefs_'+str(m)+'-'+str(k)+'gram-l1'+'.csv', sep='\t', index=False)
+allcoefs.to_csv('liar_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l1'+'.csv', sep='\t', index=False)
+
 y_hat = clf.predict(X_val)
-score=f1_score(vallab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
-print(score)
+microf1=f1_score(vallab, y_hat, average='micro') #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
+print("MicroF1", microf1)
+macrof1=f1_score(vallab, y_hat, average='macro')
+print("macroF1", macrof1)
+print("accuracy", np.mean([y_hat == vallab]))
+print("weighted F1", f1_score(vallab, y_hat, average='weighted'))
