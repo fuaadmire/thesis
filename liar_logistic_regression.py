@@ -63,6 +63,7 @@ coefs = clf.coef_
 allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
 allcoefs.to_csv('liar_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l1'+'.csv', sep='\t', index=False)
+print("classes:", clf.classes_)
 
 y_hat = clf.predict(X_val)
 microf1=f1_score(vallab, y_hat, average='micro') #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
