@@ -6,6 +6,7 @@ import pandas as pd
 from nltk import word_tokenize
 import h5py
 import os
+#os.environ['KERAS_BACKEND'] = 'theano'
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
@@ -23,56 +24,76 @@ labels = np.array([int(i) for i in labels])
 
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
 
-# PARAMETERS
-# vocab_size: number of tokens in vocabulary
-# max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-# num_cells: number of LSTM cells
-# num_samples: number of training/testing data samples
-# num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
-# trainTextsSeq: List of input sequence for each document (A matrix with size num_samples * max_doc_length)
-# y_train: vector of document class labels
+train = [word_tokenize(i.lower()) for i in train]
+dev = [word_tokenize(i.lower()) for i in dev]
 
-# using the mean length of documents as max_doc_length for now
-max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train])))
-num_time_steps = max_doc_length
+
+
+
+# MAKE VOCAB AND WORD ID DICTS
+
+all_train_tokens = []
+for i in train:
+    for word in i:
+        all_train_tokens.append(word)
+
+vocab = set(all_train_tokens)
+print(len(vocab))
+word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
+word2id["UNK"] = len(word2id)+1
+id2word = {v: k for k, v in word2id.items()}
+[[id2word.get(word, "UNK") for word in sent] for sent in dev]
+
+# save Dict file containing the mapping from word ID to word (e.g. train.dict)
+f = open("dict.txt","w+")
+f.write( str(id2word) )
+f.close()
+# use tool from lstmvis to transform txt to .Dict file.
+
+
+
+
+
+# PARAMETERS
+
+# vocab_size: number of tokens in vocabulary
+vocab_size = len(vocab)
+# max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
+max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train]))) # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 100 # 100 for now, probably test best parameter through cross-validation
+# num_samples: number of training/testing data samples
 num_samples = len(train_lab)
+# num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
+num_time_steps = max_doc_length
+
 embedding_size = 100 # also just for now..
 num_epochs = 100
 num_batch = 32 # also find optimal through cross-validation
 
-# MAKE WORD ID DICTS
-word_to_idx = {}
-for i in train+dev:
-    # print(i)
-    sent = word_tokenize(i.lower())
-    for word in sent:
-        if word not in word_to_idx:
-            word_to_idx[word] = len(word_to_idx)+1 # making the first id is 1, so that I can pad with zeroes.
-# Do I need an unknown token when just doing word-to-index (without any counts and such)?
-# maybe use keras tokenizer and texts_to_sequences function, which skips unknown words.
-# however, an unknown token may be prefered?
-vocab_size = len(word_to_idx)
-print(vocab_size)
-idx_to_word = {v: k for k, v in word_to_idx.items()}
 
-# save Dict file containing the mapping from word ID to word (e.g. train.dict)
-f = open("dict.txt","w+")
-f.write( str(idx_to_word) )
-f.close()
-# use tool from lstmvis to transform txt to .Dict file.
+# PREPARING TRAIN DATA
+
+# trainTextsSeq: List of input sequence for each document (A matrix with size num_samples * max_doc_length)
+trainTextsSeq_list = []
+for input_sequence in train:
+    inputs = [word2id[w] for w in input_sequence]
+    trainTextsSeq_list.append(inputs)
+trainTextsSeq = np.array(trainTextsSeq_list)
+
+# padding with max doc lentgh (mean length at the moment)
+seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+
+trainTextsSeq_flatten = np.array(seq).flatten()
+hf = h5py.File("train.hdf5", "w") # need this file for LSTMVis
+hf.create_dataset('words', data=trainTextsSeq_flatten)
+hf.close()
 
 # Reshape y_train:
 y_train_tiled = np.tile(train_lab, (num_time_steps,1))
 y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
 
-num_samples = len(train_lab)
-# num_cells: number of LSTM cells
-num_cells = 100 # 100 for now, probably test best parameter through cross-validation
-embedding_size = 100 # also just for now..
-num_epochs = 20
-num_batch = 32 # also find optimal through cross-validation
+
 print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
 
