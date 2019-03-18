@@ -38,7 +38,6 @@ for i in train:
         all_train_tokens.append(word)
 
 vocab = set(all_train_tokens)
-print(len(vocab))
 word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
 word2id["UNK"] = len(word2id)+1
 id2word = {v: k for k, v in word2id.items()}
@@ -57,7 +56,7 @@ f.close()
 # PARAMETERS
 
 # vocab_size: number of tokens in vocabulary
-vocab_size = len(vocab)
+vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train]))) # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
