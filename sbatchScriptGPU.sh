@@ -3,6 +3,6 @@
 #SBATCH -p gpu --gres=gpu:titanx:1
 #SBATCH --time=4:00:00
 
-gpu*-diku-image
+gpu1-diku-image
 echo $CUDA_VISIBLE_DEVICES
 python3 lstmvis_prep.py
