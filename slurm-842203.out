@@ -1,0 +1,40 @@
+/var/spool/slurmd/job842203/slurm_script: line 6: gpu*-diku-image: command not found
+3
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "lstmvis_prep.py", line 27, in <module>
+    train = [word_tokenize(i.lower()) for i in train]
+  File "lstmvis_prep.py", line 27, in <listcomp>
+    train = [word_tokenize(i.lower()) for i in train]
+  File "/home/ktj250/anaconda3/lib/python3.6/site-packages/nltk/tokenize/__init__.py", line 143, in word_tokenize
+    sentences = [text] if preserve_line else sent_tokenize(text, language)
+  File "/home/ktj250/anaconda3/lib/python3.6/site-packages/nltk/tokenize/__init__.py", line 104, in sent_tokenize
+    tokenizer = load('tokenizers/punkt/{0}.pickle'.format(language))
+  File "/home/ktj250/anaconda3/lib/python3.6/site-packages/nltk/data.py", line 868, in load
+    opened_resource = _open(resource_url)
+  File "/home/ktj250/anaconda3/lib/python3.6/site-packages/nltk/data.py", line 993, in _open
+    return find(path_, path + ['']).open()
+  File "/home/ktj250/anaconda3/lib/python3.6/site-packages/nltk/data.py", line 699, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  Attempted to load [93mtokenizers/punkt/PY3/english.pickle[0m
+
+  Searched in:
+    - '/home/ktj250/nltk_data'
+    - '/home/ktj250/anaconda3/nltk_data'
+    - '/home/ktj250/anaconda3/share/nltk_data'
+    - '/home/ktj250/anaconda3/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - ''
+**********************************************************************
+

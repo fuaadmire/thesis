@@ -1,0 +1,17 @@
+/var/spool/slurmd/job849677/slurm_script: line 6: gpu*-diku-image: command not found
+3
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "lstmvis_prep.py", line 10, in <module>
+    from keras.preprocessing import sequence
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/__init__.py", line 3, in <module>
+    from . import utils
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/utils/__init__.py", line 6, in <module>
+    from . import conv_utils
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/utils/conv_utils.py", line 9, in <module>
+    from .. import backend as K
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/backend/__init__.py", line 89, in <module>
+    from .tensorflow_backend import *
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 6, in <module>
+    from tensorflow.python.framework import ops as tf_ops
+ModuleNotFoundError: No module named 'tensorflow.python'

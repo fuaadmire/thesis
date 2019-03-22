@@ -1,0 +1,6 @@
+/var/spool/slurmd/job842177/slurm_script: line 6: gpu*-diku-image: command not found
+3
+Traceback (most recent call last):
+  File "lstmvis_prep.py", line 10, in <module>
+    from keras.preprocessing import sequence
+ModuleNotFoundError: No module named 'keras'

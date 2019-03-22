@@ -1,0 +1,33 @@
+/var/spool/slurmd/job849701/slurm_script: line 6: gpu*-diku-image: command not found
+0
+2019-03-22 04:03:42.894806: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-03-22 04:03:43.476853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:02:00.0
+totalMemory: 11.93GiB freeMemory: 11.81GiB
+2019-03-22 04:03:43.476888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-03-22 04:03:51.186746: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-03-22 04:03:51.186781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-03-22 04:03:51.186789: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-03-22 04:03:51.187057: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11431 MB memory) -> physical GPU (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:02:00.0, compute capability: 5.2)
+Using TensorFlow backend.
+Parameters:: num_cells: 100 num_samples: 13936 embedding_size: 100 epochs: 100 batch_size: 32
+Epoch 1/100
+Traceback (most recent call last):
+  File "lstmvis_prep.py", line 106, in <module>
+    model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, batch_size=num_batch, verbose=1)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/engine/training.py", line 1039, in fit
+    validation_steps=validation_steps)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/engine/training_arrays.py", line 199, in fit_loop
+    outs = f(ins_batch)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2715, in __call__
+    return self._call(inputs)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2675, in _call
+    fetched = self._callable_fn(*array_vals)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1439, in __call__
+    run_metadata_ptr)
+  File "/home/ktj250/.local/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 528, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Incompatible shapes: [28128] vs. [32,879]
+	 [[{{node metrics/acc/Equal}} = Equal[T=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](metrics/acc/Reshape, metrics/acc/Cast)]]
+	 [[{{node metrics/acc/Mean/_87}} = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_1850_metrics/acc/Mean", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"]()]]
