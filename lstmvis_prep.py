@@ -82,6 +82,7 @@ trainTextsSeq = np.array(trainTextsSeq_list)
 
 # padding with max doc lentgh (mean length at the moment)
 seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+print("train seq shape",seq.shape)
 
 trainTextsSeq_flatten = np.array(seq).flatten()
 hf = h5py.File("train.hdf5", "w") # need this file for LSTMVis
