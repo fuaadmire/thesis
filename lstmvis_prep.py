@@ -58,7 +58,7 @@ f.close()
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train]))) # using the mean length of documents as max_doc_length for now
+max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train])))+1 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 32 # 32for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
@@ -67,8 +67,8 @@ num_samples = len(train_lab)
 num_time_steps = max_doc_length
 
 embedding_size = 100 # also just for now..
-num_epochs = 120
-num_batch = 64 # also find optimal through cross-validation
+num_epochs = 5
+num_batch = 1 # also find optimal through cross-validation
 
 
 # PREPARING TRAIN DATA
@@ -96,7 +96,7 @@ y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
 
 print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
-
+#seq=seq.reshape(seq.shape[0],seq.shape[1],1)
 # max_doc_length vectors of size embedding_size
 myInput = Input(shape=(max_doc_length,), name='input')
 x = Embedding(output_dim=embedding_size, input_dim=vocab_size, input_length=max_doc_length)(myInput)
@@ -105,6 +105,7 @@ predictions = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 model = Model(inputs=myInput, outputs=predictions)
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, batch_size=num_batch, verbose=1)
+#model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 model.layers.pop();
 model.summary()
@@ -112,7 +113,7 @@ model.summary()
 inp = model.input
 out = model.layers[-1].output
 model_RetreiveStates = Model(inp, out)
-states_model = model_RetreiveStates.predict(trainTextsSeq, batch_size=num_batch)
+states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 print(states_model.shape)
 
 # Flatten first and second dimension for LSTMVis
