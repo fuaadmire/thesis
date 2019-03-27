@@ -60,7 +60,7 @@ vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train])))+1 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
-num_cells = 50 # for now, probably test best parameter through cross-validation
+num_cells = 32 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
@@ -68,7 +68,7 @@ num_time_steps = max_doc_length
 
 embedding_size = 20 # also just for now..
 num_epochs = 5
-num_batch = 32 # also find optimal through cross-validation
+num_batch = 28 # also find optimal through cross-validation
 
 
 # PREPARING TRAIN DATA
