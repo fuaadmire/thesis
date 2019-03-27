@@ -10,6 +10,7 @@ import os
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
+from preprocess_text import preprocess
 
 
 # DATA
@@ -23,6 +24,12 @@ labels = labels[:20800]
 labels = np.array([int(i) for i in labels])
 
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
+
+#print(np.mean([len(paragraph) for paragraph in dev]))
+#lemmas = preprocess(dev)
+#print(np.mean([len(paragraph) for paragraph in lemmas]))
+
+# do preprocessing but do it once and save files
 
 train = [word_tokenize(i.lower()) for i in train]
 dev = [word_tokenize(i.lower()) for i in dev]
@@ -58,7 +65,7 @@ f.close()
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train])))+1 # using the mean length of documents as max_doc_length for now
+max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train]))) # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 32 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
@@ -68,7 +75,7 @@ num_time_steps = max_doc_length
 
 embedding_size = 20 # also just for now..
 num_epochs = 5
-num_batch = 28 # also find optimal through cross-validation
+num_batch = 16 # also find optimal through cross-validation
 
 
 # PREPARING TRAIN DATA
