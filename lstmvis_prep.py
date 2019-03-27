@@ -25,14 +25,14 @@ labels = np.array([int(i) for i in labels])
 
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
 
-#print(np.mean([len(paragraph) for paragraph in dev]))
-#lemmas = preprocess(dev)
-#print(np.mean([len(paragraph) for paragraph in lemmas]))
 
-# do preprocessing but do it once and save files
 
-train = [word_tokenize(i.lower()) for i in train]
-dev = [word_tokenize(i.lower()) for i in dev]
+# instead do preprocessing but do it once and save files
+train = preprocess(train)
+dev = preprocess(dev)
+
+#train = [word_tokenize(i.lower()) for i in train]
+#dev = [word_tokenize(i.lower()) for i in dev]
 
 
 
@@ -74,7 +74,7 @@ num_samples = len(train_lab)
 num_time_steps = max_doc_length
 
 embedding_size = 20 # also just for now..
-num_epochs = 5
+num_epochs = 10
 num_batch = 16 # also find optimal through cross-validation
 
 

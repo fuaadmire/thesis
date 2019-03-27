@@ -15,4 +15,5 @@ def preprocess(data):
 #data = [["hey what's up beautiful? Is'nt, it lovely houses."], ["wow such spirit and fruitfulness in the apples"]]
 
 #lemmas = preprocess(data)
+
 #print(lemmas)
