@@ -60,7 +60,7 @@ vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = int(np.round(np.mean([len(paragraph) for paragraph in train])))+1 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
-num_cells = 100 # for now, probably test best parameter through cross-validation
+num_cells = 50 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
@@ -68,7 +68,7 @@ num_time_steps = max_doc_length
 
 embedding_size = 20 # also just for now..
 num_epochs = 5
-num_batch = 67 # also find optimal through cross-validation
+num_batch = 32 # also find optimal through cross-validation
 
 
 # PREPARING TRAIN DATA
@@ -111,7 +111,7 @@ predictions = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 print("predictions_shape:",predictions.shape)
 model = Model(inputs=myInput, outputs=predictions)
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(num_samples/num_batch)))
+model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))))
 #model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 model.layers.pop();
