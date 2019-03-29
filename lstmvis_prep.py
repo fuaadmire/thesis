@@ -1,9 +1,7 @@
-
-import theano
 import os
 os.environ['KERAS_BACKEND'] = 'theano'
-theano.config.device = 'gpu'
-theano.config.floatX = 'float32'
+os.environ['THEANO_FLAGS'] = "device=gpu"
+os.environ['floatX']='float32'
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
