@@ -17,3 +17,6 @@ def preprocess(data):
 #lemmas = preprocess(data)
 
 #print(lemmas)
+
+
+# instead do preprocessing but do it once and save files

@@ -3,7 +3,7 @@ import codecs
 #import glob
 from sklearn.model_selection import train_test_split
 import pandas as pd
-from nltk import word_tokenize
+#from nltk import word_tokenize
 import h5py
 import os
 #os.environ['KERAS_BACKEND'] = 'theano'
@@ -11,6 +11,7 @@ from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
 from preprocess_text import preprocess
+from keras.utils import multi_gpu_model # for data parallelism
 
 
 # DATA
@@ -117,8 +118,9 @@ print(lstm_out.shape)
 predictions = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 print("predictions_shape:",predictions.shape)
 model = Model(inputs=myInput, outputs=predictions)
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))))
+parallel_model = multi_gpu_model(model, gpus=4)
+parallel_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))))
 #model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 model.layers.pop();
