@@ -1,17 +1,19 @@
-import numpy as np
-import codecs
-#import glob
-from sklearn.model_selection import train_test_split
-import pandas as pd
-#from nltk import word_tokenize
-import h5py
+
+import theano
 import os
-#os.environ['KERAS_BACKEND'] = 'theano'
+os.environ['KERAS_BACKEND'] = 'theano'
+theano.config.device = 'gpu'
+theano.config.floatX = 'float32'
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
 from preprocess_text import preprocess
 from keras.utils import multi_gpu_model # for data parallelism
+import numpy as np
+import codecs
+from sklearn.model_selection import train_test_split
+import pandas as pd
+import h5py
 
 
 # DATA
@@ -66,9 +68,9 @@ f.close()
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(vocab)+1 # +1 for oov /  unknown token
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 500 # using the mean length of documents as max_doc_length for now
+max_doc_length = 400 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
-num_cells = 32 # for now, probably test best parameter through cross-validation
+num_cells = 21 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
