@@ -1,6 +1,6 @@
 import os
 os.environ['KERAS_BACKEND'] = 'theano'
-os.environ['THEANO_FLAGS'] = "device=cuda*"
+os.environ['THEANO_FLAGS'] = "device=cuda"
 os.environ['floatX']='float32'
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
