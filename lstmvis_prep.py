@@ -107,9 +107,11 @@ print("y_train_shape:",y_train_tiled.shape)
 
 print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
-#seq=seq.reshape(seq.shape[0],seq.shape[1],1)
+seq=seq.reshape(seq.shape[0],seq.shape[1],1)
+
+
 # max_doc_length vectors of size embedding_size
-myInput = Input(shape=(max_doc_length,), name='input')
+myInput = Input(shape=(max_doc_length,1), name='input')
 print(myInput.shape)
 x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_doc_length)(myInput)
 print(x.shape)
@@ -120,8 +122,8 @@ print("predictions_shape:",predictions.shape)
 model = Model(inputs=myInput, outputs=predictions)
 parallel_model = multi_gpu_model(model, gpus=4)
 parallel_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-#parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))))
-parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
+parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))))
+#parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 model.layers.pop();
 model.summary()
