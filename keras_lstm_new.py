@@ -1,25 +1,21 @@
-from keras.preprocessing import sequence
-from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
-from keras.models import Model
-from preprocess_text import preprocess
-from keras.utils import multi_gpu_model # for data parallelism
 import numpy as np
 import codecs
 from sklearn.model_selection import train_test_split
-import pandas as pd
-import h5py
-#import os
-#os.environ['KERAS_BACKEND'] = 'theano'
-#os.environ['THEANO_FLAGS'] = "device=cuda"
-#os.environ['floatX']='float32'
+from keras.layers import Input, Dense, Embedding, LSTM, Flatten, TimeDistributed
+from keras.models import Model
+from keras.preprocessing import sequence
+import nltk
+from preprocess_text import preprocess
+#from keras.utils import to_categorical
+#from keras.metrics import categorical_accuracy
 
 
 data = codecs.open("data/kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
-data = data[:20800]
+data = data[:200]
 #data = data[:200]
 data = [s.lower() for s in data]
 labels = codecs.open("data/kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
-labels = labels[:20800]
+labels = labels[:200]
 #labels = labels[:200]
 labels = np.array([int(i) for i in labels])
 
@@ -101,11 +97,10 @@ predictions = TimeDistributed(Dense(1, activation='sigmoid'))(lstm_out) # changi
 #predictions = TimeDistributed(Dense(1))(lstm_out) # try this instead?
 print("predictions_shape:",predictions.shape)
 model = Model(inputs=myInput, outputs=predictions)
-parallel_model = multi_gpu_model(model, gpus=4)
-parallel_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 #model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 print("fitting model..")
-parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_split=.20)
+model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_split=.20)
 #parallel_model.fit(seq, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))), validation_split=.20) # or try this, removing the curly brackets.
 #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
