@@ -11,11 +11,13 @@ import h5py
 import nltk
 import matplotlib.pyplot as plt
 from keras.utils import plot_model
+import datetime
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
 #os.environ['floatX']='float32'
 
+print(datetime.datetime.now())
 
 data = codecs.open("data/kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
 data = data[:20800]
