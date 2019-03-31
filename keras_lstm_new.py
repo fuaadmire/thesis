@@ -6,6 +6,8 @@ from keras.models import Model
 from keras.preprocessing import sequence
 import nltk
 from preprocess_text import preprocess
+import matplotlib.pyplot as plt
+from keras.utils import plot_model
 #from keras.utils import to_categorical
 #from keras.metrics import categorical_accuracy
 
@@ -123,3 +125,11 @@ states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_ce
 hf = h5py.File("states.hdf5", "w")
 hf.create_dataset('states1', data=states_model_flatten)
 hf.close()
+
+# Plot the model
+plot_model(model, to_file="model.png")
+
+# Display the image
+data = plt.imread("model.png")
+plt.imshow(data)
+plt.show()

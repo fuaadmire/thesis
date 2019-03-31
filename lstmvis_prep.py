@@ -9,6 +9,8 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import h5py
 import nltk
+import matplotlib.pyplot as plt
+from keras.utils import plot_model
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
@@ -52,16 +54,16 @@ testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 200 # using the mean length of documents as max_doc_length for now
+max_doc_length = 400 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 50 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
-embedding_size = 50 # also just for now..
-num_epochs = 20
-num_batch = 16 # also find optimal through cross-validation
+embedding_size = 10 # also just for now..
+num_epochs = 2
+num_batch = 32 # also find optimal through cross-validation
 
 
 # PREPARING DATA
@@ -82,7 +84,7 @@ hf.close()
 def tile_reshape(train_lab, num_time_steps):
     y_train_tiled = np.tile(train_lab, (num_time_steps,1))
     y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
-    print("y_train_shape:",y_train_tiled.shape)
+    #print("y_train_shape:",y_train_tiled.shape)
     return y_train_tiled
 
 y_train_tiled = tile_reshape(train_lab, num_time_steps)
@@ -111,15 +113,18 @@ parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, 
 #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 
-model.layers.pop();
-model.summary()
-score = model.evaluate(test_seq, y_test_tiled, batch_size=num_batch)
+score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
+model.summary()
+
+# Save plot of model
+plot_model(model, to_file="model.png")
 
 # Save the states via predict
-inp = model.get_input_at(0)
-out = model.layers[-1].output
+parallel_model.layers.pop();
+inp = parallel_model.get_input_at(0)
+out = parallel_model.layers[-1].output
 model_RetreiveStates = Model(inp, out)
 states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 
