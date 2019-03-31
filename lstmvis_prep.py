@@ -8,6 +8,7 @@ import codecs
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import h5py
+import nltk
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
