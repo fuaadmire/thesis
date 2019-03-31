@@ -24,10 +24,10 @@ labels = labels[:20800]
 labels = np.array([int(i) for i in labels])
 
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
-train = preprocess(train)
-dev = preprocess(dev)
-#train = [nltk.word_tokenize(i.lower()) for i in train]
-#dev = [nltk.word_tokenize(i.lower()) for i in dev]
+#train = preprocess(train)
+#dev = preprocess(dev)
+train = [nltk.word_tokenize(i.lower()) for i in train]
+dev = [nltk.word_tokenize(i.lower()) for i in dev]
 
 all_train_tokens = []
 for i in train:
@@ -51,7 +51,7 @@ testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 700 # using the mean length of documents as max_doc_length for now
+max_doc_length = 200 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 50 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
@@ -59,8 +59,8 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 50 # also just for now..
-num_epochs = 100
-num_batch = 8 # also find optimal through cross-validation
+num_epochs = 20
+num_batch = 16 # also find optimal through cross-validation
 
 
 # PREPARING DATA
