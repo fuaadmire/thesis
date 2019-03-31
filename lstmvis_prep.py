@@ -114,14 +114,14 @@ parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, 
 #parallel_model.fit(seq, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))), validation_split=.20) # or try this, removing the curly brackets.
 #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
-
-score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch)
+print("Testing...")
+score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch, verbose=0)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 model.summary()
 
 # Save plot of model
-plot_model(model, to_file="model.png")
+#plot_model(model, to_file="model.png")
 
 # Save the states via predict
 parallel_model.layers.pop();
