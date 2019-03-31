@@ -31,8 +31,9 @@ labels = np.array([int(i) for i in labels])
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
 #train = preprocess(train)
 #dev = preprocess(dev)
-train = [nltk.word_tokenize(i.lower()) for i in train]
-dev = [nltk.word_tokenize(i.lower()) for i in dev]
+
+train = [nltk.word_tokenize(i.lower()) for i in train if len(i)>100] # disregarding input which is less than 100 characters (as they do not contain many words, if any)
+dev = [nltk.word_tokenize(i.lower()) for i in dev if len(i)>100]
 
 all_train_tokens = []
 for i in train:
@@ -64,7 +65,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
-num_epochs = 2
+num_epochs = 100
 num_batch = 32 # also find optimal through cross-validation
 
 
