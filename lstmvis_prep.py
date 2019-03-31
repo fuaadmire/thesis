@@ -26,14 +26,23 @@ data = [s.lower() for s in data]
 labels = codecs.open("data/kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
 labels = labels[:20800]
 #labels = labels[:200]
-labels = np.array([int(i) for i in labels])
+labels = [int(i) for i in labels]
 
-train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
+# disregarding input which is less than 100 characters (as they do not contain many words, if any)
+labels_include = []
+data_include = []
+for indel, i in enumerate(data):
+    if len(i) > 100:
+        data_include.append(i)
+        labels_include.append(labels[indel])
+
+
+train, dev, train_lab, dev_lab = train_test_split(data_include, labels_include, test_size=0.33, random_state=42)
 #train = preprocess(train)
 #dev = preprocess(dev)
 
-train = [nltk.word_tokenize(i.lower()) for i in train if len(i)>100] # disregarding input which is less than 100 characters (as they do not contain many words, if any)
-dev = [nltk.word_tokenize(i.lower()) for i in dev if len(i)>100]
+train = [nltk.word_tokenize(i.lower()) for i in train]
+dev = [nltk.word_tokenize(i.lower()) for i in dev]
 
 all_train_tokens = []
 for i in train:
