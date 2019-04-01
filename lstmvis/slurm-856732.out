@@ -1,0 +1,257 @@
+0,1,2,3
+2019-04-01 14:04:44.712182: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-01 14:04:46.347759: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:02:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-04-01 14:04:46.495060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 1 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-04-01 14:04:46.652276: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 2 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:83:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-04-01 14:04:46.809075: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 3 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:84:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-04-01 14:04:46.811080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0, 1, 2, 3
+2019-04-01 14:04:51.738379: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-01 14:04:51.738432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 1 2 3 
+2019-04-01 14:04:51.738440: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N Y N N 
+2019-04-01 14:04:51.738446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 1:   Y N N N 
+2019-04-01 14:04:51.738451: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 2:   N N N Y 
+2019-04-01 14:04:51.738456: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 3:   N N Y N 
+2019-04-01 14:04:51.739285: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11376 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:02:00.0, compute capability: 6.1)
+2019-04-01 14:04:51.739647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 11376 MB memory) -> physical GPU (device: 1, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-04-01 14:04:51.739870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:2 with 11376 MB memory) -> physical GPU (device: 2, name: TITAN X (Pascal), pci bus id: 0000:83:00.0, compute capability: 6.1)
+2019-04-01 14:04:51.740078: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:3 with 11376 MB memory) -> physical GPU (device: 3, name: TITAN X (Pascal), pci bus id: 0000:84:00.0, compute capability: 6.1)
+2019-04-01 14:02:40.760907
+train seq shape (13637, 400)
+Parameters:: num_cells: 50 num_samples: 13637 embedding_size: 10 epochs: 100 batch_size: 64
+(?, 400)
+(?, 400, 10)
+(?, ?, 50)
+predictions_shape: (?, 400, 1)
+fitting model..
+Train on 10909 samples, validate on 2728 samples
+Epoch 1/100
+ - 101s - loss: 0.4509 - acc: 0.8134 - val_loss: 0.5723 - val_acc: 0.7859
+Epoch 2/100
+ - 97s - loss: 0.2642 - acc: 0.9270 - val_loss: 0.6225 - val_acc: 0.8175
+Epoch 3/100
+ - 97s - loss: 0.2459 - acc: 0.9355 - val_loss: 0.3945 - val_acc: 0.8601
+Epoch 4/100
+ - 97s - loss: 0.3018 - acc: 0.8926 - val_loss: 0.3728 - val_acc: 0.8870
+Epoch 5/100
+ - 97s - loss: 0.1760 - acc: 0.9563 - val_loss: 0.3289 - val_acc: 0.8981
+Epoch 6/100
+ - 97s - loss: 0.1231 - acc: 0.9723 - val_loss: 0.3366 - val_acc: 0.9090
+Epoch 7/100
+ - 97s - loss: 0.1640 - acc: 0.9622 - val_loss: 0.4166 - val_acc: 0.8818
+Epoch 8/100
+ - 97s - loss: 0.1373 - acc: 0.9686 - val_loss: 0.4351 - val_acc: 0.8832
+Epoch 9/100
+ - 97s - loss: 0.1246 - acc: 0.9726 - val_loss: 0.4206 - val_acc: 0.8897
+Epoch 10/100
+ - 97s - loss: 0.0951 - acc: 0.9804 - val_loss: 0.4373 - val_acc: 0.8910
+Epoch 11/100
+ - 97s - loss: 0.0799 - acc: 0.9837 - val_loss: 0.4423 - val_acc: 0.8927
+Epoch 12/100
+ - 97s - loss: 0.0726 - acc: 0.9851 - val_loss: 0.4048 - val_acc: 0.8935
+Epoch 13/100
+ - 97s - loss: 0.0716 - acc: 0.9848 - val_loss: 0.4571 - val_acc: 0.9038
+Epoch 14/100
+ - 98s - loss: 0.0531 - acc: 0.9892 - val_loss: 0.3831 - val_acc: 0.9106
+Epoch 15/100
+ - 97s - loss: 0.0313 - acc: 0.9935 - val_loss: 0.4371 - val_acc: 0.9122
+Epoch 16/100
+ - 97s - loss: 0.0255 - acc: 0.9948 - val_loss: 0.5243 - val_acc: 0.9113
+Epoch 17/100
+ - 97s - loss: 0.0196 - acc: 0.9958 - val_loss: 0.4392 - val_acc: 0.9177
+Epoch 18/100
+ - 97s - loss: 0.0139 - acc: 0.9971 - val_loss: 0.4656 - val_acc: 0.9200
+Epoch 19/100
+ - 98s - loss: 0.0142 - acc: 0.9971 - val_loss: 0.8330 - val_acc: 0.8845
+Epoch 20/100
+ - 97s - loss: 0.0665 - acc: 0.9876 - val_loss: 0.4443 - val_acc: 0.8988
+Epoch 21/100
+ - 97s - loss: 0.0339 - acc: 0.9937 - val_loss: 0.4672 - val_acc: 0.9059
+Epoch 22/100
+ - 97s - loss: 0.0503 - acc: 0.9906 - val_loss: 0.3517 - val_acc: 0.9231
+Epoch 23/100
+ - 97s - loss: 0.0377 - acc: 0.9929 - val_loss: 0.4772 - val_acc: 0.9109
+Epoch 24/100
+ - 97s - loss: 0.0201 - acc: 0.9963 - val_loss: 0.4614 - val_acc: 0.9196
+Epoch 25/100
+ - 97s - loss: 0.0146 - acc: 0.9971 - val_loss: 0.5267 - val_acc: 0.9156
+Epoch 26/100
+ - 97s - loss: 0.0117 - acc: 0.9976 - val_loss: 0.5766 - val_acc: 0.9114
+Epoch 27/100
+ - 97s - loss: 0.0101 - acc: 0.9978 - val_loss: 0.6194 - val_acc: 0.9088
+Epoch 28/100
+ - 97s - loss: 0.2378 - acc: 0.9094 - val_loss: 0.2949 - val_acc: 0.9196
+Epoch 29/100
+ - 97s - loss: 0.0315 - acc: 0.9930 - val_loss: 0.3465 - val_acc: 0.9259
+Epoch 30/100
+ - 97s - loss: 0.0143 - acc: 0.9965 - val_loss: 0.4340 - val_acc: 0.9214
+Epoch 31/100
+ - 98s - loss: 0.0083 - acc: 0.9975 - val_loss: 0.5238 - val_acc: 0.9163
+Epoch 32/100
+ - 97s - loss: 0.0069 - acc: 0.9977 - val_loss: 0.5760 - val_acc: 0.9145
+Epoch 33/100
+ - 97s - loss: 0.0064 - acc: 0.9978 - val_loss: 0.5963 - val_acc: 0.9159
+Epoch 34/100
+ - 97s - loss: 0.0061 - acc: 0.9979 - val_loss: 0.6164 - val_acc: 0.9159
+Epoch 35/100
+ - 97s - loss: 0.0059 - acc: 0.9980 - val_loss: 0.6400 - val_acc: 0.9153
+Epoch 36/100
+ - 97s - loss: 0.0050 - acc: 0.9981 - val_loss: 0.6696 - val_acc: 0.9143
+Epoch 37/100
+ - 97s - loss: 0.0048 - acc: 0.9982 - val_loss: 0.7022 - val_acc: 0.9126
+Epoch 38/100
+ - 97s - loss: 0.0046 - acc: 0.9982 - val_loss: 0.7346 - val_acc: 0.9107
+Epoch 39/100
+ - 97s - loss: 0.0044 - acc: 0.9983 - val_loss: 0.7599 - val_acc: 0.9097
+Epoch 40/100
+ - 97s - loss: 0.0043 - acc: 0.9983 - val_loss: 0.7763 - val_acc: 0.9096
+Epoch 41/100
+ - 97s - loss: 0.0042 - acc: 0.9983 - val_loss: 0.7899 - val_acc: 0.9096
+Epoch 42/100
+ - 97s - loss: 0.0041 - acc: 0.9984 - val_loss: 0.8116 - val_acc: 0.9087
+Epoch 43/100
+ - 97s - loss: 0.0039 - acc: 0.9984 - val_loss: 0.8195 - val_acc: 0.9091
+Epoch 44/100
+ - 97s - loss: 0.0037 - acc: 0.9984 - val_loss: 0.8280 - val_acc: 0.9104
+Epoch 45/100
+ - 97s - loss: 0.0036 - acc: 0.9985 - val_loss: 0.8521 - val_acc: 0.9101
+Epoch 46/100
+ - 97s - loss: 0.0035 - acc: 0.9985 - val_loss: 0.8847 - val_acc: 0.9088
+Epoch 47/100
+ - 97s - loss: 0.0034 - acc: 0.9985 - val_loss: 0.9029 - val_acc: 0.9087
+Epoch 48/100
+ - 97s - loss: 0.0033 - acc: 0.9985 - val_loss: 0.9263 - val_acc: 0.9081
+Epoch 49/100
+ - 97s - loss: 0.0032 - acc: 0.9986 - val_loss: 0.9393 - val_acc: 0.9085
+Epoch 50/100
+ - 97s - loss: 0.0032 - acc: 0.9986 - val_loss: 0.9626 - val_acc: 0.9077
+Epoch 51/100
+ - 97s - loss: 0.0031 - acc: 0.9986 - val_loss: 0.9805 - val_acc: 0.9075
+Epoch 52/100
+ - 97s - loss: 0.0030 - acc: 0.9986 - val_loss: 0.9875 - val_acc: 0.9081
+Epoch 53/100
+ - 97s - loss: 0.0030 - acc: 0.9987 - val_loss: 1.0257 - val_acc: 0.9062
+Epoch 54/100
+ - 97s - loss: 0.0029 - acc: 0.9988 - val_loss: 1.0684 - val_acc: 0.9038
+Epoch 55/100
+ - 97s - loss: 0.0029 - acc: 0.9988 - val_loss: 1.0855 - val_acc: 0.9038
+Epoch 56/100
+ - 97s - loss: 0.0028 - acc: 0.9988 - val_loss: 1.0932 - val_acc: 0.9041
+Epoch 57/100
+ - 97s - loss: 0.0028 - acc: 0.9988 - val_loss: 1.1129 - val_acc: 0.9038
+Epoch 58/100
+ - 97s - loss: 0.0027 - acc: 0.9988 - val_loss: 1.1264 - val_acc: 0.9038
+Epoch 59/100
+ - 97s - loss: 0.0027 - acc: 0.9988 - val_loss: 1.1521 - val_acc: 0.9031
+Epoch 60/100
+ - 97s - loss: 0.0027 - acc: 0.9989 - val_loss: 1.1805 - val_acc: 0.9021
+Epoch 61/100
+ - 97s - loss: 0.0026 - acc: 0.9989 - val_loss: 1.2182 - val_acc: 0.9004
+Epoch 62/100
+ - 97s - loss: 0.0025 - acc: 0.9989 - val_loss: 1.2314 - val_acc: 0.9010
+Epoch 63/100
+ - 97s - loss: 0.0025 - acc: 0.9989 - val_loss: 1.2763 - val_acc: 0.8991
+Epoch 64/100
+ - 97s - loss: 0.0076 - acc: 0.9985 - val_loss: 0.9608 - val_acc: 0.9013
+Epoch 65/100
+ - 97s - loss: 0.0480 - acc: 0.9922 - val_loss: 0.5433 - val_acc: 0.9015
+Epoch 66/100
+ - 97s - loss: 0.0120 - acc: 0.9974 - val_loss: 0.6212 - val_acc: 0.9002
+Epoch 67/100
+ - 97s - loss: 0.0050 - acc: 0.9985 - val_loss: 0.7397 - val_acc: 0.8978
+Epoch 68/100
+ - 97s - loss: 0.0067 - acc: 0.9982 - val_loss: 0.7130 - val_acc: 0.9000
+Epoch 69/100
+ - 97s - loss: 0.0031 - acc: 0.9987 - val_loss: 0.8118 - val_acc: 0.8983
+Epoch 70/100
+ - 97s - loss: 0.0029 - acc: 0.9987 - val_loss: 0.8815 - val_acc: 0.8977
+Epoch 71/100
+ - 97s - loss: 0.0028 - acc: 0.9988 - val_loss: 0.9319 - val_acc: 0.8969
+Epoch 72/100
+ - 97s - loss: 0.0027 - acc: 0.9988 - val_loss: 0.9753 - val_acc: 0.8959
+Epoch 73/100
+ - 97s - loss: 0.0027 - acc: 0.9988 - val_loss: 1.0329 - val_acc: 0.8932
+Epoch 74/100
+ - 97s - loss: 0.0026 - acc: 0.9988 - val_loss: 1.0659 - val_acc: 0.8928
+Epoch 75/100
+ - 97s - loss: 0.0026 - acc: 0.9988 - val_loss: 1.0959 - val_acc: 0.8924
+Epoch 76/100
+ - 97s - loss: 0.0026 - acc: 0.9988 - val_loss: 1.1257 - val_acc: 0.8920
+Epoch 77/100
+ - 97s - loss: 0.0025 - acc: 0.9988 - val_loss: 1.1493 - val_acc: 0.8920
+Epoch 78/100
+ - 97s - loss: 0.0035 - acc: 0.9988 - val_loss: 1.1173 - val_acc: 0.8907
+Epoch 79/100
+ - 97s - loss: 0.0025 - acc: 0.9989 - val_loss: 1.1575 - val_acc: 0.8907
+Epoch 80/100
+ - 97s - loss: 0.0025 - acc: 0.9989 - val_loss: 1.1927 - val_acc: 0.8900
+Epoch 81/100
+ - 98s - loss: 0.0025 - acc: 0.9989 - val_loss: 1.2263 - val_acc: 0.8889
+Epoch 82/100
+ - 97s - loss: 0.0024 - acc: 0.9989 - val_loss: 1.2709 - val_acc: 0.8868
+Epoch 83/100
+ - 97s - loss: 0.0024 - acc: 0.9989 - val_loss: 1.2909 - val_acc: 0.8868
+Epoch 84/100
+ - 97s - loss: 0.0024 - acc: 0.9989 - val_loss: 1.3340 - val_acc: 0.8846
+Epoch 85/100
+ - 97s - loss: 0.0024 - acc: 0.9990 - val_loss: 1.3587 - val_acc: 0.8840
+Epoch 86/100
+ - 97s - loss: 0.0024 - acc: 0.9990 - val_loss: 1.3838 - val_acc: 0.8836
+Epoch 87/100
+ - 97s - loss: 0.0023 - acc: 0.9990 - val_loss: 1.4079 - val_acc: 0.8829
+Epoch 88/100
+ - 97s - loss: 0.0034 - acc: 0.9989 - val_loss: 1.1991 - val_acc: 0.8890
+Epoch 89/100
+ - 97s - loss: 0.0034 - acc: 0.9989 - val_loss: 1.1213 - val_acc: 0.8863
+Epoch 90/100
+ - 97s - loss: 0.0024 - acc: 0.9990 - val_loss: 1.2133 - val_acc: 0.8838
+Epoch 91/100
+ - 97s - loss: 0.0023 - acc: 0.9990 - val_loss: 1.2335 - val_acc: 0.8853
+Epoch 92/100
+ - 97s - loss: 0.0033 - acc: 0.9989 - val_loss: 1.1465 - val_acc: 0.8867
+Epoch 93/100
+ - 97s - loss: 0.0023 - acc: 0.9990 - val_loss: 1.2351 - val_acc: 0.8832
+Epoch 94/100
+ - 98s - loss: 0.0023 - acc: 0.9990 - val_loss: 1.2906 - val_acc: 0.8810
+Epoch 95/100
+ - 97s - loss: 0.0127 - acc: 0.9978 - val_loss: 0.7550 - val_acc: 0.8890
+Epoch 96/100
+ - 97s - loss: 0.0143 - acc: 0.9969 - val_loss: 0.5315 - val_acc: 0.8789
+Epoch 97/100
+ - 97s - loss: 0.0092 - acc: 0.9980 - val_loss: 0.7597 - val_acc: 0.8848
+Epoch 98/100
+ - 97s - loss: 0.0128 - acc: 0.9976 - val_loss: 0.7650 - val_acc: 0.8897
+Epoch 99/100
+ - 97s - loss: 0.0032 - acc: 0.9989 - val_loss: 0.8442 - val_acc: 0.8870
+Epoch 100/100
+ - 97s - loss: 0.0037 - acc: 0.9988 - val_loss: 0.8469 - val_acc: 0.8888
+Using TensorFlow backend.
+Testing...
+Test loss: 0.8513195405371241
+Test accuracy: 0.8883938681302095
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 400)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 400, 10)           1859160   
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 400, 50)           12200     
+_________________________________________________________________
+time_distributed_1 (TimeDist (None, 400, 1)            51        
+=================================================================
+Total params: 1,871,411
+Trainable params: 1,871,411
+Non-trainable params: 0
+_________________________________________________________________
