@@ -3,6 +3,7 @@ from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
 from keras.models import Model
 from preprocess_text import preprocess
 from keras.utils import multi_gpu_model # for data parallelism
+from keras.layers import Dropout
 import numpy as np
 import codecs
 from sklearn.model_selection import train_test_split
@@ -74,7 +75,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
-num_epochs = 100
+num_epochs = 50
 num_batch = 64 # also find optimal through cross-validation
 
 
@@ -109,7 +110,7 @@ myInput = Input(shape=(max_doc_length,), name='input')
 print(myInput.shape)
 x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_doc_length)(myInput)
 print(x.shape)
-lstm_out = LSTM(num_cells, return_sequences=True)(x)
+lstm_out = LSTM(num_cells, dropout=0.5, recurrent_dropout=0.5, return_sequences=True)(x)
 print(lstm_out.shape)
 #out = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 predictions = TimeDistributed(Dense(1, activation='sigmoid'))(lstm_out) # changing the number of units in Dense from 2 to 1 made it run but it couldnt learn because for softmax the output can't be one.
