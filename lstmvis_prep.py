@@ -75,7 +75,7 @@ num_samples = len(train_lab)
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
 num_epochs = 100
-num_batch = 32 # also find optimal through cross-validation
+num_batch = 2 # also find optimal through cross-validation
 
 
 # PREPARING DATA
@@ -128,15 +128,27 @@ print("Testing...")
 score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch, verbose=0)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
+
 model.summary()
 
+model.layers.pop();
+
+model.summary()
 # Save plot of model
 #plot_model(model, to_file="model.png")
 
 # Save the states via predict
-parallel_model.layers.pop();
-inp = parallel_model.get_input_at(0)
-out = parallel_model.layers[-1].output
+#parallel_model.layers.pop();
+#inp = parallel_model.get_input_at(0)
+#inp = parallel_model.inputs
+#out = parallel_model.layers[-1].output
+#model_RetreiveStates = Model(inp, out)
+#states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+
+# Save the states via predict
+#inp = model.get_input_at(0)
+inp = model.inputs
+out = model.layers[-1].output
 model_RetreiveStates = Model(inp, out)
 states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 

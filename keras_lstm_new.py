@@ -6,10 +6,11 @@ from keras.models import Model
 from keras.preprocessing import sequence
 import nltk
 from preprocess_text import preprocess
-import matplotlib.pyplot as plt
-from keras.utils import plot_model
+#import matplotlib.pyplot as plt
+#from keras.utils import plot_model
 #from keras.utils import to_categorical
 #from keras.metrics import categorical_accuracy
+import h5py
 
 
 data = codecs.open("data/kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
@@ -19,7 +20,15 @@ data = [s.lower() for s in data]
 labels = codecs.open("data/kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
 labels = labels[:200]
 #labels = labels[:200]
-labels = np.array([int(i) for i in labels])
+labels = [int(i) for i in labels]
+
+# disregarding input which is less than 100 characters (as they do not contain many words, if any)
+labels_include = []
+data_include = []
+for indel, i in enumerate(data):
+    if len(i) > 100:
+        data_include.append(i)
+        labels_include.append(labels[indel])
 
 train, dev, train_lab, dev_lab = train_test_split(data, labels, test_size=0.33, random_state=42)
 train = preprocess(train)
@@ -49,7 +58,7 @@ testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 700 # using the mean length of documents as max_doc_length for now
+max_doc_length = 320 # using the mean length of documents as max_doc_length for now
 # num_cells: number of LSTM cells
 num_cells = 50 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
@@ -57,7 +66,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 50 # also just for now..
-num_epochs = 100
+num_epochs = 2
 num_batch = 8 # also find optimal through cross-validation
 
 
@@ -107,14 +116,17 @@ model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_siz
 #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
 
-model.layers.pop();
+
 model.summary()
 score = model.evaluate(test_seq, y_test_tiled, batch_size=num_batch)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 
 # Save the states via predict
-inp = model.get_input_at(0)
+model.layers.pop();
+model.summary()
+#inp = model.get_input_at(0)
+inp = model.inputs
 out = model.layers[-1].output
 model_RetreiveStates = Model(inp, out)
 states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
@@ -127,9 +139,9 @@ hf.create_dataset('states1', data=states_model_flatten)
 hf.close()
 
 # Plot the model
-plot_model(model, to_file="model.png")
+#plot_model(model, to_file="model.png")
 
 # Display the image
-data = plt.imread("model.png")
-plt.imshow(data)
-plt.show()
+#data = plt.imread("model.png")
+#plt.imshow(data)
+#plt.show()
