@@ -66,8 +66,8 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 50 # also just for now..
-num_epochs = 2
-num_batch = 8 # also find optimal through cross-validation
+num_epochs = 5
+num_batch = 32 # also find optimal through cross-validation
 
 
 # PREPARING DATA
@@ -86,7 +86,7 @@ hf.close()
 
 # Reshape y_train:
 def tile_reshape(train_lab, num_time_steps):
-    y_train_tiled = np.tile(train_lab, (num_time_steps,1))
+    y_train_tiled = np.tile(train_lab, (num_time_steps,1)).T
     y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
     print("y_train_shape:",y_train_tiled.shape)
     return y_train_tiled
@@ -103,7 +103,7 @@ x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_
 print(x.shape)
 lstm_out = LSTM(num_cells, return_sequences=True)(x)
 print(lstm_out.shape)
-#out = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
+#predictions = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 predictions = TimeDistributed(Dense(1, activation='sigmoid'))(lstm_out) # changing the number of units in Dense from 2 to 1 made it run but it couldnt learn because for softmax the output can't be one.
 #predictions = TimeDistributed(Dense(1))(lstm_out) # try this instead?
 print("predictions_shape:",predictions.shape)
@@ -124,7 +124,7 @@ print("Test accuracy:", score[1])
 
 # Save the states via predict
 model.layers.pop();
-model.summary()
+#model.summary()
 #inp = model.get_input_at(0)
 inp = model.inputs
 out = model.layers[-1].output

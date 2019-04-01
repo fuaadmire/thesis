@@ -75,7 +75,7 @@ num_samples = len(train_lab)
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
 num_epochs = 100
-num_batch = 2 # also find optimal through cross-validation
+num_batch = 64 # also find optimal through cross-validation
 
 
 # PREPARING DATA
@@ -94,7 +94,7 @@ hf.close()
 
 # Reshape y_train:
 def tile_reshape(train_lab, num_time_steps):
-    y_train_tiled = np.tile(train_lab, (num_time_steps,1))
+    y_train_tiled = np.tile(train_lab, (num_time_steps,1)).T
     y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
     #print("y_train_shape:",y_train_tiled.shape)
     return y_train_tiled
@@ -131,26 +131,24 @@ print("Test accuracy:", score[1])
 
 model.summary()
 
-model.layers.pop();
+try:
+    model.layers.pop();
+except:
+    parallel_model.layers.pop();
 
-model.summary()
-# Save plot of model
-#plot_model(model, to_file="model.png")
 
-# Save the states via predict
-#parallel_model.layers.pop();
-#inp = parallel_model.get_input_at(0)
-#inp = parallel_model.inputs
-#out = parallel_model.layers[-1].output
-#model_RetreiveStates = Model(inp, out)
-#states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 
-# Save the states via predict
-#inp = model.get_input_at(0)
-inp = model.inputs
-out = model.layers[-1].output
-model_RetreiveStates = Model(inp, out)
-states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+try:
+    inp = model.inputs
+    out = model.layers[-1].output
+    model_RetreiveStates = Model(inp, out)
+    states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+except:
+    #inp = parallel_model.get_input_at(0)
+    inp = parallel_model.inputs
+    out = parallel_model.layers[-1].output
+    model_RetreiveStates = Model(inp, out)
+    states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 
 # Flatten first and second dimension for LSTMVis
 states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_cells)
@@ -158,3 +156,6 @@ states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_ce
 hf = h5py.File("states.hdf5", "w")
 hf.create_dataset('states1', data=states_model_flatten)
 hf.close()
+
+# Save plot of model
+#plot_model(model, to_file="model.png")
