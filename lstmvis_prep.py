@@ -13,6 +13,7 @@ import nltk
 import matplotlib.pyplot as plt
 from keras.utils import plot_model
 import datetime
+from write_dict_file import d_write
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
@@ -39,25 +40,30 @@ for indel, i in enumerate(data):
 
 
 train, dev, train_lab, dev_lab = train_test_split(data_include, labels_include, test_size=0.33, random_state=42)
-#train = preprocess(train)
-#dev = preprocess(dev)
+train = preprocess(train)
+dev = preprocess(dev)
 
-train = [nltk.word_tokenize(i.lower()) for i in train]
-dev = [nltk.word_tokenize(i.lower()) for i in dev]
+#train = [nltk.word_tokenize(i.lower()) for i in train]
+#dev = [nltk.word_tokenize(i.lower()) for i in dev]
+
+# perhaps edit this to make dict straight away.
 
 all_train_tokens = []
 for i in train:
     for word in i:
         all_train_tokens.append(word)
+
 vocab = set(all_train_tokens)
 word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
 word2id["UNK"] = len(word2id)+1
 id2word = {v: k for k, v in word2id.items()}
 #[[id2word.get(word, "UNK") for word in sent] for sent in dev]
 # save Dict file containing the mapping from word ID to word (e.g. train.dict)
-f = open("dict.txt","w+")
-f.write( str(id2word) )
-f.close()
+d_write("words.dict", word2id)
+#f = open("dict.txt","w+")
+#f.write( str(id2word) )
+#f.close()
+
 
 #trainTextsSeq: List of input sequence for each document (A matrix with size num_samples * max_doc_length)
 trainTextsSeq = np.array([[word2id[w] for w in sent] for sent in train])
@@ -67,7 +73,7 @@ testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 400 # using the mean length of documents as max_doc_length for now
+max_doc_length = 400
 # num_cells: number of LSTM cells
 num_cells = 50 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
@@ -75,7 +81,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
-num_epochs = 50
+num_epochs = 40
 num_batch = 64 # also find optimal through cross-validation
 
 

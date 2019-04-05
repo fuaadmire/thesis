@@ -7,13 +7,13 @@ def preprocess(data):
     #print(remove_punct)
     tokens = [nltk.word_tokenize(i.lower()) for i in remove_punct]
     #print(tokens)
-    wnl = nltk.WordNetLemmatizer()
-    lemmas = [[wnl.lemmatize(t) for t in tok] for tok in tokens]
+    #wnl = nltk.WordNetLemmatizer()
+    #lemmas = [[wnl.lemmatize(t) for t in tok] for tok in tokens]
     #print(len(lemmas[0]))
-    return lemmas
+    return tokens
 
 #data = [["hey what's up beautiful? Is'nt, it lovely houses."], ["wow such spirit and fruitfulness in the apples"]]
-
+#print(preprocess(data))
 #lemmas = preprocess(data)
 
 #print(lemmas)
