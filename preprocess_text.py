@@ -12,8 +12,8 @@ def preprocess(data):
     #print(len(lemmas[0]))
     return tokens
 
-#data = [["hey what's up beautiful? Is'nt, it lovely houses."], ["wow such spirit and fruitfulness in the apples"]]
-#print(preprocess(data))
+data = [["hey what's up beautiful? Is'nt, it lovely houses."], ["wow such spirit and fruitfulness in the apples"]]
+print(preprocess(data))
 #lemmas = preprocess(data)
 
 #print(lemmas)

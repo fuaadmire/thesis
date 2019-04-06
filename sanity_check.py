@@ -1,5 +1,3 @@
-
-from preprocess_text import preprocess
 import numpy as np
 import codecs
 from sklearn.model_selection import train_test_split
@@ -7,9 +5,11 @@ import pandas as pd
 import h5py
 import nltk
 import matplotlib.pyplot as plt
+#from keras.utils import plot_model
 import datetime
+from write_dict_file import d_write
+from preprocess_text import preprocess
 #import os
-
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
 #os.environ['floatX']='float32'
@@ -41,9 +41,14 @@ train, dev, train_lab, dev_lab = train_test_split(data_include, labels_include, 
 train = [nltk.word_tokenize(i.lower()) for i in train]
 dev = [nltk.word_tokenize(i.lower()) for i in dev]
 
-# CHECK!!!
+# perhaps edit this to make dict straight away.
+
 all_train_tokens = []
 for i in train:
     for word in i:
         all_train_tokens.append(word)
-print(all_train_tokens[:10])
+
+vocab = set(all_train_tokens)
+word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
+word2id["UNK"] = len(word2id)+1
+id2word = {v: k for k, v in word2id.items()}

@@ -40,11 +40,13 @@ for indel, i in enumerate(data):
 
 
 train, dev, train_lab, dev_lab = train_test_split(data_include, labels_include, test_size=0.33, random_state=42)
-train = preprocess(train)
-dev = preprocess(dev)
 
-#train = [nltk.word_tokenize(i.lower()) for i in train]
-#dev = [nltk.word_tokenize(i.lower()) for i in dev]
+#preprocessing is going wrong. returns letters instead of words :)
+#train = preprocess(train)
+#dev = preprocess(dev)
+
+train = [nltk.word_tokenize(i.lower()) for i in train]
+dev = [nltk.word_tokenize(i.lower()) for i in dev]
 
 # perhaps edit this to make dict straight away.
 
@@ -81,7 +83,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
-num_epochs = 40
+num_epochs = 50
 num_batch = 64 # also find optimal through cross-validation
 
 
