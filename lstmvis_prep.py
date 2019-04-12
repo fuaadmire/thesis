@@ -173,6 +173,3 @@ hf.close()
 
 # add padding token to lstmvis dict
 d_write("words.dict", {"PADDING": 0})
-
-# Annotate
-nlp_annotate.pos_ner_annotate()
