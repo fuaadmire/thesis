@@ -1,54 +1,53 @@
 import numpy as np
-import codecs
-from sklearn.model_selection import train_test_split
-import pandas as pd
-import h5py
-import nltk
-import matplotlib.pyplot as plt
-#from keras.utils import plot_model
-import datetime
-from write_dict_file import d_write
-from preprocess_text import preprocess
-#import os
-#os.environ['KERAS_BACKEND'] = 'theano'
-#os.environ['THEANO_FLAGS'] = "device=cuda"
-#os.environ['floatX']='float32'
+from keras.preprocessing import sequence
+from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
+from keras.models import Model
+from keras.layers import Dropout
 
-print(datetime.datetime.now())
-
-data = codecs.open("data/kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
-data = data[:20800]
-#data = data[:200]
-data = [s.lower() for s in data]
-labels = codecs.open("data/kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
-labels = labels[:20800]
-#labels = labels[:200]
-labels = [int(i) for i in labels]
-
-# disregarding input which is less than 100 characters (as they do not contain many words, if any)
-labels_include = []
-data_include = []
-for indel, i in enumerate(data):
-    if len(i) > 100:
-        data_include.append(i)
-        labels_include.append(labels[indel])
+from keras.constraints import NonNeg
+from keras import regularizers
 
 
-train, dev, train_lab, dev_lab = train_test_split(data_include, labels_include, test_size=0.33, random_state=42)
-#train = preprocess(train)
-#dev = preprocess(dev)
+# prøv at se på output og weights med og uden nonneg constraint
+# i Dense: kernel_constraint=non_neg()
+# se også med regularizer, i Dense:
+# fx kernel_regularizer=regularizers.l1(0.01)
 
-train = [nltk.word_tokenize(i.lower()) for i in train]
-dev = [nltk.word_tokenize(i.lower()) for i in dev]
+X = np.random.randint(51, size=(100, 10)) # array of lists of same lenghts with random numbers from 0-50
+y = np.random.randint(2, size=100)
 
-# perhaps edit this to make dict straight away.
+def tile_reshape(train_lab, num_time_steps):
+    y_train_tiled = np.tile(train_lab, (num_time_steps,1)).T
+    y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
+    #print("y_train_shape:",y_train_tiled.shape)
+    return y_train_tiled
 
-all_train_tokens = []
-for i in train:
-    for word in i:
-        all_train_tokens.append(word)
+y = tile_reshape(y, 10)
 
-vocab = set(all_train_tokens)
-word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
-word2id["UNK"] = len(word2id)+1
-id2word = {v: k for k, v in word2id.items()}
+max_doc_length = 10
+vocab_size = 51
+embedding_size = 10
+num_cells = 2
+num_epochs = 10
+num_batch = 16
+
+
+myInput = Input(shape=(max_doc_length,), name='input')
+x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_doc_length)(myInput)
+lstm_out = LSTM(num_cells, dropout=0.4, recurrent_dropout=0.4, return_sequences=True)(x)
+predictions = TimeDistributed(Dense(1, bias=0, activation='sigmoid', kernel_constraint=NonNeg()))(lstm_out)
+# ved ikke om jeg skal tilføje:
+# activity_regularizer=regularizers.l1(0.01)
+# eller:
+# kernel_regularizer=regularizers.l1(0.01)
+model = Model(inputs=myInput, outputs=predictions)
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+print("fitting model..")
+model.fit(X, y, epochs=num_epochs, verbose=2, batch_size=num_batch)
+model.summary()
+# how to print weights?
+w = model.get_weights()
+print(w)
+print() #alle vægte for alle (4?) lag.
+layer_w = model.layers[3].get_weights()[0] # Vægte fra sidste lag. De er positive efter kernel_constraint=NonNeg().
+print(layer_w)

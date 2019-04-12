@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from keras.utils import plot_model
 import datetime
 from write_dict_file import d_write
+import nlp_annotate
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
@@ -77,7 +78,8 @@ vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = 400
 # num_cells: number of LSTM cells
-num_cells = 50 # for now, probably test best parameter through cross-validation
+num_cells = 2 # for now, probably test best parameter through cross-validation
+
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
@@ -118,7 +120,7 @@ myInput = Input(shape=(max_doc_length,), name='input')
 print(myInput.shape)
 x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_doc_length)(myInput)
 print(x.shape)
-lstm_out = LSTM(num_cells, dropout=0.5, recurrent_dropout=0.5, return_sequences=True)(x)
+lstm_out = LSTM(num_cells, dropout=0.4, recurrent_dropout=0.4, return_sequences=True)(x)
 print(lstm_out.shape)
 #out = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
 predictions = TimeDistributed(Dense(1, activation='sigmoid'))(lstm_out) # changing the number of units in Dense from 2 to 1 made it run but it couldnt learn because for softmax the output can't be one.
@@ -168,3 +170,9 @@ hf.close()
 
 # Save plot of model
 #plot_model(model, to_file="model.png")
+
+# add padding token to lstmvis dict
+d_write("words.dict", {"PADDING": 0})
+
+# Annotate
+nlp_annotate.pos_ner_annotate()

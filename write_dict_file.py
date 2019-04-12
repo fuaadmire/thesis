@@ -9,4 +9,4 @@ def d_write(outfile, d):
           #print >>out, k, v
       out.close()
 
-#d_write("test.txt", {"which": 2, "world":13})
+#d_write("/Users/Terne/Documents/KU/Speciale/LSTMVis/data/kaggle/words.dict", {"PADDING": 0})
