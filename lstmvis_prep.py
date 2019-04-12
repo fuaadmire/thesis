@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 from keras.utils import plot_model
 import datetime
 from write_dict_file import d_write
-import nlp_annotate
 #import os
 #os.environ['KERAS_BACKEND'] = 'theano'
 #os.environ['THEANO_FLAGS'] = "device=cuda"
