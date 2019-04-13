@@ -141,6 +141,10 @@ print("Test accuracy:", score[1])
 
 model.summary()
 
+# get predicted classes
+# y_prob = parallel_model.predict(seq)
+# y_classes = y_prob.argmax(axis=-1)
+
 try:
     model.layers.pop();
 except:
