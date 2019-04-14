@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name=lstmvisPrep
+#SBATCH --job-name=annotation
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=4-00:00:00
+#SBATCH --cpus-per-task=6
+#SBATCH --time=0-10:00:00
 python ./nlp_annotate.py
