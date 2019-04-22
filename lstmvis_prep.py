@@ -1,17 +1,18 @@
 from keras.preprocessing import sequence
-from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed
+from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed, Dropout
 from keras.models import Model
 from preprocess_text import preprocess
 from keras.utils import multi_gpu_model # for data parallelism
-from keras.layers import Dropout
+from keras.constraints import NonNeg
+from keras import regularizers
+from keras.utils import plot_model
 import numpy as np
 import codecs
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import h5py
 import nltk
-import matplotlib.pyplot as plt
-from keras.utils import plot_model
+#import matplotlib.pyplot as plt
 import datetime
 from write_dict_file import d_write
 #import os
@@ -84,7 +85,7 @@ num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 10 # also just for now..
-num_epochs = 50
+num_epochs = 100
 num_batch = 64 # also find optimal through cross-validation
 
 
@@ -122,28 +123,59 @@ print(x.shape)
 lstm_out = LSTM(num_cells, dropout=0.4, recurrent_dropout=0.4, return_sequences=True)(x)
 print(lstm_out.shape)
 #out = TimeDistributed(Dense(2, activation='softmax'))(lstm_out)
-predictions = TimeDistributed(Dense(1, activation='sigmoid'))(lstm_out) # changing the number of units in Dense from 2 to 1 made it run but it couldnt learn because for softmax the output can't be one.
-#predictions = TimeDistributed(Dense(1))(lstm_out) # try this instead?
+predictions = TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))(lstm_out) #kernel_constraint=NonNeg()
+
 print("predictions_shape:",predictions.shape)
 model = Model(inputs=myInput, outputs=predictions)
-parallel_model = multi_gpu_model(model, gpus=4)
-parallel_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-#model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-print("fitting model..")
-parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_split=.20)
-#parallel_model.fit(seq, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))), validation_split=.20) # or try this, removing the curly brackets.
-#parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
 
-print("Testing...")
-score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch, verbose=0)
-print("Test loss:", score[0])
-print("Test accuracy:", score[1])
+# try-except to switch between gpu and cpu version
+try:
+    parallel_model = multi_gpu_model(model, gpus=4)
+    parallel_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    #model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    print("fitting model..")
+    parallel_model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_split=.20)
+    #parallel_model.fit(seq, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))), validation_split=.20) # or try this, removing the curly brackets.
+    #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
+
+    print("Testing...")
+    score = parallel_model.evaluate(test_seq, y_test_tiled, batch_size=num_batch, verbose=0)
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
+    # get predicted classes
+    y_prob = parallel_model.predict(seq)
+except:
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    #model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    print("fitting model..")
+    model.fit({'input': seq}, y_train_tiled, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_split=.20)
+    #parallel_model.fit(seq, y_train_tiled, epochs=num_epochs, verbose=2, steps_per_epoch=(np.int(np.floor(num_samples/num_batch))), validation_split=.20) # or try this, removing the curly brackets.
+    #parallel_model.fit({'input': seq}, train_lab, epochs=num_epochs, batch_size=num_batch, verbose=1)
+
+    print("Testing...")
+    score = model.evaluate(test_seq, y_test_tiled, batch_size=num_batch, verbose=0)
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
+    # get predicted classes
+    y_prob = model.predict(seq)
 
 model.summary()
 
-# get predicted classes
-# y_prob = parallel_model.predict(seq)
-# y_classes = y_prob.argmax(axis=-1)
+
+# if multiclass:
+#y_classes = y_prob.argmax(axis=-1)
+# if binary:
+y_classes = (y_prob > 0.5).astype(np.int)
+print(y_classes)
+print(y_classes.shape)
+print(type(y_classes))
+# save predicted classes!
+predicted_classes_flatten = np.array(y_classes).flatten()
+hf_p = h5py.File("predictions.hdf5", "w")
+hf_p.create_dataset('preds', data=predicted_classes_flatten)
+hf_p.close()
+
+
 
 try:
     model.layers.pop();
@@ -157,12 +189,41 @@ try:
     out = model.layers[-1].output
     model_RetreiveStates = Model(inp, out)
     states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+
+    states_result = (states_model > 0.5).astype(np.int)
+    first_unit_preds = states_result[:,:,0]
+    second_unit_preds = states_result[:,:,1]
+
+    first_unit = np.array(first_unit_preds).flatten()
+    hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
+    hf_states1_p.create_dataset('preds', data=first_unit)
+    hf_states1_p.close()
+
+    second_unit = np.array(second_unit_preds).flatten()
+    hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
+    hf_states2_p.create_dataset('preds', data=second_unit)
+    hf_states2_p.close()
+
 except:
     #inp = parallel_model.get_input_at(0)
     inp = parallel_model.inputs
     out = parallel_model.layers[-1].output
     model_RetreiveStates = Model(inp, out)
     states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+
+    states_result = (states_model > 0.5).astype(np.int)
+    first_unit_preds = states_result[:,:,0]
+    second_unit_preds = states_result[:,:,1]
+
+    first_unit = np.array(first_unit_preds).flatten()
+    hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
+    hf_states1_p.create_dataset('preds', data=first_unit)
+    hf_states1_p.close()
+
+    second_unit = np.array(second_unit_preds).flatten()
+    hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
+    hf_states2_p.create_dataset('preds', data=second_unit)
+    hf_states2_p.close()
 
 # Flatten first and second dimension for LSTMVis
 states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_cells)
