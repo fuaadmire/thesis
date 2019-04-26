@@ -13,7 +13,7 @@ with open("words.dict", "r") as f:
         k, v = line.strip().split()
         id2word[int(v)] = str(k)
 
-h5data = h5py.File('train.hdf5', 'r')
+h5data = h5py.File('train.hdf5', 'r') # prøv med noget af filen
 
 
 annotations = []
@@ -23,7 +23,9 @@ word_str = [unicode(id2word[w], errors="replace") for w in words]
 t = nlp.tokenizer.tokens_from_list(word_str)
 
 nlp.entity(t)
+# pdb set trace
 nlp.tagger(t)
+
 annotations_pos = []
 annotations_ner = []
 for tok in t:
