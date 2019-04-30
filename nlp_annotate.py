@@ -13,11 +13,11 @@ with open("words.dict", "r") as f:
         k, v = line.strip().split()
         id2word[int(v)] = str(k)
 
-h5data = h5py.File('train.hdf5', 'r') # prøv med noget af filen
+h5data = h5py.File('train.hdf5', 'r')
 
 
 annotations = []
-words = h5data["words"][:]
+words = h5data["words"][:] # index here to test with less data
 #word_str = [unicode(id2word[w]) for w in words]
 word_str = [unicode(id2word[w], errors="replace") for w in words]
 t = nlp.tokenizer.tokens_from_list(word_str)
