@@ -16,6 +16,10 @@ from sklearn.utils import shuffle
 random.seed(16)
 np.random.seed(16)
 
+m= 10000 #number of feats 5000 or 10000
+k=5#max ngram
+v=1 #min mgram
+
 liar_train = codecs.open("data/liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
 liar_train = [s.lower() for s in liar_train if len(s) > 1]
 liar_train_labels = codecs.open('data/liar_ytrain.txt', 'r', 'utf-8').read().split('\n')
