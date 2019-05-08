@@ -51,7 +51,7 @@ feats = ['_'.join(s.split()) for s in vectorizer.get_feature_names()] #de m ngra
 
 print("fitting log reg")
 clf=None
-clf = LogisticRegression(random_state=16, solver='sag', penalty='l2', max_iter=10000, multi_class="multinomial").fit(X_train_liar, liar_train_lab)
+clf = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000, multi_class="multinomial").fit(X_train_liar, liar_train_lab)
 print("done")
 #print(clf.intercept_)
 
@@ -59,7 +59,7 @@ coefs = clf.coef_
 
 allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
-allcoefs.to_csv('liar_TEST_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l2'+'_solver-sag'+'.csv', sep='\t', index=False)
+allcoefs.to_csv('liar_TEST_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l1'+'_solver-saga'+'.csv', sep='\t', index=False)
 print("classes:", clf.classes_)
 
 y_hat = clf.predict(X_test_liar)

@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name=annotation
+#SBATCH --job-name=logregs
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
-#SBATCH --time=0-12:00:00
-python ./liar_logistic_regression.py
+#SBATCH --time=0-20:00:00
+python ./all_data_logistic_regression.py

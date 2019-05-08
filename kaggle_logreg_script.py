@@ -31,7 +31,8 @@ labels = [int(i) for i in labels]
 
 tr, te, trlab, telab = train_test_split(data, labels, test_size=0.33, random_state=42)
 
-# encode labels?
+# encode labels? byt om på 1 og 0
+
 
 
 vectorizer = CountVectorizer(ngram_range=(v,k), max_features=m)
