@@ -45,12 +45,13 @@ print('done')
 print('fitting X_test')
 X_test_liar = vectorizer.transform(tqdm.tqdm(liar_test)).toarray()
 print('done')
+X_dev_liar = vectorizer.transform(tqdm.tqdm(liar_dev)).toarray()
 
 feats = ['_'.join(s.split()) for s in vectorizer.get_feature_names()] #de m ngrams modellen bruger
 
 print("fitting log reg")
 clf=None
-clf = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000, multi_class="multinomial").fit(X_train_liar, liar_train_lab)
+clf = LogisticRegression(random_state=16, solver='sag', penalty='l2', max_iter=10000, multi_class="multinomial").fit(X_train_liar, liar_train_lab)
 print("done")
 #print(clf.intercept_)
 
@@ -58,13 +59,21 @@ coefs = clf.coef_
 
 allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
-allcoefs.to_csv('liar_TEST_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l1'+'.csv', sep='\t', index=False)
+allcoefs.to_csv('liar_TEST_coefs_'+str(m)+'feats'+'_'+str(k)+'gram-l2'+'_solver-sag'+'.csv', sep='\t', index=False)
 print("classes:", clf.classes_)
 
 y_hat = clf.predict(X_test_liar)
 microf1=f1_score(liar_test_lab, y_hat, average='micro')
-print("MicroF1", microf1)
+print("Test MicroF1", microf1)
 macrof1=f1_score(liar_test_lab, y_hat, average='macro')
-print("macroF1", macrof1)
-print("accuracy", np.mean([y_hat == liar_test_lab]))
-print("weighted F1", f1_score(liar_test_lab, y_hat, average='weighted'))
+print("Test macroF1", macrof1)
+print("Test accuracy", np.mean([y_hat == liar_test_lab]))
+print("Test weighted F1", f1_score(liar_test_lab, y_hat, average='weighted'))
+
+y_hat_valid = clf.predict(X_dev_liar)
+microf1_v=f1_score(liar_dev_lab, y_hat_valid, average='micro')
+print("Valid. MicroF1", microf1_v)
+macrof1_v=f1_score(liar_dev_lab, y_hat_valid, average='macro')
+print("Valid. macroF1", macrof1_v)
+print("Valid. accuracy", np.mean([y_hat_valid == liar_dev_lab]))
+print("Valid. weighted F1", f1_score(liar_dev_lab, y_hat_valid, average='weighted'))

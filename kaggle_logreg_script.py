@@ -58,9 +58,10 @@ coefs = clf.coef_
 #    for c, f in zip(coefs[0],feats):
 #        file.write(f+"\t"+str(c)+"\n")
 
-allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
+#allcoefs = pd.DataFrame.from_records(coefs, columns=feats) #add ngrams as colnames
 
-allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
+#allcoefs.to_csv('allcoefs_'+str(m)+'-'+str(k)+'gram-l1_'+'.csv', sep='\t', index=False)
 y_hat = clf.predict(X_te)
 score=f1_score(telab, y_hat) #test accuracy er egentlig mindre vigtigt - det handler bare om at fitte. Det er dog meget smart så man kan se, at modellen lærer noget fornuftigt.
-print(score)
+print("F1",score)
+print("accuracy", np.mean([telab==y_hat]))
