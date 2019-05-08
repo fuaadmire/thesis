@@ -183,7 +183,7 @@ print_scores(FNN_y, FNN_predicted_by_kaggle, "FakeNewsNet Predicted by Classifie
 # random liar test set
 random_liar_labels = liar_test_lab.copy()
 np.random.shuffle(random_liar_labels)
-print_scores(random_liar_labels,preds_liar_test "Scores between predictions on Liar test set and randomized 'true' test labels. Classifier trained on Liar trains set")
+print_scores(random_liar_labels,preds_liar_test, "Scores between predictions on Liar test set and randomized 'true' test labels. Classifier trained on Liar trains set")
 
 
 print("Done")
