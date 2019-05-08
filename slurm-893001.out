@@ -1,0 +1,10 @@
+['barely-true' 'false' 'half-true' 'mostly-true' 'pants-fire' 'true']
+[0 1 2 3 4 5]
+Liar test set prediction scores by classifier trained on liar valid.
+binary F1 0.6501305483028721
+micro f1: 0.5769534333070244
+macro f1: 0.5576002042911565
+weighted F1 0.5693582038064574
+accuracy 0.5769534333070244
+
+done
