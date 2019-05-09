@@ -55,6 +55,10 @@ def binarize_label(labels):
     labels_transformed = [1 if i in [2,3,5] else 0 for i in labels]
     return labels_transformed
 
+liar_train_lab = binarize_label(liar_train_lab)
+liar_dev_lab = binarize_label(liar_dev_lab)
+liar_test_lab = binarize_label(liar_test_lab)
+
 def print_scores(y, y_hat, string):
     print(string)
     print("binary F1", f1_score(y, y_hat))
@@ -63,11 +67,6 @@ def print_scores(y, y_hat, string):
     print("weighted F1", f1_score(y, y_hat, average='weighted'))
     print("accuracy", accuracy_score(y, y_hat))
     print()
-
-liar_train_lab = binarize_label(liar_train_lab)
-liar_dev_lab = binarize_label(liar_dev_lab)
-liar_test_lab = binarize_label(liar_test_lab)
-
 
 # Vectorizing
 liar_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
