@@ -20,21 +20,21 @@ def binarize_labels(labels):
     labels_transformed = [1 if i in [2,3,5] else 0 for i in labels]
     return labels_transformed
 
-def load_liar_data():
+def load_liar_data(path):
 
-    liar_train = codecs.open("data/liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
+    liar_train = codecs.open(path+"data/liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
     liar_train = [s.lower() for s in liar_train if len(s) > 1]
-    liar_train_labels = codecs.open('data/liar_ytrain.txt', 'r', 'utf-8').read().split('\n')
+    liar_train_labels = codecs.open(path+'data/liar_ytrain.txt', 'r', 'utf-8').read().split('\n')
     liar_train_lab = [s for s in liar_train_labels if len(s) > 1]
 
-    liar_dev = codecs.open("data/liar_xval.txt", 'r', 'utf-8').read().split('\n')
+    liar_dev = codecs.open(path+"data/liar_xval.txt", 'r', 'utf-8').read().split('\n')
     liar_dev = [s.lower() for s in liar_dev if len(s) > 1]
     liar_dev_labels = codecs.open("data/liar_yval.txt", 'r', 'utf-8').read().split('\n')
     liar_dev_lab = [s for s in liar_dev_labels if len(s) > 1]
 
-    liar_test = codecs.open("data/liar_xtest.txt", 'r', 'utf-8').read().split('\n')
+    liar_test = codecs.open(path+"data/liar_xtest.txt", 'r', 'utf-8').read().split('\n')
     liar_test = [s.lower() for s in liar_test if len(s) > 1]
-    liar_test_labels = codecs.open("data/liar_ytest.txt", 'r', 'utf-8').read().split('\n')
+    liar_test_labels = codecs.open(path+"data/liar_ytest.txt", 'r', 'utf-8').read().split('\n')
     liar_test_lab = [s for s in liar_test_labels if len(s) > 1]
 
     assert len(liar_train) == len(liar_train_lab)
