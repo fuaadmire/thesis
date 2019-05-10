@@ -13,13 +13,13 @@ import os
 #datadir1 = "data/PolitiFact/FakeNewsContent"
 #datadir2 = "data/PolitiFact/RealNewsContent"
 
-politifact = pd.read_csv("data/PolitiFact/politifact.tsv", sep="\t", header=None)
-politifact_X =politifact[4]
-politifact_y = politifact[0]
+#politifact = pd.read_csv("data/PolitiFact/politifact.tsv", sep="\t", header=None)
+#politifact_X =politifact[4]
+#politifact_y = politifact[0]
 
-snopes = pd.read_csv("data/Snopes/snopes.tsv", sep="\t", header=None)
-snopes_X = snopes[3]
-snopes_y = snopes[0]
+#snopes = pd.read_csv("data/Snopes/snopes.tsv", sep="\t", header=None)
+#snopes_X = snopes[3]
+#snopes_y = snopes[0]
 
 def make_txt_file_from_json(datadir, savefile_name):
     with open(str(savefile_name), "w+") as file:
@@ -47,8 +47,9 @@ def save_labels_in_txt(dataframe_column, savefile_name):
 #save_labels_in_txt(liar_yval, "liar_yval.txt")
 #tr = codecs.open("liar_Xtrain", 'r', 'utf-8').read().split('\n')
 #make_txt_file_from_json(datadir2, "RealNewsContent.txt")
-make_txt_file_from_pandas_textcolumn(politifact_X, "politifact_X.txt")
-save_labels_in_txt(politifact_y,"politifact_y.txt")
 
-make_txt_file_from_pandas_textcolumn(snopes_X, "snopes_X.txt")
-save_labels_in_txt(snopes_y,"snopes_y.txt")
+#make_txt_file_from_pandas_textcolumn(politifact_X, "politifact_X.txt")
+#save_labels_in_txt(politifact_y,"politifact_y.txt")
+
+#make_txt_file_from_pandas_textcolumn(snopes_X, "snopes_X.txt")
+#save_labels_in_txt(snopes_y,"snopes_y.txt")
