@@ -1,16 +1,17 @@
 import pandas as pd
 import numpy as np
 import os
-from preprocessing_for_logreg import make_txt_file_from_pandas_textcolumn
 
-
-
-df = pd.read_csv("data/news_cleaned_2018_02_13.csv")
-fake = df[df.tags==fake]
-true = df[df.tags==reliable]
-
-fake_content = fake.content
-true_content = true.content
-
-make_txt_file_from_pandas_textcolumn(fake_content[:900000], "FakeNewsCorpus_fake_content.txt")
-make_txt_file_from_pandas_textcolumn(true_content[:900000], "FakeNewsCorpus_true_content.txt")
+reader = pd.read_csv('FakeNewsCorpus_fake.txt', chunksize=1)
+with open('FakeNewsCorpus_fake.txt', 'w+') as a, open('FakeNewsCorpus_true.txt', 'w+') as b:
+    for chunk in reader:
+        if chunk.type.iloc[0]=="fake":
+            text = chunk.content.iloc[0]).replace("\n", " ")
+            text = re.sub(r"https?:\/\/.+" , " ",text)
+            a.write(text)
+            a.write("\n")
+        elif chunk.type.iloc[0]=="reliable":
+            text = chunk.content.iloc[0]).replace("\n", " ")
+            text = re.sub(r"https?:\/\/.+" , " ",text)
+            b.write(text)
+            b.write("\n")
