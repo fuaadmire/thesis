@@ -1,0 +1,49 @@
+['barely-true' 'false' 'half-true' 'mostly-true' 'pants-fire' 'true']
+[0 1 2 3 4 5]
+Vectorizing...
+Vectorizing done
+Fitting classifiers...
+Predicting...
+FakeNewsCorpus test prediction scores
+binary F1 0.4477116433483519
+micro f1: 0.4353939393939394
+macro f1: 0.4351129503624973
+weighted F1 0.43500147101850123
+accuracy 0.4353939393939394
+
+FakeNewsCorpus train prediction scores
+binary F1 0.54491643454039
+micro f1: 0.5318208955223881
+macro f1: 0.5314328914772272
+weighted F1 0.5314916555753533
+accuracy 0.5318208955223881
+
+FakeNewsCorpus test set predicted by Liar classifier
+binary F1 0.6316116711817737
+micro f1: 0.49727272727272726
+macro f1: 0.4201652746827499
+weighted F1 0.4182942944470615
+accuracy 0.49727272727272726
+
+FakeNewsCorpus test set predicted by kaggle classifier
+binary F1 0.15045529801324503
+micro f1: 0.5024242424242424
+macro f1: 0.3993191814029201
+weighted F1 0.4015212497044287
+accuracy 0.5024242424242424
+
+Kaggle Test Set Predicted by Classifier Trained on FakeNewsCorpus
+binary F1 0.5990423387096774
+micro f1: 0.5364219114219114
+macro f1: 0.5248319428355017
+weighted F1 0.5251995351227572
+accuracy 0.5364219114219114
+
+Liar Test Set Predicted by Classifier Trained on FakeNewsCorpus
+binary F1 0.436241610738255
+micro f1: 0.4696132596685083
+macro f1: 0.4677482271276968
+weighted F1 0.46374462394008825
+accuracy 0.4696132596685083
+
+Done
