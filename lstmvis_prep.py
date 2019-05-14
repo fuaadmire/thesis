@@ -76,16 +76,16 @@ testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent
 # vocab_size: number of tokens in vocabulary
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
-max_doc_length = 400
+max_doc_length = 1000
 # num_cells: number of LSTM cells
-num_cells = 2 # for now, probably test best parameter through cross-validation
+num_cells = 64 # for now, probably test best parameter through cross-validation
 
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
-embedding_size = 10 # also just for now..
-num_epochs = 100
+embedding_size = 300 # also just for now..
+num_epochs = 10
 num_batch = 64 # also find optimal through cross-validation
 
 
@@ -179,61 +179,108 @@ hf_p.close()
 
 try:
     model.layers.pop();
-except:
-    parallel_model.layers.pop();
-
-
-
-try:
     inp = model.inputs
     out = model.layers[-1].output
     model_RetreiveStates = Model(inp, out)
-    states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 
-    states_result = (states_model > 0.5).astype(np.int)
-    first_unit_preds = states_result[:,:,0]
-    second_unit_preds = states_result[:,:,1]
+    # get predicted classes
+    train_preds = model.predict(seq)
+    test_preds = model.predict(test_seq)
 
-    first_unit = np.array(first_unit_preds).flatten()
-    hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
-    hf_states1_p.create_dataset('preds', data=first_unit)
-    hf_states1_p.close()
+    # Save plot of model
+    plot_model(model, to_file="model.png")
 
-    second_unit = np.array(second_unit_preds).flatten()
-    hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
-    hf_states2_p.create_dataset('preds', data=second_unit)
-    hf_states2_p.close()
+    #first_unit_preds = states_result[:,:,0]
+    #second_unit_preds = states_result[:,:,1]
+
+    #first_unit = np.array(first_unit_preds).flatten()
+    #hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
+    #hf_states1_p.create_dataset('preds', data=first_unit)
+    #hf_states1_p.close()
+
+    #second_unit = np.array(second_unit_preds).flatten()
+    #hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
+    #hf_states2_p.create_dataset('preds', data=second_unit)
+    #hf_states2_p.close()
 
 except:
-    #inp = parallel_model.get_input_at(0)
+    parallel_model.layers.pop();
     inp = parallel_model.inputs
     out = parallel_model.layers[-1].output
     model_RetreiveStates = Model(inp, out)
-    states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
 
-    states_result = (states_model > 0.5).astype(np.int)
-    first_unit_preds = states_result[:,:,0]
-    second_unit_preds = states_result[:,:,1]
+    # get predicted classes
+    train_preds = parallel_model.predict(seq)
+    test_preds = parallel_model.predict(test_seq)
 
-    first_unit = np.array(first_unit_preds).flatten()
-    hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
-    hf_states1_p.create_dataset('preds', data=first_unit)
-    hf_states1_p.close()
+    plot_model(parallel_model, to_file="model.png")
+    #first_unit_preds = states_result[:,:,0]
+    #second_unit_preds = states_result[:,:,1]
 
-    second_unit = np.array(second_unit_preds).flatten()
-    hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
-    hf_states2_p.create_dataset('preds', data=second_unit)
-    hf_states2_p.close()
+    #first_unit = np.array(first_unit_preds).flatten()
+    #hf_states1_p = h5py.File("states_pred_1.hdf5", "w")
+    #hf_states1_p.create_dataset('preds', data=first_unit)
+    #hf_states1_p.close()
 
-# Flatten first and second dimension for LSTMVis
-states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_cells)
+    #second_unit = np.array(second_unit_preds).flatten()
+    #hf_states2_p = h5py.File("states_pred_2.hdf5", "w")
+    #hf_states2_p.create_dataset('preds', data=second_unit)
+    #hf_states2_p.close()
 
-hf = h5py.File("states.hdf5", "w")
-hf.create_dataset('states1', data=states_model_flatten)
+# Getting all the files
+
+# text files
+trainTextsSeq_flatten = np.array(seq).flatten()
+hf = h5py.File("train.hdf5", "w") # need this file for LSTMVis
+hf.create_dataset('words', data=trainTextsSeq_flatten)
 hf.close()
+
+testTextsSeq_flatten = np.array(test_seq).flatten()
+hf_t = h5py.File("test.hdf5", "w") # need this file for LSTMVis
+hf_t.create_dataset('words', data=testTextsSeq_flatten)
+hf_t.close()
+
+
+
+# predictions
+
+# if multiclass:
+#y_classes_train = train_preds.argmax(axis=-1)
+#y_classes_test = test_preds.argmax(axis=-1)
+# if binary:
+#y_classes = (y_prob > 0.5).astype(np.int)
+y_classes_train = (train_preds > 0.5).astype(np.int)
+y_classes_test = (test_preds > 0.5).astype(np.int)
+
+# save predicted classes!
+predicted_train_classes_flatten = np.array(y_classes_train).flatten()
+hf_p = h5py.File("predictions.hdf5", "w")
+hf_p.create_dataset('preds_train', data=predicted_train_classes_flatten)
+#hf_p.close()
+predicted_test_classes_flatten = np.array(y_classes_test).flatten()
+hf_p.create_dataset('preds_test', data=predicted_test_classes_flatten)
+#hf_pt = h5py.File("test_predictions.hdf5", "w")
+#hf_pt.create_dataset('preds', data=predicted_test_classes_flatten)
+test_true_classes = np.array(y_test_tiled).flatten()
+hf_p.create_dataset('true_classes_testset', data=test_true_classes)
+train_true_classes = np.array(y_train_tiled).flatten()
+hf_p.create_dataset('true_classes_trainset', data=train_true_classes)
+hf_p.close()
+
+# dictionary
+d_write("words.dict", word2id)
+d_write("words.dict", {"PADDING": 0}) # add padding token to lstmvis dict
+
+
+states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
+states_model_test = model_RetreiveStates.predict(test_seq, batch_size=num_batch)
+states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_cells)# Flatten first and second dimension for LSTMVis
+hf = h5py.File("states.hdf5", "w")
+hf.create_dataset('states_train', data=states_model_flatten)
+states_model_test_flatten = states_model_test.reshape(len(test_seq) * num_time_steps, num_cells)# Flatten first and second dimension for LSTMVis
+hf.create_dataset('states_test', data=states_model_test_flatten)
+hf.close()
+
 
 # Save plot of model
 #plot_model(model, to_file="model.png")
-
-# add padding token to lstmvis dict
-d_write("words.dict", {"PADDING": 0})
