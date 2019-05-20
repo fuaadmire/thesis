@@ -16,7 +16,7 @@ from sklearn.utils import shuffle
 random.seed(16)
 np.random.seed(16)
 
-
+print("Without l1!")
 
 liar_train = codecs.open("data/liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
 liar_train = [s.lower() for s in liar_train if len(s) > 1]
@@ -111,7 +111,7 @@ FNC_Xtrain, FNC_Xtest, FNC_ytrain, FNC_ytest = train_test_split(FNC_samples, FNC
 
 
 
-m= 10000 #number of feats 5000 or 10000
+m= 5000 #number of feats 5000 or 10000
 k=5#max ngram
 v=1 #min mgram
 
@@ -137,22 +137,22 @@ print("Vectorizing done")
 print("Fitting classifiers...")
 # Classifiers
 clf_liar=None
-clf_liar = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train_liar,liar_train_lab)
+clf_liar = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train_liar,liar_train_lab)
 liar_coefs = clf_liar.coef_
 allcoefs_liar = pd.DataFrame.from_records(liar_coefs, columns=liar_feats) #add ngrams as colnames
-#allcoefs_liar.to_csv('liar_coefs_final.csv', sep='\t', index=False)
+allcoefs_liar.to_csv('NEW_liar_coefs_final.csv', sep='\t', index=False)
 
 clf_kaggle=None
-clf_kaggle = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train_kaggle,kaggle_train_lab)
+clf_kaggle = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train_kaggle,kaggle_train_lab)
 kaggle_coefs = clf_kaggle.coef_
 allcoefs_kaggle = pd.DataFrame.from_records(kaggle_coefs, columns=kaggle_feats) #add ngrams as colnames
-#allcoefs_kaggle.to_csv('kaggle_coefs_final.csv', sep='\t', index=False)
+allcoefs_kaggle.to_csv('NEW_kaggle_coefs_final.csv', sep='\t', index=False)
 
 clf_FNC=None
-clf_FNC = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(FNC_Xtrain_vect, FNC_ytrain)
+clf_FNC = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(FNC_Xtrain_vect, FNC_ytrain)
 FNC_coefs = clf_FNC.coef_
 allcoefs_FNC = pd.DataFrame.from_records(FNC_coefs, columns=FNC_feats)
-allcoefs_FNC.to_csv("FakeNewsCorpus_coefs.csv", sep="\t", index=False)
+allcoefs_FNC.to_csv("NEW_FakeNewsCorpus_coefs.csv", sep="\t", index=False)
 
 
 # get coefs from FakeNewsNet while your at it
@@ -167,23 +167,23 @@ allcoefs_FNC.to_csv("FakeNewsCorpus_coefs.csv", sep="\t", index=False)
 
 print("Predicting...")
 # Predicting
-# preds_liar_test = clf_liar.predict(X_test_liar)
-# preds_liar_valid = clf_liar.predict(X_dev_liar)
-# preds_liar_train = clf_liar.predict(X_train_liar)
+preds_liar_test = clf_liar.predict(X_test_liar)
+preds_liar_valid = clf_liar.predict(X_dev_liar)
+preds_liar_train = clf_liar.predict(X_train_liar)
 #
-# preds_kaggle_test = clf_kaggle.predict(X_test_kaggle)
-# preds_kaggle_tain = clf_kaggle.predict(X_train_kaggle)
+preds_kaggle_test = clf_kaggle.predict(X_test_kaggle)
+preds_kaggle_tain = clf_kaggle.predict(X_train_kaggle)
 
 preds_FNC_test = clf_FNC.predict(FNC_Xtest_vect)
 preds_FNC_train = clf_FNC.predict(FNC_Xtrain_vect)
 
 
 # cross-dataset predictions
-# kaggle_test_vectorized_by_liar = liar_vectorizer.transform(kaggle_test)
-# kaggle_test_predicted_by_liar_classifier = clf_liar.predict(kaggle_test_vectorized_by_liar)
+kaggle_test_vectorized_by_liar = liar_vectorizer.transform(kaggle_test)
+kaggle_test_predicted_by_liar_classifier = clf_liar.predict(kaggle_test_vectorized_by_liar)
 #
-# kaggle_train_vectorized_by_liar = liar_vectorizer.transform(kaggle_train)
-# kaggle_train_predicted_by_liar = clf_liar.predict(kaggle_train_vectorized_by_liar)
+kaggle_train_vectorized_by_liar = liar_vectorizer.transform(kaggle_train)
+kaggle_train_predicted_by_liar = clf_liar.predict(kaggle_train_vectorized_by_liar)
 
 FNC_test_vectorized_by_liar = liar_vectorizer.transform(FNC_Xtest)
 FNC_test_predicted_by_liar = clf_liar.predict(FNC_test_vectorized_by_liar)
@@ -216,15 +216,15 @@ def print_scores(y, y_hat, string):
     print()
 
 
-# print_scores(liar_test_lab, preds_liar_test, "Liar Test Scores")
-# print_scores(liar_dev_lab, preds_liar_valid, "Liar Valid. Scores")
-# print_scores(liar_train_lab, preds_liar_train, "Liar Train Scores")
+print_scores(liar_test_lab, preds_liar_test, "Liar Test Scores")
+print_scores(liar_dev_lab, preds_liar_valid, "Liar Valid. Scores")
+print_scores(liar_train_lab, preds_liar_train, "Liar Train Scores")
 #
-# print_scores(kaggle_test_lab, preds_kaggle_test, "Kaggle Test Scores")
-# print_scores(kaggle_train_lab, preds_kaggle_tain, "Kaggle Train Scores")
+print_scores(kaggle_test_lab, preds_kaggle_test, "Kaggle Test Scores")
+print_scores(kaggle_train_lab, preds_kaggle_tain, "Kaggle Train Scores")
 #
-# print_scores(kaggle_test_lab, kaggle_test_predicted_by_liar_classifier, "Kaggle Test Set Predicted by Classifier Trained on Liar")
-# print_scores(kaggle_train_lab, kaggle_train_predicted_by_liar, "Kaggle Train Set Predicted by Classifier Trained on Liar")
+print_scores(kaggle_test_lab, kaggle_test_predicted_by_liar_classifier, "Kaggle Test Set Predicted by Classifier Trained on Liar")
+print_scores(kaggle_train_lab, kaggle_train_predicted_by_liar, "Kaggle Train Set Predicted by Classifier Trained on Liar")
 
 print_scores(FNC_ytest, preds_FNC_test, "FakeNewsCorpus test prediction scores")
 print_scores(FNC_ytrain, preds_FNC_train, "FakeNewsCorpus train prediction scores")

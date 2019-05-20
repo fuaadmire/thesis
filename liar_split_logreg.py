@@ -16,7 +16,7 @@ from sklearn.utils import shuffle
 random.seed(16)
 np.random.seed(16)
 
-m= 10000 #number of feats 5000 or 10000
+m= 5000 #number of feats 5000 or 10000
 k=5#max ngram
 v=1 #min mgram
 
@@ -80,25 +80,25 @@ X_train1 = split1_vect.fit_transform(X_1)
 X_test1 = split1_vect.transform(liar_test)
 feats_1 = ['_'.join(s.split()) for s in split1_vect.get_feature_names()]
 
-y_rand = y_1.copy()
-np.random.shuffle(y_rand)
+#y_rand = y_1.copy()
+#np.random.shuffle(y_rand)
 
-#clf_1 = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train1, y_1)
-clf_1 = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train1, y_rand)
+clf_1 = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train1, y_1)
+#clf_1 = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train1, y_rand)
 coefs_1 = clf_1.coef_
 coefs_1_df = pd.DataFrame.from_records(coefs_1, columns=feats_1)
-#coefs_1_df.to_csv('liar_train_split1_coefs.csv', sep='\t', index=False)
-coefs_1_df.to_csv('testing_random_labels_coefs_on_larger_data.csv', sep='\t', index=False)
+coefs_1_df.to_csv('NEW_liar_train_split1_coefs.csv', sep='\t', index=False)
+#coefs_1_df.to_csv('testing_random_labels_coefs_on_larger_data.csv', sep='\t', index=False)
 
 
 split2_vect = TfidfVectorizer(ngram_range=(v,k), max_features=m)
 X_train2 = split2_vect.fit_transform(X_2)
 X_test2 = split2_vect.transform(liar_test)
 feats_2 = ['_'.join(s.split()) for s in split2_vect.get_feature_names()]
-clf_2 = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_train2, y_2)
+clf_2 = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train2, y_2)
 coefs_2 = clf_2.coef_
 coefs_2_df = pd.DataFrame.from_records(coefs_2, columns=feats_2)
-#coefs_2_df.to_csv('liar_train_split2_coefs.csv', sep='\t', index=False)
+coefs_2_df.to_csv('NEW_liar_train_split2_coefs.csv', sep='\t', index=False)
 
 def print_scores(y, y_hat, string):
     print(string)
@@ -127,10 +127,10 @@ liar_test_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
 liar_rand_test = liar_test_vectorizer.fit_transform(X)
 rand_feats = ['_'.join(s.split()) for s in liar_test_vectorizer.get_feature_names()]
 clf_rand = None
-clf_rand = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(liar_rand_test,y_rand)
+clf_rand = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(liar_rand_test,y_rand)
 rand_coefs = clf_rand.coef_
 liar_rand_coefs = pd.DataFrame.from_records(rand_coefs, columns=rand_feats)
-#liar_rand_coefs.to_csv('liar_testanddev_random_labels.csv', sep='\t', index=False)
+liar_rand_coefs.to_csv('NEW_liar_testanddev_random_labels.csv', sep='\t', index=False)
 
 
 print("Done")

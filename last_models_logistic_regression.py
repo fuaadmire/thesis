@@ -69,35 +69,35 @@ def print_scores(y, y_hat, string):
     print()
 
 # Vectorizing
-liar_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
+#liar_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
 #X_train_liar = liar_vectorizer.fit_transform(liar_train)
-X_dev_liar = liar_vectorizer.fit_transform(liar_dev)
-X_test_liar = liar_vectorizer.transform(liar_test)
-liar_feats = ['_'.join(s.split()) for s in liar_vectorizer.get_feature_names()]
+#X_dev_liar = liar_vectorizer.fit_transform(liar_dev)
+#X_test_liar = liar_vectorizer.transform(liar_test)
+#liar_feats = ['_'.join(s.split()) for s in liar_vectorizer.get_feature_names()]
 
 # Træn logreg og få coefs på Liar valid
-clf_liar=None
-clf_liar = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_dev_liar,liar_dev_lab)
-liar_coefs = clf_liar.coef_
-allcoefs_liar = pd.DataFrame.from_records(liar_coefs, columns=liar_feats) #add ngrams as colnames
-allcoefs_liar.to_csv('liar_valid_coefs_final.csv', sep='\t', index=False)
+#clf_liar=None
+#clf_liar = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(X_dev_liar,liar_dev_lab)
+#liar_coefs = clf_liar.coef_
+#allcoefs_liar = pd.DataFrame.from_records(liar_coefs, columns=liar_feats) #add ngrams as colnames
+#allcoefs_liar.to_csv('liar_valid_coefs_final.csv', sep='\t', index=False)
 
-preds_liar_test = clf_liar.predict(X_test_liar)
-print_scores(liar_test_lab, preds_liar_test, "Liar test set prediction scores by classifier trained on liar valid." )
+#preds_liar_test = clf_liar.predict(X_test_liar)
+#print_scores(liar_test_lab, preds_liar_test, "Liar test set prediction scores by classifier trained on liar valid." )
 
 # træn logreg Classifier med liar X_test og random labels
 # random liar test set
-random_liar_labels = liar_test_lab.copy()
-np.random.shuffle(random_liar_labels)
+#random_liar_labels = liar_test_lab.copy()
+#np.random.shuffle(random_liar_labels)
 
-liar_test_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
-liar_rand_test = liar_test_vectorizer.fit_transform(liar_test)
-rand_feats = ['_'.join(s.split()) for s in liar_test_vectorizer.get_feature_names()]
-clf_rand = None
-clf_rand = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(liar_rand_test,random_liar_labels)
-rand_coefs = clf_rand.coef_
-liar_rand_coefs = pd.DataFrame.from_records(rand_coefs, columns=rand_feats)
-liar_rand_coefs.to_csv('liar_test_shuffled_labels_coefs_final.csv', sep='\t', index=False)
+#liar_test_vectorizer = TfidfVectorizer(ngram_range=(v,k), max_features=m)
+#liar_rand_test = liar_test_vectorizer.fit_transform(liar_test)
+#rand_feats = ['_'.join(s.split()) for s in liar_test_vectorizer.get_feature_names()]
+#clf_rand = None
+#clf_rand = LogisticRegression(random_state=16, solver='saga', penalty='l1', max_iter=10000).fit(liar_rand_test,random_liar_labels)
+#rand_coefs = clf_rand.coef_
+#liar_rand_coefs = pd.DataFrame.from_records(rand_coefs, columns=rand_feats)
+#liar_rand_coefs.to_csv('liar_test_shuffled_labels_coefs_final.csv', sep='\t', index=False)
 
 print("done")
 
