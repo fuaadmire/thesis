@@ -137,19 +137,19 @@ print("Vectorizing done")
 print("Fitting classifiers...")
 # Classifiers
 clf_liar=None
-clf_liar = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train_liar,liar_train_lab)
+clf_liar = LogisticRegression(random_state=16, solver='saga',C=np.inf, max_iter=10000).fit(X_train_liar,liar_train_lab)
 liar_coefs = clf_liar.coef_
 allcoefs_liar = pd.DataFrame.from_records(liar_coefs, columns=liar_feats) #add ngrams as colnames
 allcoefs_liar.to_csv('NEW_liar_coefs_final.csv', sep='\t', index=False)
 
 clf_kaggle=None
-clf_kaggle = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(X_train_kaggle,kaggle_train_lab)
+clf_kaggle = LogisticRegression(random_state=16, solver='saga',C=np.inf, max_iter=10000).fit(X_train_kaggle,kaggle_train_lab)
 kaggle_coefs = clf_kaggle.coef_
 allcoefs_kaggle = pd.DataFrame.from_records(kaggle_coefs, columns=kaggle_feats) #add ngrams as colnames
 allcoefs_kaggle.to_csv('NEW_kaggle_coefs_final.csv', sep='\t', index=False)
 
 clf_FNC=None
-clf_FNC = LogisticRegression(random_state=16, solver='saga', penalty=None, max_iter=10000).fit(FNC_Xtrain_vect, FNC_ytrain)
+clf_FNC = LogisticRegression(random_state=16, solver='saga',C=np.inf, max_iter=10000).fit(FNC_Xtrain_vect, FNC_ytrain)
 FNC_coefs = clf_FNC.coef_
 allcoefs_FNC = pd.DataFrame.from_records(FNC_coefs, columns=FNC_feats)
 allcoefs_FNC.to_csv("NEW_FakeNewsCorpus_coefs.csv", sep="\t", index=False)
