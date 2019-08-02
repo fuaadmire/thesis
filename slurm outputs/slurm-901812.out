@@ -1,0 +1,99 @@
+Without l1!
+['barely-true' 'false' 'half-true' 'mostly-true' 'pants-fire' 'true']
+[0 1 2 3 4 5]
+Vectorizing...
+Vectorizing done
+Fitting classifiers...
+Predicting...
+Liar Test Scores
+binary F1 0.6139601139601139
+micro f1: 0.5722178374112076
+macro f1: 0.5671570481304995
+weighted F1 0.5731043990370251
+accuracy 0.5722178374112076
+
+Liar Valid. Scores
+binary F1 0.5886627906976744
+micro f1: 0.559190031152648
+macro f1: 0.5569152879662869
+weighted F1 0.5582010123759692
+accuracy 0.559190031152648
+
+Liar Train Scores
+binary F1 0.9416457123038238
+micro f1: 0.93427734375
+macro f1: 0.9332124839601157
+weighted F1 0.9342534605837922
+accuracy 0.93427734375
+
+Kaggle Test Scores
+binary F1 0.9549263218722912
+micro f1: 0.9545454545454546
+macro f1: 0.9545422088350584
+weighted F1 0.9545441114928768
+accuracy 0.9545454545454546
+
+Kaggle Train Scores
+binary F1 0.999927927927928
+micro f1: 0.9999282433983927
+macro f1: 0.9999282420235482
+weighted F1 0.9999282433758542
+accuracy 0.9999282433983927
+
+Kaggle Test Set Predicted by Classifier Trained on Liar
+binary F1 0.5104136110296275
+micro f1: 0.5136946386946387
+macro f1: 0.5136727968317457
+weighted F1 0.5136566528461292
+accuracy 0.5136946386946387
+
+Kaggle Train Set Predicted by Classifier Trained on Liar
+binary F1 0.5111910178322447
+micro f1: 0.5220292766934558
+macro f1: 0.5217941751147885
+weighted F1 0.5218398259067628
+accuracy 0.5220292766934558
+
+FakeNewsCorpus test prediction scores
+binary F1 0.34616309838826076
+micro f1: 0.3410909090909091
+macro f1: 0.3410512535674507
+weighted F1 0.3410060214860059
+accuracy 0.3410909090909091
+
+FakeNewsCorpus train prediction scores
+binary F1 0.582382500738989
+micro f1: 0.5782686567164179
+macro f1: 0.5782277291153491
+weighted F1 0.5782458364782462
+accuracy 0.5782686567164179
+
+FakeNewsCorpus test set predicted by Liar classifier
+binary F1 0.5407234798047049
+micro f1: 0.4983030303030303
+macro f1: 0.4939862057143183
+weighted F1 0.49357265165266995
+accuracy 0.4983030303030303
+
+FakeNewsCorpus test set predicted by kaggle classifier
+binary F1 0.1948828546220959
+micro f1: 0.5022424242424243
+macro f1: 0.41732387829574025
+weighted F1 0.419292144323398
+accuracy 0.5022424242424243
+
+Kaggle Test Set Predicted by Classifier Trained on FakeNewsCorpus
+binary F1 0.5958549222797926
+micro f1: 0.5681818181818182
+macro f1: 0.5661476675834372
+weighted F1 0.56629481890332
+accuracy 0.5681818181818182
+
+Liar Test Set Predicted by Classifier Trained on FakeNewsCorpus
+binary F1 0.5205278592375366
+micro f1: 0.48382004735595896
+macro f1: 0.4807767501315888
+weighted F1 0.48582799604007937
+accuracy 0.48382004735595896
+
+Done
