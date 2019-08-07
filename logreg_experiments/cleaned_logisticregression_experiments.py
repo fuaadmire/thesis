@@ -181,7 +181,7 @@ def FNC():
     FNC_fake = FNC_fake[:25000]
     #print(FNC_fake[0])
     FNC_true = codecs.open(datapath+"FNC_true_part1.txt", 'r', 'utf-8').read().split('\n')
-    FNC_true = FNC_fake[:25000]
+    FNC_true = FNC_true[:25000]
     if FAKE==1:
         print("FNC labels: \n 1: Fake, 0: Reliable")
         FNC_fake_labels = np.ones(len(FNC_fake))
@@ -219,9 +219,4 @@ def FNC():
 
 #FNC()
 """ FakeNewsCorpus Test Scores
-binary F1 0.33593940874664063
-accuracy 0.3410909090909091
-
-FakeNewsCorpus Train Scores
-binary F1 0.5740729574917093
-accuracy 0.5782686567164179 """
+ """
