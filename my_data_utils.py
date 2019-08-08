@@ -124,3 +124,8 @@ def remove_duplicates(data, labels):
             new_data.append(i)
             new_labels.append(j)
     return new_data, new_labels
+
+
+def clean_patterns():
+    
+    pass

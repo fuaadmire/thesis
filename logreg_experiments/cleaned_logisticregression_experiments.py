@@ -22,7 +22,8 @@ import sys
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
-from my_utils import load_liar_data, load_kaggle_data, load_FNC_data, load_BS_data
+sys.path.append('../')
+from my_data_utils import load_liar_data, load_kaggle_data, load_FNC_data, load_BS_data
 
 random.seed(16)
 np.random.seed(16)
@@ -143,16 +144,28 @@ def FNC():
 
 def BS():
     X_train, X_test, y_train, y_test = load_BS_data(datapath)
-    
-    pass
+    vect = TfidfVectorizer(ngram_range=(v,k), max_features=m)
+    X_train_vect = vect.fit_transform(X_train)
+    X_test_vect = vect.transform(X_test)
+    feats = ['_'.join(s.split()) for s in vect.get_feature_names()]
+
+    clf = None
+    clf = LogisticRegression(random_state=16, solver='saga',C=np.inf, max_iter=10000).fit(X_train_vect, y_train)
+    coefs = clf.coef_
+    allcoefs = pd.DataFrame.from_records(coefs, columns=feats)
+    allcoefs.to_csv("BS_coefs.csv", sep="\t", index=False)
+
+    test_preds = clf.predict(X_test_vect)
+    train_preds = clf.predict(X_train_vect)
+    print_scores(y_test, test_preds, "BS Test Scores")
+    print_scores(y_train, train_preds, "BS Train scores")
 
 #liar()
 
 #kaggle()
 
-FNC()
-""" FakeNewsCorpus Test Scores
-
+#FNC()
+"""
 FakeNewsCorpus Test Scores
 binary F1 0.9870882104501026
 accuracy 0.987030303030303
@@ -162,3 +175,15 @@ binary F1 0.9999100638546631
 accuracy 0.999910447761194
 
  """
+
+BS()
+
+"""
+BS Test Scores
+binary F1 0.922234664675874
+accuracy 0.9138762574066419
+
+BS Train scores
+binary F1 0.9998170620159765
+accuracy 0.9997963754836082
+"""

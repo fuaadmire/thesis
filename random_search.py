@@ -33,7 +33,7 @@ import random
 import sys
 
 from write_dict_file import d_write
-from my_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape
+from my_data_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape
 
 
 
@@ -158,7 +158,7 @@ def create_model(num_cells,
     model.add(Embedding(input_dim=vocab_size, output_dim=embedding_size, weights=[embedding_matrix],input_length=max_doc_length,trainable=True))
     #model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg()))
     if NUM_LAYERS==1:
-        model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg())))
+        model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=False, kernel_constraint=NonNeg())))
     elif NUM_LAYERS==2: # stacked LSTM
         model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
         model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
