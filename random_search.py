@@ -33,7 +33,7 @@ import random
 import sys
 
 from write_dict_file import d_write
-from my_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape, label_switch, remove_duplicates
+from my_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape
 
 
 
