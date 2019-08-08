@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import re
 import pickle
+from sklearn.utils import shuffle
 
 
 
@@ -17,7 +18,7 @@ def binarize_labels(labels, FAKE):
     return labels_transformed
 
 
-def load_liar_data(datapath):
+def load_liar_data(datapath, FAKE=1):
 
     liar_train = codecs.open(datapath+"liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
     liar_train = [s.lower() for s in liar_train if len(s) > 1]
@@ -70,9 +71,12 @@ def load_kaggle_data(datapath):
 def load_FNC_data(datapath):
     FNC_fake = codecs.open(datapath+"FNC_fake_part1.txt", 'r', 'utf-8').read().split('\n')
     FNC_fake = FNC_fake[:25000]
+    FNC_fake = [s.lower() for s in FNC_fake]
     #print(FNC_fake[0])
     FNC_true = codecs.open(datapath+"FNC_true_part1.txt", 'r', 'utf-8').read().split('\n')
     FNC_true = FNC_true[:25000]
+    FNC_true = [s.lower() for s in FNC_true]
+
     print("FNC labels: \n 1: Fake, 0: Reliable")
     FNC_fake_labels = np.ones(len(FNC_fake))
     FNC_true_labels = np.zeros(len(FNC_true))
@@ -86,8 +90,17 @@ def load_FNC_data(datapath):
 
 
 def load_BS_data(datapath):
-    
-    pass
+    fake = pickle.load(open(datapath+"BS_detector/fake.pkl", "rb"))
+    fake = [s.strip().lower() for s in fake]
+    real = pickle.load(open(datapath+"BS_detector/real.pkl", "rb"))
+    real = [s.strip().lower() for s in real]
+    samples = fake+real
+    print("BS labels: 1=fake, 0=real")
+    labels = [1 for _ in fake] + [0 for _ in real]
+    assert len(samples) == len(labels)
+    samples, labels = shuffle(samples, labels, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(samples, labels, test_size=0.33, random_state=42)
+    return X_train, X_test, y_train, y_test
 
 
 # Reshaping function for labels
