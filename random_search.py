@@ -168,7 +168,7 @@ def create_model(num_cells,
     #model.add(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))
     model.add(Dense(2, activation='softmax', kernel_constraint=NonNeg()))
     opt = Adam(lr=learning_rate)
-    parallel_model = multi_gpu_model(model, gpus=4)
+    parallel_model = multi_gpu_model(model, gpus=2)
     parallel_model.compile(optimizer=opt,
                   #loss='binary_crossentropy',
                   loss='categorical_crossentropy',

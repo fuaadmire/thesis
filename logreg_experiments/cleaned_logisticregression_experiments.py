@@ -217,6 +217,15 @@ def FNC():
 
 #kaggle()
 
-#FNC()
+FNC()
 """ FakeNewsCorpus Test Scores
+
+FakeNewsCorpus Test Scores
+binary F1 0.9870882104501026
+accuracy 0.987030303030303
+
+FakeNewsCorpus Train Scores
+binary F1 0.9999100638546631
+accuracy 0.999910447761194
+
  """

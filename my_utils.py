@@ -1,6 +1,9 @@
 import codecs
 import numpy as np
 from sklearn.model_selection import train_test_split
+import re
+import pickle
+
 
 
 def binarize_labels(labels, FAKE):
@@ -60,7 +63,9 @@ def load_kaggle_data(datapath):
     #        labels_include.append(labels[indel])
     new_data, new_labels = remove_duplicates(data, labels)
     train, test, train_lab, test_lab = train_test_split(new_data, new_labels, test_size=0.33, random_state=42)
+    # remove city names
     return train, test, train_lab, test_lab
+
 
 def load_FNC_data(datapath):
     FNC_fake = codecs.open(datapath+"FNC_fake_part1.txt", 'r', 'utf-8').read().split('\n')
@@ -78,6 +83,12 @@ def load_FNC_data(datapath):
     FNC_samples, FNC_labels = shuffle(FNC_samples, FNC_labels, random_state=42)
     FNC_Xtrain, FNC_Xtest, FNC_ytrain, FNC_ytest = train_test_split(FNC_samples, FNC_labels, test_size=0.33, random_state=42)
     return FNC_Xtrain, FNC_Xtest, FNC_ytrain, FNC_ytest
+
+
+def load_BS_data(datapath):
+    
+    pass
+
 
 # Reshaping function for labels
 def tile_reshape(train_lab, num_time_steps):
