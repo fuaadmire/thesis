@@ -126,6 +126,7 @@ else:
     if trainingdata == "liar":
         dev_lab = to_categorical(dev_lab, 2)
 
+print("train target shape",train_lab.shape)
 #print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
 
@@ -159,9 +160,9 @@ def create_model(num_cells,
     #model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg()))
     if NUM_LAYERS==1:
         model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=False, kernel_constraint=NonNeg())))
-    elif NUM_LAYERS==2: # stacked LSTM
-        model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
-        model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
+    #elif NUM_LAYERS==2: # stacked LSTM
+    #    model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
+    #    model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
     else:
         print("number of layers not specified properly")
     #model.add(TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg())))
