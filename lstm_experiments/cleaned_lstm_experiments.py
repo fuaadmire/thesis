@@ -24,6 +24,8 @@ from keras.utils.np_utils import to_categorical
 
 import numpy as np
 import codecs
+import sys
+sys.path.append('../')
 
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
@@ -38,10 +40,12 @@ import nltk
 nltk.download('punkt')
 #import matplotlib.pyplot as plt
 import datetime
-from thesis.write_dict_file import d_write
+from write_dict_file import d_write
 import gensim
 #from thesis.get_liar_binary_data import *
 import random
+
+from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data
 
 random.seed(16)
 np.random.seed(16)
@@ -51,8 +55,8 @@ set_random_seed(16)
 
 
 
-datapath = "thesis/data/"
-directory_path = "/gdrive/My Drive/Thesis/"
+datapath = "data/"
+#directory_path = "/gdrive/My Drive/Thesis/"
 
 TIMEDISTRIBUTED = True
 
@@ -60,63 +64,25 @@ use_pretrained_embeddings = True
 
 FAKE=1
 
-def binarize_labels(labels, FAKE):
-    if FAKE==1:
-        #labels_transformed = [0 if i in [2,3,5] else 1 for i in labels]
-        labels_transformed = [0 if i in ['half-true','mostly-true','true'] else 1 for i in labels]
-    else:
-        #labels_transformed = [1 if i in [2,3,5] else 0 for i in labels]
-        labels_transformed = [1 if i in ['half-true','mostly-true','true'] else 0 for i in labels]
-    print("Training with Fake=",FAKE)
-    return labels_transformed
+trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
 
 
-def load_liar_data(datapath):
 
-    liar_train = codecs.open(datapath+"liar_xtrain.txt", 'r', 'utf-8').read().split('\n')
-    liar_train = [s.lower() for s in liar_train if len(s) > 1]
-    liar_train_labels = codecs.open(datapath+'liar_ytrain.txt', 'r', 'utf-8').read().split('\n')
-    liar_train_lab = [s for s in liar_train_labels if len(s) > 1]
+if trainingdata == "liar":
+    train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+elif trainingdata == "kaggle":
+    train, test, train_lab, test_lab = load_kaggle_data(datapath)
+elif trainingdata == "FNC":
+    train, test, train_lab, test_lab = load_FNC_data(datapath)
+elif trainingdata == "BS":
+    train, test, train_lab, test_lab = load_BS_data(datapath)
 
-    liar_dev = codecs.open(datapath+"liar_xval.txt", 'r', 'utf-8').read().split('\n')
-    liar_dev = [s.lower() for s in liar_dev if len(s) > 1]
-    liar_dev_labels = codecs.open(datapath+"liar_yval.txt", 'r', 'utf-8').read().split('\n')
-    liar_dev_lab = [s for s in liar_dev_labels if len(s) > 1]
+train = [nltk.word_tokenize(i.lower()) for i in train]
 
-    liar_test = codecs.open(datapath+"liar_xtest.txt", 'r', 'utf-8').read().split('\n')
-    liar_test = [s.lower() for s in liar_test if len(s) > 1]
-    liar_test_labels = codecs.open(datapath+"liar_ytest.txt", 'r', 'utf-8').read().split('\n')
-    liar_test_lab = [s for s in liar_test_labels if len(s) > 1]
+test = [nltk.word_tokenize(i.lower()) for i in test]
 
-    assert len(liar_train) == len(liar_train_lab)
-    assert len(liar_dev) == len(liar_dev_lab)
-    assert len(liar_test) == len(liar_test_lab)
-
-    # BINARIZE LABELS, IF FAKE=1 THEN THE UNTRUE CLASSES WILL BE LABELLED AS 1.
-    liar_train_lab = binarize_labels(liar_train_lab, FAKE)
-    liar_dev_lab = binarize_labels(liar_dev_lab, FAKE)
-    liar_test_lab = binarize_labels(liar_test_lab, FAKE)
-
-    return liar_train, liar_dev, liar_test, liar_train_lab, liar_dev_lab, liar_test_lab
-
-
-# Reshaping function for labels
-def tile_reshape(train_lab, num_time_steps):
-    y_train_tiled = np.tile(train_lab, (num_time_steps,1)).T
-    y_train_tiled = y_train_tiled.reshape(len(train_lab), num_time_steps , 1)
-    #print("y_train_shape:",y_train_tiled.shape)
-    return y_train_tiled
-
-
-def label_switch(labels):
-    labels_transformed = [1 if i==0 else 0 for i in labels]
-    return labels_transformed
-
-liar_train, liar_dev, liar_test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
-
-train = [nltk.word_tokenize(i.lower()) for i in liar_train]
-dev = [nltk.word_tokenize(i.lower()) for i in liar_dev]
-test = [nltk.word_tokenize(i.lower()) for i in liar_test]
+if trainingdata == "liar":
+    dev = [nltk.word_tokenize(i.lower()) for i in dev]
 
 
 all_train_tokens = []
@@ -132,10 +98,14 @@ id2word = {v: k for k, v in word2id.items()}
 
 #trainTextsSeq: List of input sequence for each document (A matrix with size num_samples * max_doc_length)
 trainTextsSeq = np.array([[word2id[w] for w in sent] for sent in train])
-devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+
 testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
 
-test_lab[:10]
+if trainingdata == "liar":
+    devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+
+
+
 
 # PARAMETERS
 # vocab_size: number of tokens in vocabulary
@@ -158,20 +128,23 @@ num_batch = 64 # also find optimal through cross-validation
 # padding with max doc lentgh
 seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 print("train seq shape",seq.shape)
-dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+if trainingdata == "liar":
+    dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 
 
 if TIMEDISTRIBUTED:
     train_lab = tile_reshape(train_lab, num_time_steps)
-    dev_lab = tile_reshape(dev_lab, num_time_steps)
     test_lab = tile_reshape(test_lab, num_time_steps)
     print(train_lab.shape)
+    if trainingdata == "liar":
+        dev_lab = tile_reshape(dev_lab, num_time_steps)
 else:
     train_lab = to_categorical(train_lab, 2)
-    dev_lab = to_categorical(dev_lab, 2)
     test_lab = to_categorical(test_lab, 2)
     print(train_lab.shape)
+    if trainingdata == "liar":
+        dev_lab = to_categorical(dev_lab, 2)
 
 print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
@@ -179,7 +152,7 @@ print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples
 if use_pretrained_embeddings:
     # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
     # Load Google's pre-trained Word2Vec model.
-    model = gensim.models.KeyedVectors.load_word2vec_format(directory_path+'GoogleNews-vectors-negative300.bin', binary=True)
+    model = gensim.models.KeyedVectors.load_word2vec_format('GoogleNews-vectors-negative300.bin', binary=True)
 
     embedding_matrix = np.zeros((len(word2id) + 1, 300))
     for word, i in word2id.items():
@@ -229,16 +202,24 @@ if TIMEDISTRIBUTED:
 else:
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 print("fitting model..")
-model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
+if trainingdata == "liar":
+    model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
+else:
+    model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
 print("Testing...")
-dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
 test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
-print("Valid loss:", dev_score[0])
-print("Valid accuracy:", dev_score[1])
+if trainingdata == "liar":
+    dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
+
 print("Test loss:", test_score[0])
 print("Test accuracy:", test_score[1])
+if trainingdata == "liar":
+    print("Valid loss:", dev_score[0])
+    print("Valid accuracy:", dev_score[1])
 
 model.summary()
+
+
 
 if TIMEDISTRIBUTED:
     model_path = 'lstmvis_model'
@@ -320,41 +301,15 @@ if TIMEDISTRIBUTED:
 """Testing"""
 
 def test_on_kaggle():
-    print("Kaggle labels: \n 1: unreliable, 0: reliable")
-    data = codecs.open(datapath+"kaggle_trainset.txt", 'r', 'utf-8').read().split('\n')
-    data = data[:20800]
-    data = [s.lower() for s in data]
-    labels = codecs.open(datapath+"kaggle_train_labels.txt", 'r', 'utf-8').read().split('\n')
-    labels = labels[:20800]
-    labels = [int(i) for i in labels]
-    # disregarding input which is less than 100 characters (as they do not contain many words, if any)
-    labels_include = []
-    data_include = []
-    for indel, i in enumerate(data):
-        if len(i) > 100:
-            data_include.append(i)
-            labels_include.append(labels[indel])
-    train, test, train_lab, test_lab = train_test_split(data_include, labels_include, test_size=0.33, random_state=42)
+    train, test, train_lab, test_lab = load_kaggle_data(datapath)
     model_loaded = load_model(model_path+'.h5')
     commons_testing(model_loaded, test, test_lab, "kaggle")
 
-    # did I forget to switch labels in the previous lstm experiments? :( yep, apparently.
-
 
 def test_on_FNC():
-    test = codecs.open(directory_path+"FakeNewsCorpus_Xtest.txt", 'r', 'utf-8').read().split('\n')
-    test = test[:len(test)-1]
-    print("test_size:",len(test))
-    # originally created labels: fake=0 and true=1
-    test_lab = np.loadtxt(directory_path+"FakeNewsCorpus_ytest.txt")
-    #print(len(test_lab))
-    test_lab = [int(i) for i in test_lab]
-    if FAKE==1:
-        test_lab = label_switch(test_lab)
-    print("FNC labels: \n 1: Fake, 0: Reliable")
+    train, test, train_lab, test_lab = load_FNC_data(datapath)
     model_loaded2 = load_model(model_path+'.h5')
     commons_testing(model_loaded2, test, test_lab, "FNC")
-
 
 
 def test_on_learnerdata():
@@ -427,8 +382,9 @@ def retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds,identifi
     hf.create_dataset('states_test', data=states_model_test_flatten)
     hf.close()
 
-test_on_kaggle()
 
-test_on_FNC()
+#test_on_kaggle()
 
-test_on_learnerdata()
+#test_on_FNC()
+
+#test_on_learnerdata()
