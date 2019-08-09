@@ -55,7 +55,7 @@ set_random_seed(16)
 
 
 
-datapath = "data/"
+datapath = "/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
 TIMEDISTRIBUTED = True
