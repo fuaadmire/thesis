@@ -29,7 +29,7 @@ sys.path.append('../')
 
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, confusion_matrix, accuracy_score
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
@@ -58,7 +58,7 @@ set_random_seed(16)
 datapath = "/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
-TIMEDISTRIBUTED = True
+TIMEDISTRIBUTED = False
 
 use_pretrained_embeddings = True
 
@@ -66,7 +66,7 @@ FAKE=1
 
 trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
 
-
+print(trainingdata)
 
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
@@ -222,13 +222,21 @@ model.summary()
 
 
 if TIMEDISTRIBUTED:
-    model_path = 'lstmvis_model'
+    model_path = trainingdata+'lstmvis_model'
 else:
-    model_path ='biLSTM_model'
+    model_path = trainingdata+'biLSTM_model'
 
 model.save(model_path+'.h5')
 
-plot_model(model, to_file=model_path+".png")
+if not TIMEDISTRIBUTED:
+    preds = model.predict(test_seq)
+    f1 = f1_score(test_lab, preds)
+    tn, fp, fn, tp = confusion_matrix(test_lab, preds).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
+
+
+#plot_model(model, to_file=trainingdata+model_path+".png") # error here
 
 if TIMEDISTRIBUTED:
     #model = load_model(directory_path+model_path)
@@ -301,15 +309,23 @@ if TIMEDISTRIBUTED:
 """Testing"""
 
 def test_on_kaggle():
+    print("Testing on kaggle")
     train, test, train_lab, test_lab = load_kaggle_data(datapath)
     model_loaded = load_model(model_path+'.h5')
     commons_testing(model_loaded, test, test_lab, "kaggle")
 
 
 def test_on_FNC():
+    print("Testing on FNC")
     train, test, train_lab, test_lab = load_FNC_data(datapath)
     model_loaded2 = load_model(model_path+'.h5')
     commons_testing(model_loaded2, test, test_lab, "FNC")
+
+def test_on_BS():
+    print("Testing on BS")
+    train, test, train_lab, test_lab = load_BS_data(datapath)
+    model_loaded3 = load_model(model_path+'.h5')
+    commons_testing(model_loaded3, test, test_lab, "BS")
 
 
 def test_on_learnerdata():
@@ -348,9 +364,15 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
         test_lab = tile_reshape(test_lab, num_time_steps)
     else:
         test_lab = to_categorical(test_lab, 2)
-    test_score = model_loaded.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
-    print("Test loss:", test_score[0])
-    print("Test accuracy:", test_score[1])
+    preds = model.predict(test_seq)
+    accuracy = accuracy_score(test_lab, preds)
+    f1 = f1_score(test_lab, preds)
+    tn, fp, fn, tp = confusion_matrix(test_lab, preds).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
+    #test_score = model_loaded.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
+    #print("Test loss:", test_score[0])
+    #print("Test accuracy:", test_score[1])
     if TIMEDISTRIBUTED:
         test_preds = model_loaded.predict(test_seq)
         retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds, identifier_string)
@@ -383,8 +405,10 @@ def retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds,identifi
     hf.close()
 
 
-#test_on_kaggle()
+test_on_kaggle()
 
-#test_on_FNC()
+test_on_FNC()
+
+#test_on_BS()
 
 #test_on_learnerdata()
