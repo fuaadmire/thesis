@@ -46,10 +46,10 @@ use_pretrained_embeddings = True
 
 FAKE=1
 
-trainingdata = sys.argv[1] # "liar" or "kaggle"
+trainingdata = "liar" #sys.argv[1] # "liar" or "kaggle"
 print("TRAINING WITH", trainingdata)
 
-NUM_LAYERS = sys.argv[2]
+NUM_LAYERS = 1#sys.argv[2]
 print("NUMBER OF LAYERS:", NUM_LAYERS)
 
 # kør med forskellige random seeds og tag gennemsnit. eller cross-validate.
