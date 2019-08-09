@@ -125,8 +125,9 @@ else:
     print(train_lab.shape)
     if trainingdata == "liar":
         dev_lab = to_categorical(dev_lab, 2)
-
+        print("validation target shape", dev_lab.shape)
 print("train target shape",train_lab.shape)
+
 #print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
 
@@ -169,12 +170,12 @@ def create_model(num_cells,
     #model.add(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))
     model.add(Dense(2, activation='softmax', kernel_constraint=NonNeg()))
     opt = Adam(lr=learning_rate)
-    parallel_model = multi_gpu_model(model, gpus=2)
-    parallel_model.compile(optimizer=opt,
+    #model = multi_gpu_model(model, gpus=2)
+    model.compile(optimizer=opt,
                   #loss='binary_crossentropy',
                   loss='categorical_crossentropy',
                   metrics=['accuracy'])
-    return parallel_model
+    return model
 
 model = KerasClassifier(build_fn=create_model)
 
