@@ -15,7 +15,7 @@ Original file is located at
 from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed, Dropout, CuDNNLSTM, Bidirectional
 from keras.models import Model, load_model
-from thesis.preprocess_text import preprocess
+#from thesis.preprocess_text import preprocess
 from keras.utils import multi_gpu_model # for data parallelism
 from keras.constraints import NonNeg
 from keras import regularizers
