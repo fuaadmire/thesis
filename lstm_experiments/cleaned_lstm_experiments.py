@@ -230,8 +230,8 @@ model.save(model_path+'.h5')
 
 if not TIMEDISTRIBUTED:
     preds = model.predict(test_seq)
-    f1 = f1_score(test_lab, preds)
-    tn, fp, fn, tp = confusion_matrix(test_lab, preds).ravel()
+    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
     print("tn, fp, fn, tp")
     print(tn, fp, fn, tp)
 
@@ -365,9 +365,9 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
     else:
         test_lab = to_categorical(test_lab, 2)
     preds = model.predict(test_seq)
-    accuracy = accuracy_score(test_lab, preds)
-    f1 = f1_score(test_lab, preds)
-    tn, fp, fn, tp = confusion_matrix(test_lab, preds).ravel()
+    accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
     print("tn, fp, fn, tp")
     print(tn, fp, fn, tp)
     #test_score = model_loaded.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
