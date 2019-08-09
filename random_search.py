@@ -194,7 +194,7 @@ param_dist = dict(num_cells=num_cells,
                   #batch_size=batch_size,
                   learning_rate=learning_rate,
                   epochs=epochs,
-                  #verbose=[1]
+                  verbose=[0]
                  )
 
 if trainingdata == "liar":
