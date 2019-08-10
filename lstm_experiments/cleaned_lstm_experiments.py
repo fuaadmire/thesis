@@ -66,7 +66,7 @@ FAKE=1
 
 trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
 
-print(trainingdata)
+print("trainingdata=",trainingdata)
 
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
@@ -217,6 +217,14 @@ if trainingdata == "liar":
     print("Valid loss:", dev_score[0])
     print("Valid accuracy:", dev_score[1])
 
+if not TIMEDISTRIBUTED:
+    preds = model.predict(test_seq)
+    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
+
+
 model.summary()
 
 
@@ -228,12 +236,7 @@ else:
 
 model.save(model_path+'.h5')
 
-if not TIMEDISTRIBUTED:
-    preds = model.predict(test_seq)
-    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
-    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
-    print("tn, fp, fn, tp")
-    print(tn, fp, fn, tp)
+
 
 
 #plot_model(model, to_file=trainingdata+model_path+".png") # error here
@@ -366,6 +369,7 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
         test_lab = to_categorical(test_lab, 2)
     preds = model.predict(test_seq)
     accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    print("accuracy:", accuracy)
     f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
     tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
     print("tn, fp, fn, tp")
