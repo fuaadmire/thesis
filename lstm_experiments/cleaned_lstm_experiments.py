@@ -413,6 +413,6 @@ test_on_kaggle()
 
 test_on_FNC()
 
-#test_on_BS()
+test_on_BS()
 
 #test_on_learnerdata()
