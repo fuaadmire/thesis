@@ -1,0 +1,316 @@
+3
+2019-08-10 15:03:46.814409: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-10 15:03:47.897848: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:84:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-10 15:03:47.897889: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-10 15:03:53.986613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-10 15:03:53.986654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-10 15:03:53.986662: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-10 15:03:53.986807: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:84:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed: 38.6min remaining:    0.0s
+[Parallel(n_jobs=1)]: Done  96 out of  96 | elapsed: 2775.9min finished
+TRAINING WITH liar
+NUMBER OF LAYERS: 1
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+validation target shape (1284, 2)
+train target shape (10240, 2)
+Fitting 1 folds for each of 96 candidates, totalling 96 fits
+[CV] verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.8, total=38.3min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.6, total=38.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.4, total=12.8min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.6, total=38.3min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.4, total=38.3min
+[CV] verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.6, total=12.8min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=10, dropout=0.6, total=12.8min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.2, total=38.0min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.8, total=38.2min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.6, total=38.3min
+[CV] verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.2, total=38.2min
+[CV] verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.4, total=38.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.8, total=38.2min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4, total=38.4min
+[CV] verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=10, dropout=0.4, total=13.1min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.4, total=13.0min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.4, total=13.1min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.01, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.01, epochs=10, dropout=0.4, total=13.1min
+[CV] verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.001, epochs=30, dropout=0.4, total=43.9min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4, total=40.4min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.4, total=13.2min
+[CV] verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.4, total=38.5min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.4, total=13.3min
+[CV] verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.4, total=13.4min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.6, total=38.8min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2, total=13.3min
+[CV] verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.2, total=13.4min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.8, total=13.2min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.8, total=38.6min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.001, epochs=30, dropout=0.8, total=38.4min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.6, total=38.5min
+[CV] verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.4, total=38.4min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.8, total=38.7min
+[CV] verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.001, epochs=30, dropout=0.8, total=38.7min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8, total=38.6min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.4, total=38.9min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.8, total=13.6min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.2, total=13.6min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.6, total=13.7min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2, total=13.6min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.2, total=38.9min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.8, total=38.9min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.6, total=39.0min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.2, total=39.4min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.2, total=39.4min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.8, total=13.8min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.4, total=14.0min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.6, total=39.7min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.2, total=39.3min
+[CV] verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=30, dropout=0.2, total=40.2min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.8, total=45.1min
+[CV] verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.2, total=48.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.6, total=14.4min
+[CV] verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.2, total=48.3min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8, total=48.2min
+[CV] verbose=0, r_dropout=0.6, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=32, learning_rate=0.0001, epochs=30, dropout=0.4, total=43.5min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.6, total=17.6min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.6, total=17.6min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.6, total=15.9min
+[CV] verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.2, total=47.4min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.0001, epochs=10, dropout=0.2, total=17.7min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.8, total=15.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.8, total=46.2min
+[CV] verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.6, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.8, total=39.7min
+[CV] verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.2, total=39.9min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.2, total=14.5min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.2, total=39.8min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.6, total=14.5min
+[CV] verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.8, num_cells=256, learning_rate=0.001, epochs=30, dropout=0.4, total=40.1min
+[CV] verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.4, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.8, total=14.5min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.8, total=14.6min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.4, total=14.6min
+[CV] verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.001, epochs=10, dropout=0.8, total=14.7min
+[CV] verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=30, dropout=0.6, total=40.3min
+[CV] verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=256, learning_rate=0.01, epochs=30, dropout=0.4, total=40.3min
+[CV] verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=32, learning_rate=0.0001, epochs=10, dropout=0.2, total=14.7min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=10, dropout=0.6, total=14.7min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.6, total=40.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.2, num_cells=128, learning_rate=0.0001, epochs=30, dropout=0.6, total=40.4min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.01, epochs=30, dropout=0.8, total=40.3min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.8, total=40.3min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.001, epochs=10, dropout=0.8, total=14.9min
+[CV] verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.2, total=15.0min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.8, total=15.0min
+[CV] verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.0001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.8, num_cells=128, learning_rate=0.0001, epochs=10, dropout=0.8, total=15.0min
+[CV] verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=32, learning_rate=0.01, epochs=10, dropout=0.2, total=15.0min
+[CV] verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.4, num_cells=32, learning_rate=0.01, epochs=30, dropout=0.6, total=40.5min
+[CV] verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.8, num_cells=64, learning_rate=0.0001, epochs=30, dropout=0.2, total=40.5min
+[CV] verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.2, num_cells=64, learning_rate=0.001, epochs=30, dropout=0.4, total=40.6min
+[CV] verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.6 
+[CV]  verbose=0, r_dropout=0.6, num_cells=128, learning_rate=0.001, epochs=10, dropout=0.6, total=15.2min
+[CV] verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.4, num_cells=128, learning_rate=0.01, epochs=10, dropout=0.4, total=15.8min
+[CV] verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.4, total=18.2min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.01, epochs=10, dropout=0.2, total=18.9min
+[CV] verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.8 
+[CV]  verbose=0, r_dropout=0.2, num_cells=256, learning_rate=0.001, epochs=10, dropout=0.8, total=16.0min
+[CV] verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4 
+[CV]  verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=30, dropout=0.4, total=41.2min
+[CV] verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.2 
+[CV]  verbose=0, r_dropout=0.6, num_cells=256, learning_rate=0.0001, epochs=10, dropout=0.2, total=15.6min
+Best: 0.631620 using {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.557632 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.581776 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.6}
+0.626168 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.570872 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.6}
+0.587227 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.4}
+0.605140 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.579439 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.6}
+0.577882 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.2}
+0.623832 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.8}
+0.497664 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.578660 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.2}
+0.580997 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.4}
+0.610592 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.8}
+0.590343 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.605919 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 128, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.622274 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.563863 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.4}
+0.585670 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.4}
+0.559190 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.4}
+0.588785 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.574766 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.4}
+0.619938 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.601246 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.605919 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.576324 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.583333 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.2}
+0.585670 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.2}
+0.618380 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.8}
+0.578660 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.578660 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.584112 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.580218 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.577103 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.581776 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.575545 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.549844 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.4}
+0.616822 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.8}
+0.582555 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.2}
+0.576324 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.567757 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.2}
+0.590343 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.2}
+0.555296 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.619938 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.6}
+0.552181 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.2}
+0.569315 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.2}
+0.614486 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.8}
+0.580997 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.4}
+0.579439 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.579439 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.2}
+0.572430 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 128, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.2}
+0.510125 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.596573 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.2}
+0.583333 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.6}
+0.583333 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.2}
+0.571651 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.602804 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.630841 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.6}
+0.516355 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.6}
+0.584891 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.573988 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.2}
+0.602025 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.2}
+0.579439 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.8}
+0.576324 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.569315 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.571651 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.2}
+0.577103 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.2}
+0.566199 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.2}
+0.573988 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.557632 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.4}
+0.604361 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.8}
+0.591121 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.8}
+0.631620 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.4}
+0.615265 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 32, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.8}
+0.562305 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.558411 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.4}
+0.627726 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 32, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.2}
+0.590343 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.562305 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.597352 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 128, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.6}
+0.570872 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.8}
+0.568536 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.8}
+0.580218 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.8}
+0.581776 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.2}
+0.514019 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.8}
+0.594237 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 128, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.8}
+0.564642 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.2}
+0.584891 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 32, 'learning_rate': 0.01, 'epochs': 30, 'dropout': 0.6}
+0.584112 (0.000000) with: {'verbose': 0, 'r_dropout': 0.8, 'num_cells': 64, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.2}
+0.550623 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 64, 'learning_rate': 0.001, 'epochs': 30, 'dropout': 0.4}
+0.566978 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 128, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.6}
+0.593458 (0.000000) with: {'verbose': 0, 'r_dropout': 0.4, 'num_cells': 128, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.4}
+0.575545 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.4}
+0.560748 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.01, 'epochs': 10, 'dropout': 0.2}
+0.603583 (0.000000) with: {'verbose': 0, 'r_dropout': 0.2, 'num_cells': 256, 'learning_rate': 0.001, 'epochs': 10, 'dropout': 0.8}
+0.591121 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 30, 'dropout': 0.4}
+0.597352 (0.000000) with: {'verbose': 0, 'r_dropout': 0.6, 'num_cells': 256, 'learning_rate': 0.0001, 'epochs': 10, 'dropout': 0.2}
