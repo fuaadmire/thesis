@@ -53,7 +53,7 @@ FAKE=1
 trainingdata = "liar" #sys.argv[1] # "liar" or "kaggle"
 print("TRAINING WITH", trainingdata)
 
-NUM_LAYERS = 1
+NUM_LAYERS = 2
 print("NUMBER OF LAYERS:", NUM_LAYERS)
 
 # kør med forskellige random seeds og tag gennemsnit. eller cross-validate.
@@ -163,13 +163,13 @@ def create_model(num_cells,
     model = Sequential()
     model.add(Embedding(input_dim=vocab_size, output_dim=embedding_size, weights=[embedding_matrix],input_length=max_doc_length,trainable=True))
     #model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg()))
-    if NUM_LAYERS==1:
-        model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=False, kernel_constraint=NonNeg())))
+    #if NUM_LAYERS==1:
+    #    model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=False, kernel_constraint=NonNeg())))
     #elif NUM_LAYERS==2: # stacked LSTM
-    #    model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
-    #    model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
-    else:
-        print("number of layers not specified properly")
+    model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
+    model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
+    #else:
+    #    print("number of layers not specified properly")
     #model.add(TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg())))
     #model.add(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))
     model.add(Dense(2, activation='softmax', kernel_constraint=NonNeg()))
@@ -193,7 +193,7 @@ r_dropout = [0.4] # second
 #learning_rate = [0.01, 0.001, 0.0001] # first
 learning_rate = [0.0001, 0.00001] #second
 #epochs = [10,30] # first
-epochs = [10,100] # second
+epochs = [10,50,100] # second
 
 # Prepare the Dict for the Search
 param_dist = dict(num_cells=num_cells,
