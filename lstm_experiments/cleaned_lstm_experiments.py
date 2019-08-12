@@ -53,6 +53,10 @@ np.random.seed(16)
 from tensorflow import set_random_seed
 set_random_seed(16)
 
+from datetime import datetime
+
+print(datetime.now())
+
 
 
 datapath = "/home/ktj250/thesis/data/"
@@ -330,6 +334,13 @@ def test_on_BS():
     model_loaded3 = load_model(model_path+'.h5')
     commons_testing(model_loaded3, test, test_lab, "BS")
 
+def test_on_liar():
+    print("Testing on Liar")
+    train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+    model_loaded4 = load_model(model_path+'.h5')
+    commons_testing(model_loaded4, test, test_lab, "Liar test set")
+    commons_testing(model_loaded4, dev, dev_lab, "Liar dev set")
+
 
 def test_on_learnerdata():
     prof_test = codecs.open(directory_path+"fce_text_entire_docs.txt", "r", "utf-8").read().split("\n")
@@ -414,5 +425,7 @@ test_on_kaggle()
 test_on_FNC()
 
 test_on_BS()
+
+test_on_liar()
 
 #test_on_learnerdata()
