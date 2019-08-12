@@ -221,7 +221,8 @@ else:
 #n_iter_search = 96 # Number of parameter settings that are sampled.
 # RandomizedSearchCV swithed with GridSearchCV for second run
 random_search = GridSearchCV(estimator=model,
-                                   param_distributions=param_dist,
+                                   #param_distributions=param_dist, #for rs
+                                   param_grid=param_dist, #for grid
                                    #n_iter=n_iter_search,
                                    #n_jobs=1,
 								   cv=ps,
