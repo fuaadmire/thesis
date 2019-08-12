@@ -16,7 +16,7 @@ import codecs
 from sklearn import preprocessing
 from sklearn.metrics import f1_score
 from sklearn.utils import shuffle
-from sklearn.model_selection import PredefinedSplit, RandomizedSearchCV, train_test_split
+from sklearn.model_selection import PredefinedSplit, RandomizedSearchCV, GridSearchCV, train_test_split
 
 from tensorflow import set_random_seed
 
@@ -35,6 +35,10 @@ import sys
 from write_dict_file import d_write
 from my_data_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape
 
+from datetime import datetime
+
+print(datetime.now())
+
 
 
 datapath = "data/"
@@ -49,7 +53,7 @@ FAKE=1
 trainingdata = "liar" #sys.argv[1] # "liar" or "kaggle"
 print("TRAINING WITH", trainingdata)
 
-NUM_LAYERS = 1#sys.argv[2]
+NUM_LAYERS = sys.argv[1]
 print("NUMBER OF LAYERS:", NUM_LAYERS)
 
 # kør med forskellige random seeds og tag gennemsnit. eller cross-validate.
@@ -161,9 +165,9 @@ def create_model(num_cells,
     #model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg()))
     if NUM_LAYERS==1:
         model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=False, kernel_constraint=NonNeg())))
-    #elif NUM_LAYERS==2: # stacked LSTM
-    #    model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
-    #    model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
+    elif NUM_LAYERS==2: # stacked LSTM
+        model.add(Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout,return_sequences=True, kernel_constraint=NonNeg())))
+        model.add(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, kernel_constraint=NonNeg()))
     else:
         print("number of layers not specified properly")
     #model.add(TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg())))
@@ -180,12 +184,16 @@ def create_model(num_cells,
 model = KerasClassifier(build_fn=create_model)
 
 # Specify parameters and distributions to sample from
-num_cells = [32,64,128,256]
-#hparams2 = ['elu', 'relu', ...]
-dropout = [0.2,0.4,0.6,0.8]
-r_dropout = [0.2,0.4,0.6,0.8]
-learning_rate = [0.01, 0.001, 0.0001]
-epochs = [10,30]
+#num_cells = [32,64,128,256] #first
+num_cells = [32] # second
+#dropout = [0.2,0.4,0.6,0.8] #first
+dropout = [0.4] # second
+#r_dropout = [0.2,0.4,0.6,0.8] # first
+r_dropout = [0.4] # second
+#learning_rate = [0.01, 0.001, 0.0001] # first
+learning_rate = [0.0001, 0.00001] #second
+#epochs = [10,30] # first
+epochs = [10,100] # second
 
 # Prepare the Dict for the Search
 param_dist = dict(num_cells=num_cells,
@@ -210,10 +218,11 @@ else:
     ps=2
 
 # Search in action!
-n_iter_search = 96 # Number of parameter settings that are sampled.
-random_search = RandomizedSearchCV(estimator=model,
+#n_iter_search = 96 # Number of parameter settings that are sampled.
+# RandomizedSearchCV swithed with GridSearchCV for second run
+random_search = GridSearchCV(estimator=model,
                                    param_distributions=param_dist,
-                                   n_iter=n_iter_search,
+                                   #n_iter=n_iter_search,
                                    #n_jobs=1,
 								   cv=ps,
 								   verbose=2)

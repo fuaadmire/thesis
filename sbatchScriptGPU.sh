@@ -5,4 +5,5 @@
 #SBATCH --time=3-00:00:00
 
 echo $CUDA_VISIBLE_DEVICES
-python3 random_search.py
+python3 random_search.py 1
+python3 random_search.py 2
