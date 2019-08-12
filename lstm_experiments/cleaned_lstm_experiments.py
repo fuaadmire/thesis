@@ -382,6 +382,7 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
     accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
     print("accuracy:", accuracy)
     f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    print("F1=", f1)
     tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
     print("tn, fp, fn, tp")
     print(tn, fp, fn, tp)
