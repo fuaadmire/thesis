@@ -11,7 +11,7 @@ for i in [2, 16, 42]:
     np.random.seed(i)
     set_random_seed(i)
 
-    score = train_and_test()
+    score = train_and_test(num_epochs=100, learning_rate=0.00001)
     scores.append(score)
 
 print("AVERAGE=", np.mean(scores))
