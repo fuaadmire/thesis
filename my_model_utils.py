@@ -2,11 +2,11 @@ from keras.preprocessing import sequence
 from keras.layers import Embedding, Input, Dense, LSTM, TimeDistributed, Dropout, CuDNNLSTM, Bidirectional
 from keras.models import Model, load_model
 #from thesis.preprocess_text import preprocess
-from keras.utils import multi_gpu_model # for data parallelism
+from keras.utils import multi_gpu_model, plot_model
 from keras.constraints import NonNeg
 from keras import regularizers
-from keras.utils import plot_model
 from keras.utils.np_utils import to_categorical
+from keras.optimizers import Adam
 
 import numpy as np
 import codecs
