@@ -1,0 +1,87 @@
+2
+2019-08-12 16:11:35.823082: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-12 16:11:36.586988: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-08-12 16:11:36.587034: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-12 16:11:37.159853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-12 16:11:37.159905: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-12 16:11:37.159915: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-12 16:11:37.160079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11378 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:83:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed: 16.3min remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   4 out of   4 | elapsed: 348.7min finished
+2019-08-12 16:09:51.426685
+TRAINING WITH liar
+NUMBER OF LAYERS: 1
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+validation target shape (1284, 2)
+train target shape (10240, 2)
+Fitting 1 folds for each of 4 candidates, totalling 4 fits
+[CV] dropout=0.4, epochs=10, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=10, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0, total=15.9min
+[CV] dropout=0.4, epochs=10, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=10, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0, total=15.9min
+[CV] dropout=0.4, epochs=100, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=100, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0, total=158.0min
+[CV] dropout=0.4, epochs=100, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=100, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0, total=157.1min
+Best: 0.637072 using {'dropout': 0.4, 'epochs': 100, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.609813 (0.000000) with: {'dropout': 0.4, 'epochs': 10, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 10, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.571651 (0.000000) with: {'dropout': 0.4, 'epochs': 100, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.637072 (0.000000) with: {'dropout': 0.4, 'epochs': 100, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+2019-08-13 00:58:56.565540: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-13 00:58:57.945272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-08-13 00:58:57.945318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-13 00:58:58.498419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-13 00:58:58.498473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-13 00:58:58.498482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-13 00:58:58.498638: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11378 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:83:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed: 23.6min remaining:    0.0s
+[Parallel(n_jobs=1)]: Done   6 out of   6 | elapsed: 739.5min finished
+2019-08-13 00:57:20.854336
+TRAINING WITH liar
+NUMBER OF LAYERS: 2
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+validation target shape (1284, 2)
+train target shape (10240, 2)
+Fitting 1 folds for each of 6 candidates, totalling 6 fits
+[CV] dropout=0.4, epochs=10, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=10, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0, total=23.0min
+[CV] dropout=0.4, epochs=10, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=10, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0, total=23.1min
+[CV] dropout=0.4, epochs=50, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=50, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0, total=114.5min
+[CV] dropout=0.4, epochs=50, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=50, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0, total=115.1min
+[CV] dropout=0.4, epochs=100, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=100, learning_rate=0.0001, num_cells=32, r_dropout=0.4, verbose=0, total=230.5min
+[CV] dropout=0.4, epochs=100, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0 
+[CV]  dropout=0.4, epochs=100, learning_rate=1e-05, num_cells=32, r_dropout=0.4, verbose=0, total=229.3min
+Best: 0.520249 using {'dropout': 0.4, 'epochs': 10, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 10, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 10, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 50, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 50, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 100, 'learning_rate': 0.0001, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
+0.520249 (0.000000) with: {'dropout': 0.4, 'epochs': 100, 'learning_rate': 1e-05, 'num_cells': 32, 'r_dropout': 0.4, 'verbose': 0}
