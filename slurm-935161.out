@@ -1,0 +1,169 @@
+1
+2019-08-13 20:07:13.641225: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-13 20:07:14.897089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN Xp major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.76GiB
+2019-08-13 20:07:14.897136: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-13 20:07:15.434195: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-13 20:07:15.434250: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-13 20:07:15.434259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-13 20:07:15.434414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11378 MB memory) -> physical GPU (device: 0, name: TITAN Xp, pci bus id: 0000:03:00.0, compute capability: 6.1)
+trainingdata= liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+Parameters:: num_cells: 32 num_samples: 10240 embedding_size: 300 epochs: 10 batch_size: 64
+(?, 100)
+fitting model..
+Train on 10240 samples, validate on 1284 samples
+Epoch 1/10
+ - 49s - loss: 0.6856 - acc: 0.5554 - val_loss: 0.6905 - val_acc: 0.5249
+Epoch 2/10
+ - 47s - loss: 0.6766 - acc: 0.5743 - val_loss: 0.6840 - val_acc: 0.5491
+Epoch 3/10
+ - 47s - loss: 0.6708 - acc: 0.5832 - val_loss: 0.6787 - val_acc: 0.5639
+Epoch 4/10
+ - 47s - loss: 0.6643 - acc: 0.5961 - val_loss: 0.6676 - val_acc: 0.5966
+Epoch 5/10
+ - 47s - loss: 0.6525 - acc: 0.6148 - val_loss: 0.6601 - val_acc: 0.6012
+Epoch 6/10
+ - 47s - loss: 0.6439 - acc: 0.6300 - val_loss: 0.6595 - val_acc: 0.6121
+Epoch 7/10
+ - 47s - loss: 0.6338 - acc: 0.6481 - val_loss: 0.6512 - val_acc: 0.6160
+Epoch 8/10
+ - 47s - loss: 0.6269 - acc: 0.6594 - val_loss: 0.6539 - val_acc: 0.6153
+Epoch 9/10
+ - 47s - loss: 0.6192 - acc: 0.6673 - val_loss: 0.6467 - val_acc: 0.6176
+Epoch 10/10
+ - 47s - loss: 0.6069 - acc: 0.6786 - val_loss: 0.6484 - val_acc: 0.6215
+Testing...
+Test loss: 0.6473381838275395
+Test accuracy: 0.6393054467820707
+Valid loss: 0.648354689280192
+Valid accuracy: 0.6214953271028038
+tn, fp, fn, tp
+550 164 293 260
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          4084500   
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 64)                85248     
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 130       
+=================================================================
+Total params: 4,169,878
+Trainable params: 4,169,878
+Non-trainable params: 0
+_________________________________________________________________
+trainingdata= liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+Parameters:: num_cells: 32 num_samples: 10240 embedding_size: 300 epochs: 10 batch_size: 64
+(?, 100)
+fitting model..
+Train on 10240 samples, validate on 1284 samples
+Epoch 1/10
+ - 49s - loss: 0.6836 - acc: 0.5655 - val_loss: 0.6890 - val_acc: 0.5226
+Epoch 2/10
+ - 47s - loss: 0.6759 - acc: 0.5726 - val_loss: 0.6824 - val_acc: 0.5475
+Epoch 3/10
+ - 47s - loss: 0.6693 - acc: 0.5841 - val_loss: 0.6764 - val_acc: 0.5709
+Epoch 4/10
+ - 47s - loss: 0.6613 - acc: 0.5986 - val_loss: 0.6677 - val_acc: 0.5857
+Epoch 5/10
+ - 47s - loss: 0.6523 - acc: 0.6187 - val_loss: 0.6581 - val_acc: 0.6106
+Epoch 6/10
+ - 47s - loss: 0.6430 - acc: 0.6343 - val_loss: 0.6520 - val_acc: 0.6238
+Epoch 7/10
+ - 47s - loss: 0.6345 - acc: 0.6428 - val_loss: 0.6485 - val_acc: 0.6262
+Epoch 8/10
+ - 47s - loss: 0.6261 - acc: 0.6566 - val_loss: 0.6460 - val_acc: 0.6308
+Epoch 9/10
+ - 47s - loss: 0.6211 - acc: 0.6648 - val_loss: 0.6466 - val_acc: 0.6277
+Epoch 10/10
+ - 47s - loss: 0.6083 - acc: 0.6762 - val_loss: 0.6472 - val_acc: 0.6238
+Testing...
+Test loss: 0.6487102381996781
+Test accuracy: 0.6282557228840329
+Valid loss: 0.6471773048056249
+Valid accuracy: 0.6238317757009346
+tn, fp, fn, tp
+551 163 308 245
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_2 (Embedding)      (None, 100, 300)          4084500   
+_________________________________________________________________
+bidirectional_2 (Bidirection (None, 64)                85248     
+_________________________________________________________________
+dense_2 (Dense)              (None, 2)                 130       
+=================================================================
+Total params: 4,169,878
+Trainable params: 4,169,878
+Non-trainable params: 0
+_________________________________________________________________
+trainingdata= liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 2)
+Parameters:: num_cells: 32 num_samples: 10240 embedding_size: 300 epochs: 10 batch_size: 64
+(?, 100)
+fitting model..
+Train on 10240 samples, validate on 1284 samples
+Epoch 1/10
+ - 50s - loss: 0.6848 - acc: 0.5555 - val_loss: 0.6885 - val_acc: 0.5202
+Epoch 2/10
+ - 47s - loss: 0.6769 - acc: 0.5705 - val_loss: 0.6810 - val_acc: 0.5607
+Epoch 3/10
+ - 47s - loss: 0.6707 - acc: 0.5815 - val_loss: 0.6750 - val_acc: 0.5755
+Epoch 4/10
+ - 47s - loss: 0.6608 - acc: 0.6032 - val_loss: 0.6656 - val_acc: 0.5997
+Epoch 5/10
+ - 47s - loss: 0.6518 - acc: 0.6159 - val_loss: 0.6629 - val_acc: 0.6137
+Epoch 6/10
+ - 47s - loss: 0.6450 - acc: 0.6242 - val_loss: 0.6491 - val_acc: 0.6238
+Epoch 7/10
+ - 47s - loss: 0.6344 - acc: 0.6465 - val_loss: 0.6478 - val_acc: 0.6347
+Epoch 8/10
+ - 47s - loss: 0.6243 - acc: 0.6514 - val_loss: 0.6418 - val_acc: 0.6324
+Epoch 9/10
+ - 47s - loss: 0.6137 - acc: 0.6683 - val_loss: 0.6505 - val_acc: 0.6340
+Epoch 10/10
+ - 47s - loss: 0.6021 - acc: 0.6773 - val_loss: 0.6479 - val_acc: 0.6347
+Using TensorFlow backend.
+Testing...
+Test loss: 0.6516088912029763
+Test accuracy: 0.6219415951170315
+Valid loss: 0.6479086523115449
+Valid accuracy: 0.6347352024922118
+tn, fp, fn, tp
+545 169 310 243
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_3 (Embedding)      (None, 100, 300)          4084500   
+_________________________________________________________________
+bidirectional_3 (Bidirection (None, 64)                85248     
+_________________________________________________________________
+dense_3 (Dense)              (None, 2)                 130       
+=================================================================
+Total params: 4,169,878
+Trainable params: 4,169,878
+Non-trainable params: 0
+_________________________________________________________________
+AVERAGE= 0.6372504919488854
