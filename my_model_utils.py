@@ -34,7 +34,14 @@ from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_F
 
 
 
-def train_and_test(TIMEDISTRIBUTED=False, trainingdata="liar", num_cells=32, num_epochs=10, dropout=0.4, r_dropout=0.4, num_batch=64):
+def train_and_test(TIMEDISTRIBUTED=False,
+                    trainingdata="liar",
+                    num_cells=32,
+                    num_epochs=10,
+                    dropout=0.4,
+                    r_dropout=0.4,
+                    num_batch=64,
+                    learning_rate=0.0001):
 
     datapath = "/home/ktj250/thesis/data/"
     #directory_path = "/gdrive/My Drive/Thesis/"
