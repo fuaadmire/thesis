@@ -33,7 +33,7 @@ import random
 import sys
 
 from write_dict_file import d_write
-from my_data_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape
+from my_data_utils import binarize_labels, load_liar_data, load_kaggle_data, tile_reshape, load_BS_data
 
 from datetime import datetime
 
@@ -50,7 +50,7 @@ use_pretrained_embeddings = True
 
 FAKE=1
 
-trainingdata = "liar" #sys.argv[1] # "liar" or "kaggle"
+trainingdata =  sys.argv[1] # "liar", "kaggle"
 print("TRAINING WITH", trainingdata)
 
 NUM_LAYERS = 1
@@ -69,6 +69,9 @@ elif trainingdata == "kaggle":
     train, test, train_lab, test_lab = load_kaggle_data(datapath)
 elif trainingdata == "FNC":
     train, test, train_lab, test_lab = load_FNC_data(datapath)
+elif trainingdata == "BS":
+    train, test, train_lab, test_lab = load_BS_data(datapath)
+
 
 train = [nltk.word_tokenize(i.lower()) for i in train]
 
@@ -184,16 +187,16 @@ def create_model(num_cells,
 model = KerasClassifier(build_fn=create_model)
 
 # Specify parameters and distributions to sample from
-#num_cells = [32,64,128,256] #first
-num_cells = [32] # second
-#dropout = [0.2,0.4,0.6,0.8] #first
-dropout = [0.4] # second
-#r_dropout = [0.2,0.4,0.6,0.8] # first
-r_dropout = [0.4] # second
-#learning_rate = [0.01, 0.001, 0.0001] # first
-learning_rate = [0.0001, 0.00001] #second
-#epochs = [10,30] # first
-epochs = [10,100] # second
+num_cells = [32,64,128,256] #first
+#num_cells = [32] # second
+dropout = [0.2,0.4,0.6,0.8] #first
+#dropout = [0.4] # second
+r_dropout = [0.2,0.4,0.6,0.8] # first
+#r_dropout = [0.4] # second
+learning_rate = [0.01, 0.001, 0.0001] # first
+#learning_rate = [0.0001, 0.00001] #second
+epochs = [10,30] # first
+#epochs = [10,100] # second
 
 # Prepare the Dict for the Search
 param_dist = dict(num_cells=num_cells,
@@ -215,15 +218,15 @@ if trainingdata == "liar":
 else:
     X = seq
     y = train_lab
-    ps=2
+    ps=3
 
 # Search in action!
-#n_iter_search = 96 # Number of parameter settings that are sampled.
+n_iter_search = 96 # Number of parameter settings that are sampled.
 # RandomizedSearchCV swithed with GridSearchCV for second run
-random_search = GridSearchCV(estimator=model,
-                                   #param_distributions=param_dist, #for rs
-                                   param_grid=param_dist, #for grid
-                                   #n_iter=n_iter_search,
+random_search = RandomizedSearchCV(estimator=model,
+                                   param_distributions=param_dist, #for rs
+                                   #param_grid=param_dist, #for grid
+                                   n_iter=n_iter_search,
                                    #n_jobs=1,
 								   cv=ps,
 								   verbose=2)

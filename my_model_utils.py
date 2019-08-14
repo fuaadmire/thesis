@@ -31,7 +31,18 @@ import random
 
 from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data
 
+import matplotlib.pyplot as plt
 
+def plot_loss(history):
+    # Plot training & validation loss values
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('Model loss')
+    plt.ylabel('Loss')
+    plt.xlabel('Epoch')
+    plt.legend(['Train', 'Test'], loc='upper left')
+    plt.show()
+    plt.savefig('loss.png', dpi=300)
 
 
 def train_and_test(TIMEDISTRIBUTED=False,
@@ -168,9 +179,9 @@ def train_and_test(TIMEDISTRIBUTED=False,
         model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
     print("fitting model..")
     if trainingdata == "liar":
-        model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
+        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
     else:
-        model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
+        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
     print("Testing...")
     test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
     if trainingdata == "liar":
@@ -193,6 +204,6 @@ def train_and_test(TIMEDISTRIBUTED=False,
     model.summary()
 
     if trainingdata=="liar":
-        return dev_score
+        return dev_score, history
     else:
-        return test_score
+        return test_score, history
