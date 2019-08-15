@@ -127,5 +127,46 @@ def remove_duplicates(data, labels):
 
 
 def clean_patterns():
-    
+
     pass
+
+def pos_tagging(trainingdata, datapath):
+    import nltk
+
+    if trainingdata == "liar":
+        train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+    elif trainingdata == "kaggle":
+        train, test, train_lab, test_lab = load_kaggle_data(datapath)
+    elif trainingdata == "FNC":
+        train, test, train_lab, test_lab = load_FNC_data(datapath)
+    elif trainingdata == "BS":
+        train, test, train_lab, test_lab = load_BS_data(datapath)
+
+    train = [nltk.word_tokenize(i.lower()) for i in train]
+
+    test = [nltk.word_tokenize(i.lower()) for i in test]
+
+    if trainingdata == "liar":
+        dev = [nltk.word_tokenize(i.lower()) for i in dev]
+
+    with open(trainingdata+"_train_POS.txt", mode="w") as file:
+        for line in train:
+            pos_tags = nltk.pos_tag(line)
+            pos_tag_string = " ".join([i[1] for i in pos_tags])
+            file.write(pos_tag_string+"\n")
+            #file.write("\n")
+
+    with open(trainingdata+"_test_POS.txt", mode="w") as file:
+        for line in test:
+            pos_tags = nltk.pos_tag(line)
+            pos_tag_string = " ".join([i[1] for i in pos_tags])
+            file.write(pos_tag_string+"\n")
+
+    if trainingdata == "liar":
+        with open(trainingdata+"_dev_POS.txt", mode="w") as file:
+            for line in dev:
+                pos_tags = nltk.pos_tag(line)
+                pos_tag_string = " ".join([i[1] for i in pos_tags])
+                file.write(pos_tag_string+"\n")
+    # save to txt file in same format, seperate by newline
+pos_tagging("FNC", "data/")

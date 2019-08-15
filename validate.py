@@ -11,7 +11,7 @@ for i in [42]:#[2, 16, 42]:
     np.random.seed(i)
     set_random_seed(i)
 
-    score, history = train_and_test(num_epochs=200, learning_rate=0.00001)
+    score, history = train_and_test(num_epochs=200, learning_rate=0.0001)
     scores.append(score)
 
 print("AVERAGE=", np.mean(scores))
