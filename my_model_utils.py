@@ -42,7 +42,7 @@ def plot_loss(history):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig('loss200.png', dpi=300)
+    plt.savefig('loss200lr0001.png', dpi=300)
 
     plt.plot(history.history['acc'])
     plt.plot(history.history['val_acc'])
@@ -51,7 +51,7 @@ def plot_loss(history):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig("accuracy200.png", dpi=300)
+    plt.savefig("accuracy200lr0001.png", dpi=300)
 
 
 def train_and_test(TIMEDISTRIBUTED=False,
