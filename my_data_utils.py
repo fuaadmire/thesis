@@ -169,4 +169,3 @@ def pos_tagging(trainingdata, datapath):
                 pos_tag_string = " ".join([i[1] for i in pos_tags])
                 file.write(pos_tag_string+"\n")
     # save to txt file in same format, seperate by newline
-pos_tagging("FNC", "data/")

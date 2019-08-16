@@ -23,7 +23,7 @@ from tensorflow import set_random_seed
 import pandas as pd
 import h5py
 import nltk
-nltk.download('punkt')
+#nltk.download('punkt')
 #import matplotlib.pyplot as plt
 import datetime
 
