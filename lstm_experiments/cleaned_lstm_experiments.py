@@ -117,14 +117,16 @@ vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = 100 # LIAR 100 (like Wang), Kaggle 3391, FakeNewsCorpus 2669
 # num_cells: number of LSTM cells
-num_cells = 64 # for now, probably test best parameter through cross-validation
+num_cells = 32 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 300 # also just for now..
-num_epochs = 10
+num_epochs = 100
 num_batch = 64 # also find optimal through cross-validation
+r_dropout = 0.4
+dropout = 0.4
 
 
 # PREPARING DATA
@@ -176,10 +178,10 @@ else:
     print(x.shape)
 
 if TIMEDISTRIBUTED:
-    lstm_out = LSTM(num_cells, dropout=0.8, recurrent_dropout=0.8, return_sequences=True, kernel_constraint=NonNeg())(x)
+    lstm_out = LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg())(x)
     predictions = TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))(lstm_out)
 else:
-    lstm_out = Bidirectional(LSTM(num_cells, dropout=0.8, recurrent_dropout=0.8))(x)
+    lstm_out = Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout))(x)
     predictions = Dense(2, activation='softmax')(lstm_out)
 
 model = Model(inputs=myInput, outputs=predictions)
