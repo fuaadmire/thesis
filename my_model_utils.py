@@ -33,7 +33,7 @@ from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_F
 
 import matplotlib.pyplot as plt
 
-def plot_loss(history):
+def plot_loss(history, filename):
     # Plot training & validation loss values
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
@@ -42,7 +42,7 @@ def plot_loss(history):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig('loss200lr0001.png', dpi=300)
+    plt.savefig("loss"+filename, dpi=300)
 
     plt.plot(history.history['acc'])
     plt.plot(history.history['val_acc'])
@@ -51,7 +51,7 @@ def plot_loss(history):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig("accuracy200lr0001.png", dpi=300)
+    plt.savefig("accuracy"+filename, dpi=300)
 
 
 def train_and_test(TIMEDISTRIBUTED=False,
