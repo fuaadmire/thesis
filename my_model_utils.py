@@ -230,8 +230,11 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
 
 
 
-def pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata="liar"):
-    datapath = "/home/ktj250/thesis/data/"
+def pre_modelling_stuff(TIMEDISTRIBUTED=False,
+                        trainingdata="liar",
+                        datapath="/home/ktj250/thesis/data/",
+                        emb_model_path="/home/ktj250/thesis/"):
+
     #directory_path = "/gdrive/My Drive/Thesis/"
     #TIMEDISTRIBUTED = False
     use_pretrained_embeddings = True
@@ -313,7 +316,7 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata="liar"):
     if use_pretrained_embeddings:
         # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
         # Load Google's pre-trained Word2Vec model.
-        model = gensim.models.KeyedVectors.load_word2vec_format('/home/ktj250/thesis/GoogleNews-vectors-negative300.bin', binary=True)
+        model = gensim.models.KeyedVectors.load_word2vec_format(emb_model_path+'GoogleNews-vectors-negative300.bin', binary=True)
 
         embedding_matrix = np.zeros((len(word2id) + 1, 300))
         for word, i in word2id.items():
@@ -382,7 +385,7 @@ def lstm_model_only(max_doc_length=100,
 
 
 
-def evaluting_model(model):
+def evaluting_model(model, trainingdata, TIMEDISTRIBUTED=False):
     print("Testing...")
     test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
     if trainingdata == "liar":
@@ -422,7 +425,7 @@ def run_model_example(trainingdata):
                                         learning_rate=0.00001,
                                         num_epochs=100,
                                         trainingdata=trainingdata)
-        evaluting_model(model)
+        evaluting_model(model, trainingdata)
     else:
         embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
         model, history = lstm_model_only(max_doc_length=100,
