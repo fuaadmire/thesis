@@ -169,3 +169,15 @@ def pos_tagging(trainingdata, datapath):
                 pos_tag_string = " ".join([i[1] for i in pos_tags])
                 file.write(pos_tag_string+"\n")
     # save to txt file in same format, seperate by newline
+
+def load_pos_tags(trainingdata, datapath):
+    train_tags = codecs.open(datapath+"pos_tags/"+trainingdata+"_train_POS.txt").read().split('\n')
+    train_tags = train_tags[:len(train_tags)-1]
+    test_tags = codecs.open(datapath+"pos_tags/"+trainingdata+"_test_POS.txt").read().split('\n')
+    test_tags = test_tags[:len(test_tags)-1]
+    if trainingdata=="liar":
+        dev_tags = codecs.open(datapath+"pos_tags/liar_dev_POS.txt").read().split('\n')
+        dev_tags = dev_tags[:len(dev_tags)-1]
+        return train_tags, test_tags, dev_tags
+    else:
+        return train_tags, test_tags

@@ -35,8 +35,14 @@ import matplotlib.pyplot as plt
 
 def plot_loss(history, filename):
     # Plot training & validation loss values
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
+    fig = None
+    ax = None
+    fig2 = None
+    ax2 = None
+
+    fig, ax = plt.subplots()
+    ax.plot(history.history['loss'])
+    ax.plot(history.history['val_loss'])
     plt.title('Model loss')
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
@@ -44,8 +50,9 @@ def plot_loss(history, filename):
     plt.show()
     plt.savefig("loss"+filename, dpi=300)
 
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
+    fig2, ax2 = plt.subplots()
+    ax2.plot(history.history['acc'])
+    ax2.plot(history.history['val_acc'])
     plt.title('Model accuracy')
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
@@ -216,3 +223,218 @@ def train_and_test(TIMEDISTRIBUTED=False,
         return dev_score, history
     else:
         return test_score, history
+
+
+
+
+
+def pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata="liar"):
+    datapath = "/home/ktj250/thesis/data/"
+    #directory_path = "/gdrive/My Drive/Thesis/"
+    #TIMEDISTRIBUTED = False
+    use_pretrained_embeddings = True
+    FAKE=1
+    #trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
+    print("trainingdata=",trainingdata)
+
+    if trainingdata == "liar":
+        train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+    elif trainingdata == "kaggle":
+        train, test, train_lab, test_lab = load_kaggle_data(datapath)
+    elif trainingdata == "FNC":
+        train, test, train_lab, test_lab = load_FNC_data(datapath)
+    elif trainingdata == "BS":
+        train, test, train_lab, test_lab = load_BS_data(datapath)
+
+    train = [nltk.word_tokenize(i.lower()) for i in train]
+
+    test = [nltk.word_tokenize(i.lower()) for i in test]
+
+    if trainingdata == "liar":
+        dev = [nltk.word_tokenize(i.lower()) for i in dev]
+
+
+    all_train_tokens = []
+    for i in train:
+        for word in i:
+            all_train_tokens.append(word)
+
+    vocab = set(all_train_tokens)
+    word2id = {word: i+1 for i, word in enumerate(vocab)}# making the first id is 1, so that I can pad with zeroes.
+    word2id["UNK"] = len(word2id)+1
+    id2word = {v: k for k, v in word2id.items()}
+
+
+    #trainTextsSeq: List of input sequence for each document (A matrix with size num_samples * max_doc_length)
+    trainTextsSeq = np.array([[word2id[w] for w in sent] for sent in train])
+
+    testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
+
+    if trainingdata == "liar":
+        devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+
+    # PARAMETERS
+    # vocab_size: number of tokens in vocabulary
+    vocab_size = len(word2id)+1
+    # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
+    max_doc_length = 100 # LIAR 100 (like Wang), Kaggle 3391, FakeNewsCorpus 2669
+    # num_samples: number of training/testing data samples
+    num_samples = len(train_lab)
+    # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
+    num_time_steps = max_doc_length
+    embedding_size = 300 # also just for now..
+
+    # padding with max doc lentgh
+    seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+    print("train seq shape",seq.shape)
+    test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+    if trainingdata == "liar":
+        dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+
+
+    if TIMEDISTRIBUTED:
+        train_lab = tile_reshape(train_lab, num_time_steps)
+        test_lab = tile_reshape(test_lab, num_time_steps)
+        print(train_lab.shape)
+        if trainingdata == "liar":
+            dev_lab = tile_reshape(dev_lab, num_time_steps)
+    else:
+        train_lab = to_categorical(train_lab, 2)
+        test_lab = to_categorical(test_lab, 2)
+        print(train_lab.shape)
+        if trainingdata == "liar":
+            dev_lab = to_categorical(dev_lab, 2)
+
+    print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
+
+
+    if use_pretrained_embeddings:
+        # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
+        # Load Google's pre-trained Word2Vec model.
+        model = gensim.models.KeyedVectors.load_word2vec_format('/home/ktj250/thesis/GoogleNews-vectors-negative300.bin', binary=True)
+
+        embedding_matrix = np.zeros((len(word2id) + 1, 300))
+        for word, i in word2id.items():
+            try:
+                embedding_vector = model.wv[word]
+            except:
+                embedding_vector = model.wv["UNK"]
+            if embedding_vector is not None:
+                embedding_matrix[i] = embedding_vector
+
+    if trainingdata=="liar":
+        return embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size
+    else:
+        return embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size
+
+
+def lstm_model_only(max_doc_length=100,
+                    embedding_size=300,
+                    TIMEDISTRIBUTED=False,
+                    dev_seq=None,
+                    dev_lab=None,
+                    seq,
+                    test_seq,
+                    train_lab,
+                    test_lab,
+                    embedding_matrix,
+                    vocab_size,
+                    dropout,
+                    r_dropout,
+                    num_cells,
+                    learning_rate,
+                    num_epochs,
+                    trainingdata):
+
+    myInput = Input(shape=(max_doc_length,), name='input')
+    print(myInput.shape)
+    if use_pretrained_embeddings:
+        x = Embedding(input_dim=vocab_size, output_dim=embedding_size, weights=[embedding_matrix],input_length=max_doc_length,trainable=True)(myInput)
+    else:
+        x = Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_doc_length)(myInput)
+        print(x.shape)
+
+    if TIMEDISTRIBUTED:
+        lstm_out = LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout, return_sequences=True, kernel_constraint=NonNeg())(x)
+        predictions = TimeDistributed(Dense(1, activation='sigmoid', kernel_constraint=NonNeg()))(lstm_out)
+    else:
+        lstm_out = Bidirectional(LSTM(num_cells, dropout=dropout, recurrent_dropout=r_dropout))(x)
+        predictions = Dense(2, activation='softmax')(lstm_out)
+
+    model = Model(inputs=myInput, outputs=predictions)
+
+    opt = Adam(lr=learning_rate)
+
+    if TIMEDISTRIBUTED:
+        model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
+    else:
+        model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+    print("fitting model..")
+    if trainingdata == "liar":
+        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
+    else:
+        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
+    model.summary()
+
+    return model, history
+
+
+
+def evaluting_model(model):
+    print("Testing...")
+    test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
+    if trainingdata == "liar":
+        dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
+
+    print("Test loss:", test_score[0])
+    print("Test accuracy:", test_score[1])
+    if trainingdata == "liar":
+        print("Valid loss:", dev_score[0])
+        print("Valid accuracy:", dev_score[1])
+
+    if not TIMEDISTRIBUTED:
+        preds = model.predict(test_seq)
+        f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+        tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+        print("tn, fp, fn, tp")
+        print(tn, fp, fn, tp)
+
+
+def run_model_example(trainingdata):
+    if trainingdata=="liar":
+        embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
+        model, history = lstm_model_only(max_doc_length=100,
+                                        embedding_size=300,
+                                        TIMEDISTRIBUTED=False,
+                                        dev_seq=dev_seq,
+                                        dev_lab=dev_lab,
+                                        seq=seq,
+                                        test_seq=test_seq,
+                                        train_lab=train_lab,
+                                        test_lab=test_lab,
+                                        embedding_matrix=embedding_matrix,
+                                        vocab_size=vocab_size,
+                                        dropout=0.4,
+                                        r_dropout=0.4,
+                                        num_cells=32,
+                                        learning_rate=0.00001,
+                                        num_epochs=100,
+                                        trainingdata=trainingdata)
+        evaluting_model(model)
+    else:
+        embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
+        model, history = lstm_model_only(max_doc_length=100,
+                                        embedding_size=300,
+                                        TIMEDISTRIBUTED=False,
+                                        seq=seq,
+                                        test_seq=test_seq,
+                                        train_lab=train_lab,
+                                        test_lab=test_lab,
+                                        embedding_matrix=embedding_matrix,
+                                        vocab_size=vocab_size,
+                                        dropout=0.4,
+                                        r_dropout=0.4,
+                                        num_cells=32,
+                                        learning_rate=0.00001,
+                                        num_epochs=100,
+                                        trainingdata=trainingdata)

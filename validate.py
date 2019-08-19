@@ -13,7 +13,7 @@ for i in [42]:#[2, 16, 42]:
 
     score, history = train_and_test(num_epochs=200, learning_rate=0.0001)
     scores.append(score)
-    plot_loss(history, "200lr0001.png")
+    plot_loss(history, "X_200lr0001.png")
     score, history = train_and_test(num_epochs=200, learning_rate=0.00001, num_cells=256)
-    plot_loss(history, "256cellsLR00001.png")
+    plot_loss(history, "X_256cellsLR00001.png")
 print("AVERAGE=", np.mean(scores))

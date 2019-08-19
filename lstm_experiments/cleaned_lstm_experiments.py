@@ -47,11 +47,11 @@ import random
 
 from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data
 
-random.seed(16)
-np.random.seed(16)
+random.seed(42)
+np.random.seed(42)
 
 from tensorflow import set_random_seed
-set_random_seed(16)
+set_random_seed(42)
 
 from datetime import datetime
 
