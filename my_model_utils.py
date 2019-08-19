@@ -310,7 +310,7 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
         if trainingdata == "liar":
             dev_lab = to_categorical(dev_lab, 2)
 
-    print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
+    #print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
 
     if use_pretrained_embeddings:
