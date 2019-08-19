@@ -61,7 +61,9 @@ def plot_loss(history, filename):
     plt.savefig("accuracy"+filename, dpi=300)
 
 
-def train_and_test(TIMEDISTRIBUTED=False,
+def train_and_test(datapath="/home/ktj250/thesis/data/",
+                    emb_model_path="/home/ktj250/thesis/",
+                    TIMEDISTRIBUTED=False,
                     trainingdata="liar",
                     num_cells=32,
                     num_epochs=10,
@@ -70,8 +72,8 @@ def train_and_test(TIMEDISTRIBUTED=False,
                     num_batch=64,
                     learning_rate=0.0001):
 
-    datapath = "/home/ktj250/thesis/data/"
-    #directory_path = "/gdrive/My Drive/Thesis/"
+
+    #colab_directory_path = "/gdrive/My Drive/Thesis/"
 
     #TIMEDISTRIBUTED = False
 
@@ -159,7 +161,7 @@ def train_and_test(TIMEDISTRIBUTED=False,
     if use_pretrained_embeddings:
         # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
         # Load Google's pre-trained Word2Vec model.
-        model = gensim.models.KeyedVectors.load_word2vec_format('/home/ktj250/thesis/GoogleNews-vectors-negative300.bin', binary=True)
+        model = gensim.models.KeyedVectors.load_word2vec_format(emb_model_path+'GoogleNews-vectors-negative300.bin', binary=True)
 
         embedding_matrix = np.zeros((len(word2id) + 1, 300))
         for word, i in word2id.items():
