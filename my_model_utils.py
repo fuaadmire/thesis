@@ -333,12 +333,7 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
         return embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size
 
 
-def lstm_model_only(max_doc_length=100,
-                    embedding_size=300,
-                    TIMEDISTRIBUTED=False,
-                    dev_seq=None,
-                    dev_lab=None,
-                    seq,
+def lstm_model_only(seq,
                     test_seq,
                     train_lab,
                     test_lab,
@@ -349,7 +344,12 @@ def lstm_model_only(max_doc_length=100,
                     num_cells,
                     learning_rate,
                     num_epochs,
-                    trainingdata):
+                    trainingdata,
+                    max_doc_length=100,
+                    embedding_size=300,
+                    TIMEDISTRIBUTED=False,
+                    dev_seq=None,
+                    dev_lab=None):
 
     myInput = Input(shape=(max_doc_length,), name='input')
     print(myInput.shape)
@@ -408,30 +408,27 @@ def evaluting_model(model, trainingdata, TIMEDISTRIBUTED=False):
 def run_model_example(trainingdata):
     if trainingdata=="liar":
         embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
-        model, history = lstm_model_only(max_doc_length=100,
+        model, history = lstm_model_only(seq=seq,
+                                        test_seq=test_seq,
+                                        train_lab=train_lab,
+                                        test_lab=test_lab,
+                                        embedding_matrix=embedding_matrix,
+                                        vocab_size=vocab_size,
+                                        dropout=0.4,
+                                        r_dropout=0.4,
+                                        num_cells=32,
+                                        learning_rate=0.00001,
+                                        num_epochs=100,
+                                        trainingdata=trainingdata,
+                                        max_doc_length=100,
                                         embedding_size=300,
                                         TIMEDISTRIBUTED=False,
                                         dev_seq=dev_seq,
-                                        dev_lab=dev_lab,
-                                        seq=seq,
-                                        test_seq=test_seq,
-                                        train_lab=train_lab,
-                                        test_lab=test_lab,
-                                        embedding_matrix=embedding_matrix,
-                                        vocab_size=vocab_size,
-                                        dropout=0.4,
-                                        r_dropout=0.4,
-                                        num_cells=32,
-                                        learning_rate=0.00001,
-                                        num_epochs=100,
-                                        trainingdata=trainingdata)
+                                        dev_lab=dev_lab,)
         evaluting_model(model, trainingdata)
     else:
         embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
-        model, history = lstm_model_only(max_doc_length=100,
-                                        embedding_size=300,
-                                        TIMEDISTRIBUTED=False,
-                                        seq=seq,
+        model, history = lstm_model_only(seq=seq,
                                         test_seq=test_seq,
                                         train_lab=train_lab,
                                         test_lab=test_lab,
@@ -442,4 +439,7 @@ def run_model_example(trainingdata):
                                         num_cells=32,
                                         learning_rate=0.00001,
                                         num_epochs=100,
-                                        trainingdata=trainingdata)
+                                        trainingdata=trainingdata,
+                                        max_doc_length=100,
+                                        embedding_size=300,
+                                        TIMEDISTRIBUTED=False)
