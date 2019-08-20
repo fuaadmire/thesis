@@ -21,6 +21,7 @@ from keras.constraints import NonNeg
 from keras import regularizers
 from keras.utils import plot_model
 from keras.utils.np_utils import to_categorical
+from keras.optimizers import Adam
 
 import numpy as np
 import codecs
@@ -127,6 +128,7 @@ num_epochs = 100
 num_batch = 64 # also find optimal through cross-validation
 r_dropout = 0.4
 dropout = 0.4
+learning_rate = 0.00001
 
 
 # PREPARING DATA
@@ -202,11 +204,12 @@ model = Model(inputs=myInput, outputs=predictions)
 #    test_preds = model.predict(test_seq)
 #except:
 
+opt = opt = Adam(lr=learning_rate)
 
 if TIMEDISTRIBUTED:
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
 else:
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
 print("fitting model..")
 if trainingdata == "liar":
     model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))

@@ -423,7 +423,7 @@ def run_model_example(trainingdata):
                                         embedding_size=300,
                                         TIMEDISTRIBUTED=False,
                                         dev_seq=dev_seq,
-                                        dev_lab=dev_lab,)
+                                        dev_lab=dev_lab)
         evaluting_model(model, trainingdata)
     else:
         embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
