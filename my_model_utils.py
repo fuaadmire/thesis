@@ -7,6 +7,7 @@ from keras.constraints import NonNeg
 from keras import regularizers
 from keras.utils.np_utils import to_categorical
 from keras.optimizers import Adam
+from keras import backend as K
 
 import numpy as np
 import codecs
@@ -72,7 +73,7 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
                     num_batch=64,
                     learning_rate=0.0001):
 
-
+    K.clear_session()
     #colab_directory_path = "/gdrive/My Drive/Thesis/"
 
     #TIMEDISTRIBUTED = False
@@ -222,9 +223,9 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
     model.summary()
 
     if trainingdata=="liar":
-        return dev_score, history
+        return dev_score[1], history
     else:
-        return test_score, history
+        return test_score[1], history
 
 
 
