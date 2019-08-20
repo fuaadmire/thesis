@@ -9,6 +9,7 @@ from keras.utils.np_utils import to_categorical
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.optimizers import Adam
 from keras.wrappers.scikit_learn import KerasClassifier
+from keras import backend as K
 
 import numpy as np
 import codecs
@@ -162,6 +163,7 @@ def create_model(num_cells,
                  #output_dim=embedding_size,
                  #input_length=max_doc_length
                  ):
+    K.clear_session()
     # Model definition
     model = Sequential()
     model.add(Embedding(input_dim=vocab_size, output_dim=embedding_size, weights=[embedding_matrix],input_length=max_doc_length,trainable=True))
