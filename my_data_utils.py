@@ -102,6 +102,25 @@ def load_BS_data(datapath):
     X_train, X_test, y_train, y_test = train_test_split(samples, labels, test_size=0.33, random_state=42)
     return X_train, X_test, y_train, y_test
 
+def load_TP_data(datapath):
+    da = codecs.open("da.test.txt", "r", "utf-8").read().split("\n")
+    da = da[:len(da)-1]
+    de = codecs.open("de.test.txt", "r", "utf-8").read().split("\n")
+    de = de[:len(de)-1]
+    es = codecs.open("es.test.txt", "r", "utf-8").read().split("\n")
+    es = es[:len(es)-1]
+    fr = codecs.open("fr.test.txt", "r", "utf-8").read().split("\n")
+    fr = fr[:len(fr)-1]
+    it = codecs.open("it.test.txt", "r", "utf-8").read().split("\n")
+    it = it[:len(it)-1]
+    nl = codecs.open("nl.test.txt", "r", "utf-8").read().split("\n")
+    nl = nl[:len(nl)-1]
+    se = codecs.open("se.test.txt", "r", "utf-8").read().split("\n")
+    se = se[:len(se)-1]
+    
+
+    pass
+
 
 # Reshaping function for labels
 def tile_reshape(train_lab, num_time_steps):

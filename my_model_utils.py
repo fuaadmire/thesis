@@ -101,6 +101,12 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
 
     if trainingdata == "liar":
         dev = [nltk.word_tokenize(i.lower()) for i in dev]
+    else:
+        dev = train[int(abs((len(train_lab)/3)*2))):]
+        dev = [nltk.word_tokenize(i.lower()) for i in dev]
+        dev_lab = train_lab[int(abs((len(train_lab)/3)*2))):]
+        train = train[:int(abs((len(train_lab)/3)*2)))]
+        train_lab = train_lab[:int(abs((len(train_lab)/3)*2)))]
 
 
     all_train_tokens = []
@@ -119,8 +125,8 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
 
     testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
 
-    if trainingdata == "liar":
-        devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+    #if trainingdata == "liar":
+    devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
 
     # PARAMETERS
     # vocab_size: number of tokens in vocabulary
@@ -137,8 +143,8 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
     seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
     print("train seq shape",seq.shape)
     test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
-    if trainingdata == "liar":
-        dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+    #if trainingdata == "liar":
+    dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 
 
 
@@ -147,14 +153,14 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
         train_lab = tile_reshape(train_lab, num_time_steps)
         test_lab = tile_reshape(test_lab, num_time_steps)
         print(train_lab.shape)
-        if trainingdata == "liar":
-            dev_lab = tile_reshape(dev_lab, num_time_steps)
+        #if trainingdata == "liar":
+        dev_lab = tile_reshape(dev_lab, num_time_steps)
     else:
         train_lab = to_categorical(train_lab, 2)
         test_lab = to_categorical(test_lab, 2)
         print(train_lab.shape)
-        if trainingdata == "liar":
-            dev_lab = to_categorical(dev_lab, 2)
+        #if trainingdata == "liar":
+        dev_lab = to_categorical(dev_lab, 2)
 
     print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
 
@@ -197,20 +203,20 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
     else:
         model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
     print("fitting model..")
-    if trainingdata == "liar":
-        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
-    else:
-        history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
+    #if trainingdata == "liar":
+    history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch, validation_data=(dev_seq,dev_lab))
+    #else:
+    #    history = model.fit({'input': seq}, train_lab, epochs=num_epochs, verbose=2, batch_size=num_batch)
     print("Testing...")
     test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
-    if trainingdata == "liar":
-        dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
+    #if trainingdata == "liar":
+    dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
 
     print("Test loss:", test_score[0])
     print("Test accuracy:", test_score[1])
-    if trainingdata == "liar":
-        print("Valid loss:", dev_score[0])
-        print("Valid accuracy:", dev_score[1])
+    #if trainingdata == "liar":
+    print("Valid loss:", dev_score[0])
+    print("Valid accuracy:", dev_score[1])
 
     if not TIMEDISTRIBUTED:
         preds = model.predict(test_seq)
@@ -222,10 +228,10 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
 
     model.summary()
 
-    if trainingdata=="liar":
-        return dev_score[1], history
-    else:
-        return test_score[1], history
+    #if trainingdata=="liar":
+    #    return dev_score[1], history
+    #else:
+    return test_score[1], dev_score[1], history
 
 
 
