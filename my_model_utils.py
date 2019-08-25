@@ -107,6 +107,7 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
         dev_lab = train_lab[int(abs((len(train_lab)/3)*2))):]
         train = train[:int(abs((len(train_lab)/3)*2)))]
         train_lab = train_lab[:int(abs((len(train_lab)/3)*2)))]
+        print(len(train), len(dev))
 
 
     all_train_tokens = []
