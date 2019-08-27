@@ -3,7 +3,7 @@ from scipy import stats
 import numpy as np
 
 Grades=[l.strip().split()[0] for l in open("data/proficiency_entire_docs.txt",'r').readlines()]
-M = np.genfromtxt("data/student_preds_softmax_entire_docs.txt", delimiter=' ',skip_header=0,)
+M = np.genfromtxt("data/old/student_preds_softmax_entire_docs.txt", delimiter=' ',skip_header=0)
 
 A,B=[],[]
 M_normed = M
@@ -22,6 +22,6 @@ for (a,b) in zip(A,B):
            A_.append(abs(a-prev_a))
            B_.append(b)
        even=True
-print(A_)
-print(B_)
+#print(A_)
+#print(B_)
 print("diff:"+str(stats.spearmanr(A_,B_)))

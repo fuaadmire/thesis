@@ -75,12 +75,29 @@ print("trainingdata=",trainingdata)
 
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+    num_cells = 32
+    num_epochs = 100
+    r_dropout = 0.4
+    dropout = 0.4
+    learning_rate = 0.00001
 elif trainingdata == "kaggle":
     train, test, train_lab, test_lab = load_kaggle_data(datapath)
+    num_cells = 64
+    num_epochs = 10
+    r_dropout = 0.2
+    dropout = 0.6
+    learning_rate = 0.001
 elif trainingdata == "FNC":
     train, test, train_lab, test_lab = load_FNC_data(datapath)
+
 elif trainingdata == "BS":
     train, test, train_lab, test_lab = load_BS_data(datapath)
+    num_cells = 256
+    num_epochs = 10
+    r_dropout = 0.4
+    dropout = 0.2
+    learning_rate = 0.0001
+
 
 train = [nltk.word_tokenize(i.lower()) for i in train]
 
@@ -117,18 +134,13 @@ if trainingdata == "liar":
 vocab_size = len(word2id)+1
 # max_doc_length: length of documents after padding (in Keras, the length of documents are usually padded to be of the same size)
 max_doc_length = 100 # LIAR 100 (like Wang), Kaggle 3391, FakeNewsCorpus 2669
-# num_cells: number of LSTM cells
-num_cells = 32 # for now, probably test best parameter through cross-validation
 # num_samples: number of training/testing data samples
 num_samples = len(train_lab)
 # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 num_time_steps = max_doc_length
 embedding_size = 300 # also just for now..
-num_epochs = 100
-num_batch = 64 # also find optimal through cross-validation
-r_dropout = 0.4
-dropout = 0.4
-learning_rate = 0.00001
+num_batch = 64
+
 
 
 # PREPARING DATA
@@ -204,7 +216,7 @@ model = Model(inputs=myInput, outputs=predictions)
 #    test_preds = model.predict(test_seq)
 #except:
 
-opt = opt = Adam(lr=learning_rate)
+opt = Adam(lr=learning_rate)
 
 if TIMEDISTRIBUTED:
     model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
@@ -244,6 +256,9 @@ else:
     model_path = trainingdata+'biLSTM_model'
 
 model.save(model_path+'.h5')
+
+d_write("words.dict", word2id)
+d_write("words.dict", {"PADDING": 0})
 
 
 
@@ -297,8 +312,8 @@ if TIMEDISTRIBUTED:
     hf_p.close()
 
     # dictionary
-    d_write("words.dict", word2id)
-    d_write("words.dict", {"PADDING": 0}) # add padding token to lstmvis dict
+    #d_write("words.dict", word2id)
+    #d_write("words.dict", {"PADDING": 0}) # add padding token to lstmvis dict
 
     # states
     model.layers.pop();
@@ -374,6 +389,9 @@ def test_on_learnerdata():
         print(len(test_preds))
         np.savetxt("student_preds_softmax_entire_docs.txt",test_preds)
 
+def test_on_TP():
+
+    pass
 
 def commons_testing(model_loaded, test, test_lab, identifier_string):
     test = [nltk.word_tokenize(i.lower()) for i in test]
