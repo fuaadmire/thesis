@@ -264,7 +264,12 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
 
     if trainingdata == "liar":
         dev = [nltk.word_tokenize(i.lower()) for i in dev]
-
+    else:
+        dev = train[int(abs((len(train_lab)/3)*2)):]
+        dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
+        train = train[:int(abs((len(train_lab)/3)*2))]
+        train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
+        print(len(train), len(dev))
 
     all_train_tokens = []
     for i in train:
@@ -282,8 +287,8 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
 
     testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
 
-    if trainingdata == "liar":
-        devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+    #if trainingdata == "liar":
+    devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
 
     # PARAMETERS
     # vocab_size: number of tokens in vocabulary
@@ -300,22 +305,22 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
     seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
     print("train seq shape",seq.shape)
     test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
-    if trainingdata == "liar":
-        dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+    #if trainingdata == "liar":
+    dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 
 
     if TIMEDISTRIBUTED:
         train_lab = tile_reshape(train_lab, num_time_steps)
         test_lab = tile_reshape(test_lab, num_time_steps)
         print(train_lab.shape)
-        if trainingdata == "liar":
-            dev_lab = tile_reshape(dev_lab, num_time_steps)
+        #if trainingdata == "liar":
+        dev_lab = tile_reshape(dev_lab, num_time_steps)
     else:
         train_lab = to_categorical(train_lab, 2)
         test_lab = to_categorical(test_lab, 2)
         print(train_lab.shape)
-        if trainingdata == "liar":
-            dev_lab = to_categorical(dev_lab, 2)
+        #if trainingdata == "liar":
+        dev_lab = to_categorical(dev_lab, 2)
 
 
 
@@ -333,10 +338,10 @@ def pre_modelling_stuff(TIMEDISTRIBUTED=False,
             if embedding_vector is not None:
                 embedding_matrix[i] = embedding_vector
 
-    if trainingdata=="liar":
-        return embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size
-    else:
-        return embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size
+    #if trainingdata=="liar":
+    return embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size
+    #else:
+    #    return embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size
 
 
 def lstm_model_only(seq,
@@ -394,14 +399,14 @@ def lstm_model_only(seq,
 def evaluting_model(model, trainingdata, TIMEDISTRIBUTED=False):
     print("Testing...")
     test_score = model.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
-    if trainingdata == "liar":
-        dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
+    #if trainingdata == "liar":
+    dev_score = model.evaluate(dev_seq, dev_lab, batch_size=num_batch, verbose=0)
 
     print("Test loss:", test_score[0])
     print("Test accuracy:", test_score[1])
-    if trainingdata == "liar":
-        print("Valid loss:", dev_score[0])
-        print("Valid accuracy:", dev_score[1])
+    #if trainingdata == "liar":
+    print("Valid loss:", dev_score[0])
+    print("Valid accuracy:", dev_score[1])
 
     if not TIMEDISTRIBUTED:
         preds = model.predict(test_seq)
@@ -412,9 +417,9 @@ def evaluting_model(model, trainingdata, TIMEDISTRIBUTED=False):
 
 
 def run_model_example(trainingdata):
-    if trainingdata=="liar":
-        embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
-        model, history = lstm_model_only(seq=seq,
+    #if trainingdata=="liar":
+    embedding_matrix, seq, test_seq, dev_seq, train_lab, test_lab, dev_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
+    model, history = lstm_model_only(seq=seq,
                                         test_seq=test_seq,
                                         train_lab=train_lab,
                                         test_lab=test_lab,
@@ -432,20 +437,3 @@ def run_model_example(trainingdata):
                                         dev_seq=dev_seq,
                                         dev_lab=dev_lab)
         evaluting_model(model, trainingdata)
-    else:
-        embedding_matrix, seq, test_seq, train_lab, test_lab, vocab_size = pre_modelling_stuff(TIMEDISTRIBUTED=False, trainingdata=trainingdata)
-        model, history = lstm_model_only(seq=seq,
-                                        test_seq=test_seq,
-                                        train_lab=train_lab,
-                                        test_lab=test_lab,
-                                        embedding_matrix=embedding_matrix,
-                                        vocab_size=vocab_size,
-                                        dropout=0.4,
-                                        r_dropout=0.4,
-                                        num_cells=32,
-                                        learning_rate=0.00001,
-                                        num_epochs=100,
-                                        trainingdata=trainingdata,
-                                        max_doc_length=100,
-                                        embedding_size=300,
-                                        TIMEDISTRIBUTED=False)
