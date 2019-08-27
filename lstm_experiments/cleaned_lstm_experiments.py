@@ -60,7 +60,7 @@ print(datetime.now())
 
 
 
-datapath = "/home/ktj250/thesis/data/"
+datapath = "/Users/Terne/Documents/KU/Speciale/thesis/data/"#"/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
 TIMEDISTRIBUTED = False
@@ -172,7 +172,8 @@ print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples
 if use_pretrained_embeddings:
     # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
     # Load Google's pre-trained Word2Vec model.
-    model = gensim.models.KeyedVectors.load_word2vec_format('/home/ktj250/thesis/GoogleNews-vectors-negative300.bin', binary=True)
+    # /home/ktj250/thesis/
+    model = gensim.models.KeyedVectors.load_word2vec_format('/Users/Terne/Documents/KU/Speciale/thesis/GoogleNews-vectors-negative300.bin', binary=True)
 
     embedding_matrix = np.zeros((len(word2id) + 1, 300))
     for word, i in word2id.items():
@@ -402,6 +403,8 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
     else:
         test_lab = to_categorical(test_lab, 2)
     preds = model.predict(test_seq)
+    prediction = pd.DataFrame(list(zip(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), [" ".join(i[:100]) for i in test])), columns=['label','prediction','text']).to_csv(identifier_string+'_prediction.csv')
+
     accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
     print("accuracy:", accuracy)
     f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
