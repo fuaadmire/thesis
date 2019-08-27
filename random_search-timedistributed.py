@@ -131,3 +131,6 @@ if TIMEDISTRIBUTED:
         accuracy = create_model(num_cells, dropout, r_dropout, learning_rate, epochs, seq, train_lab, dev_seq, dev_lab, vocab_size, embedding_size,max_doc_length)
         print(accuracy)
         accuracies.append(accuracy)
+
+for i,j in zip(accuracies, params):
+    print(i,j)

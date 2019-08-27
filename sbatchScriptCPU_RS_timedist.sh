@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=time_rs
-#SBATCH --ntasks=1 --cpus-per-task=12 --mem=9000M
-#SBATCH --time=2-00:00:00
+#SBATCH --ntasks=1 --cpus-per-task=12 --mem=6000M
+#SBATCH -p gpu --gres=gpu:titanx:1
+#SBATCH --time=12:00:00
 
 echo $CUDA_VISIBLE_DEVICES
-python3 random_search-timedistributed.py "liar"
+python3 random_search-timedistributed.py "kaggle"
