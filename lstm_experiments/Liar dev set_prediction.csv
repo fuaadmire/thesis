@@ -11,14 +11,14 @@
 9,0,1,bill white has a long history of trying to limit or even disenfranchise military voters .
 10,0,1,john mccains chief economic adviser during the 08 race estimated that trumps promises would cause america to lose 3.5 million jobs .
 11,1,1,"says 21,000 wisconsin residents got jobs in 2011 , but 18,000 of them were in other states ."
-12,0,0,state revenue projections have missed the mark month after month .
+12,0,1,state revenue projections have missed the mark month after month .
 13,0,1,"the median income of a middle class family went down $ 2,100 from 2001 to 2007 ."
 14,1,1,"every citizen is entitled to the freedom of speech , but no one should have the right to use government funds or institutions to portray acts that are morally reprehensible to the vast majority of americans ."
-15,0,0,"rick perry has advocated abandoning social security , scuttling medicaid and ending the federal income tax ."
+15,0,1,"rick perry has advocated abandoning social security , scuttling medicaid and ending the federal income tax ."
 16,0,1,two thirds to three quarters of people without [ health ] insurance in rhode island work .
 17,0,1,congress has spent 66 of the first 100 days of this term in recess .
 18,1,1,mark sharpe has lowered property taxes by 17 percent .
-19,1,0,says iowa gov . terry branstad chartered a plane to remove 124 young illegal immigrants from his state and take them back to honduras .
+19,1,1,says iowa gov . terry branstad chartered a plane to remove 124 young illegal immigrants from his state and take them back to honduras .
 20,0,1,"if you dont buy cigarettes at your local supermarket , your grocery bill wont go up a dime . the same is true of the sugary drink tax . if passed , you can avoid paying the tax by not buying sugary drinks ."
 21,1,1,says president barack obama has said that everybody should hate the police .
 22,0,1,georgia has had ʺmore bank failures than any other state.ʺ
@@ -26,7 +26,7 @@
 24,0,1,thom tillis cut almost $ 500 million from education .
 25,1,1,"if people work and make more money , they lose more in benefits than they would earn in salary ."
 26,0,1,"we are poised to get rid of over 1,000 more regulations in 2012 ."
-27,1,0,a flight from atlanta to houston was canceled due to a terrorist dry run .
+27,1,1,a flight from atlanta to houston was canceled due to a terrorist dry run .
 28,0,1,"administrative employees at colleges and universitieshave more than doubled over the last 25 years , outpacing the growth of students by more than 2 to 1 ."
 29,1,1,private prison systems are calculating how many new beds ( they will need ) based on the ... number of third graders .
 30,1,1,amendment 1 protects florida seniors from scams and rip-offs .
@@ -37,7 +37,7 @@
 35,0,1,"worldwide credit card transactions , the credit card fraud rate is 0.04 percent , compared to almost 8 percent , 9 percent , 10 percent of medicare fraud ."
 36,0,1,"in the month of january , canada created more new jobs than we did ."
 37,0,1,"under his leadership , more people in wisconsin have access to health care ."
-38,1,0,"charlie crist attacks me for positions he held , like , six months ago , ( when ) he was running in the republican primary ."
+38,1,1,"charlie crist attacks me for positions he held , like , six months ago , ( when ) he was running in the republican primary ."
 39,0,1,says donald trumps only economic agenda is imposing massive taxes on the american people with a 40 percent tax hike of a giant tariff .
 40,0,1,the loan guarantee program that helped solyndra was a program that was supported by president bush .
 41,1,1,says president obama just granted all of congress an exception to obamacare .
@@ -48,15 +48,15 @@
 46,0,1,"because of the steps we took , there are about 2 million americans working right now who would otherwise be unemployed ."
 47,0,1,"says that in 2009 , i saved ratepayers around $ 500 million by persuading the council to pursue a less expensive compliance mechanism if the city is required to treat bull run drinking water ."
 48,0,1,"the military has spent $ 500 million enforcing the dont ask , dont tell policy regarding gays and lesbians in the military ."
-49,0,0,"were . . . keeping and creating jobs in our state . from american greetings , to wendys , to diebold , weve gone to their doorsteps to keep jobs right here in ohio ."
-50,1,0,"obama for president and baldwin for senate have kept their campaign offices up and running in fox valley , eau claire and la crosse with their staffs preparing for the next battle ."
+49,0,1,"were . . . keeping and creating jobs in our state . from american greetings , to wendys , to diebold , weve gone to their doorsteps to keep jobs right here in ohio ."
+50,1,1,"obama for president and baldwin for senate have kept their campaign offices up and running in fox valley , eau claire and la crosse with their staffs preparing for the next battle ."
 51,0,1,"from 2003 to 2006 , sesame street made more than $ 211 million from toy and consumer product sales ."
-52,0,0,"( john ) kasich was the architect who balanced the budget , cut spending , created a surplus , igniting record job creation ."
+52,0,1,"( john ) kasich was the architect who balanced the budget , cut spending , created a surplus , igniting record job creation ."
 53,1,1,"the federal government is going after school districts , trying to force them to let boys shower with little girls ."
 54,0,1,says that president obama said in 2008 that his proposed greenhouse gas regulations will bankrupt anyone who wants to build a new coal-fired power plant .
 55,0,1,there has been $ 5 trillion in debt added over the last four years .
-56,0,0,"says that under gov . rick perry , texas department of public safety troopers have had standing orders not to inquire into the immigration status of people unless theyre under arrest ."
-57,1,1,"( dennis ) richardson wants to make drastic cuts to services we depend on : schools , home care for seniors , even public safety -- all so richardson can keep more than $ 440 million in unspent funds for his political priorities ."
+56,0,1,"says that under gov . rick perry , texas department of public safety troopers have had standing orders not to inquire into the immigration status of people unless theyre under arrest ."
+57,1,0,"( dennis ) richardson wants to make drastic cuts to services we depend on : schools , home care for seniors , even public safety -- all so richardson can keep more than $ 440 million in unspent funds for his political priorities ."
 58,1,1,"nobody covered the remarks of patricia smith , the mother of a benghazi victim , live , but almost everybody covered khizrkhans , mr. khans remarks live ."
 59,0,1,the cost of the food stamp program is at an all-time high .
 60,0,1,says opponent mary burke says she supports obamacare unequivocally and wants to expand it .
@@ -77,7 +77,7 @@
 75,1,1,we spend more money on antacids than we do on politics .
 76,0,1,mitt romney has proposed cutting his own taxes while raising them on 18 million working families .
 77,1,1,social security is a ponzi scheme .
-78,0,0,says pennsylvania charges a top income tax rate of 3 percent and delaware has no state income tax at all .
+78,0,1,says pennsylvania charges a top income tax rate of 3 percent and delaware has no state income tax at all .
 79,0,1,jeff greene can buy anything ... he owns two mansions .
 80,1,1,says elizabeth warren lied when she says i want to abolish the federal minimum wage .
 81,1,1,obama says his health care plan is `` universal . ''
@@ -94,13 +94,13 @@
 92,0,1,the dollar has fallen over 44 % since bernanke began pumping money into the system beginning back in 2002 .
 93,0,1,congress will begin its recess without having allocated one penny to fight zika .
 94,1,1,i am the only candidate on either side who has laid out a specific plan about what i would do to defeat isis .
-95,1,0,the new health care law will cut $ 500 billion from medicare . that will hurt the quality of our care .
+95,1,1,the new health care law will cut $ 500 billion from medicare . that will hurt the quality of our care .
 96,1,1,president obama once said he wants everybody in america to go to college .
 97,1,1,"before this law , any group could go out anywhere , register voters , sit on the voter registration forms for unlimited amount of time ."
 98,1,1,the results of atlanta public schools 2010 and 2011 crct tests have not been questioned .
 99,1,1,ed gillespie would not mention ( donald trumps ) name unless he was condemning him .
 100,1,1,"the delay inschool testingwas not that of a vendor , the problem was not that of the test materials itself , it was the product of a cyber attack ."
-101,0,0,"democrats already agreed to a deal that republicans wanted , that eric cantor said would be a win ."
+101,0,1,"democrats already agreed to a deal that republicans wanted , that eric cantor said would be a win ."
 102,1,1,one of the main functions of the department of homeland securitys save database is checking voter registration citizenship status .
 103,0,1,"eight of the nine justices in the supreme court decision ( on campaign finance ) said that not only is it constitutional for congress to require disclosure of the special interest money , but they recommend we do it ."
 104,0,1,"the reality is , we are holding some of the most dangerous terrorists in the world right now in our federal prisons , including the mastermind of the 1993 world trade center bombing , the 'shoe bomber , ' the 'unabomber , ' and many others ."
@@ -112,16 +112,16 @@
 110,0,1,"when i was governor , not only did test scores improve we also narrowed the achievement gap ."
 111,0,1,georgia is nearly 50 percent democratic and ( the republican majority ) diminished our voting strength to 32 percent through gerrymandered maps .
 112,0,1,says a republican hasnt won [ an election ] for a presidency in new jersey since 1988 .
-113,0,0,"40 percent of illegal immigrants had a visa and then became illegal , mostly because they changed jobs ."
+113,0,1,"40 percent of illegal immigrants had a visa and then became illegal , mostly because they changed jobs ."
 114,0,1,says ted cruz slurred republican senators including john cornyn as graybeards and spineless jellyfish .
 115,1,1,says mary landrieu voted to fund benefits for illegal immigrants ahead of veterans .
-116,0,0,"despite having their budget increased by over 40 percent since 2009 pending claims for benefits with the ( department of veterans affairs ) have increased from 391,000 to 890,000 under the obama administration ."
+116,0,1,"despite having their budget increased by over 40 percent since 2009 pending claims for benefits with the ( department of veterans affairs ) have increased from 391,000 to 890,000 under the obama administration ."
 117,1,1,"u.s. rep. john barrow , d-ga. , does not want to audit the federal reserve ."
 118,1,1,this unit is the only one in the state that strives to implement the principles of mother-friendly care as outlined by the national coalition for improving maternity services mother-friendly childbirth initiative .
 119,0,1,i am going to be on the ballot in all 50 states . there is no other third-party candidate thats going to come close to achieving that .
 120,0,1,"after world war ii , we tried , convicted , and , in some cases , executed japanese soldiers for war crimes that included charges of waterboarding ."
 121,1,1,says gov . scott walker approved a gutting of two tax credits that help the poor and elderly .
-122,0,0,ken bucks ( district attorneys ) office ? his spending skyrocketed by 40 percent .
+122,0,1,ken bucks ( district attorneys ) office ? his spending skyrocketed by 40 percent .
 123,1,1,"the photonics bill that was sponsored in congress and written , was written by congressman tom reed , not congresswoman louise slaughter ."
 124,0,1,mccain `` said he was 'stumped ' when asked whether contraceptives help stop the spread of hiv . ''
 125,1,1,says most texas schools spend 45 out of 180 school days in mandated testing .
@@ -134,7 +134,7 @@
 132,0,1,"mitt romney is proposing a tax plan that would give millionaires another tax break and raises taxes on middle class families by up to $ 2,000 a year ."
 133,0,1,there have been three people tried and convicted by the last administration in military courts . two are walking the street right now .
 134,1,1,medicare insurance premiums will be rising to $ 120.20 per month in 2013 and $ 247.00 per month in 2014 .
-135,0,0,the ncaa will get billions from the mens basketball tournament . players get a trophy .
+135,0,1,the ncaa will get billions from the mens basketball tournament . players get a trophy .
 136,0,1,the budget currently being debated significantly decreases the use of one-time resources .
 137,1,1,damage by protesters to the wisconsin state capitol will cost $ 7.5 million to repair .
 138,0,1,americans work way more than an average of industrialized countries around the world .
@@ -144,7 +144,7 @@
 142,1,1,a monthly police and fire protection fee on all wisconsin phone bills does nothing to support police and fire .
 143,1,1,illegal immigration wasnt a subject that was on anybodys mind until i brought it up at my announcement .
 144,0,1,one man opposed a flawed strategy in iraq . one man had the courage to call for change . one man did n't play politics with the truth .
-145,0,0,i never had a filibuster-proof senate .
+145,0,1,i never had a filibuster-proof senate .
 146,1,1,pregnant women who stand for five to six hours at a time increase their risk of pre-term pregnancy by 80 percent .
 147,0,1,"says 100,000 are on waiting list to attend texas charter schools ."
 148,0,1,the new ukrainian government introduced a law abolishing the use of languages other than ukrainian in official circumstances .
@@ -161,8 +161,8 @@
 159,0,1,the georgia department of education has implemented a new policy beginning in august that states that public schools will no longer accept credits from home school entities or non-traditional education centers .
 160,1,1,"says its not possible for some wisconsin residents to watch packers games , theyre forced to watch viking games , so he got a law passed to fix the problem ."
 161,1,1,"democratic sens . ed markey , al franken and jeanne shaheen took bribes from iran they back insane nuke deal ."
-162,1,0,president barack obamas latest executive order mandates the apprehension and detention of americans who merely show signs of respiratory illness .
-163,0,0,the milwaukee county sheriffs department plays only a limited role as a traditional law enforcement agency and in 2009 reported far fewer crimes to the fbi than the university of wisconsin-milwaukee police did .
+162,1,1,president barack obamas latest executive order mandates the apprehension and detention of americans who merely show signs of respiratory illness .
+163,0,1,the milwaukee county sheriffs department plays only a limited role as a traditional law enforcement agency and in 2009 reported far fewer crimes to the fbi than the university of wisconsin-milwaukee police did .
 164,1,1,obama makes huge move to ban social security recipients from owning guns
 165,1,1,i never supported a state income tax for texas .
 166,0,1,"unlike virtually every other campaign , we dont have a super pac ."
@@ -176,7 +176,7 @@
 174,1,1,the irs scandal clearly showed some criminal behavior .
 175,0,1,tsa will accept drivers priv cards for id at the airport
 176,0,1,"forty percent of people in this country , illegally , are overstaying visas ."
-177,0,0,says lee fisher wanted a $ 1.1 billion tax increase which could have driven countless jobs out of state .
+177,0,1,says lee fisher wanted a $ 1.1 billion tax increase which could have driven countless jobs out of state .
 178,1,1,scientists project that the arctic will be ice-free in the summer of 2013 .
 179,0,1,ilana shafran mandels stake in forest city enterprises constitutes significantly less than 1 percent of the companys shares and any implication of a conflict of interest is legally incorrect .
 180,1,1,"when white house communications director anita dunn said that mao tse-tung was one of her favorite philosophers , only fox news picked that up ."
@@ -185,11 +185,11 @@
 183,1,1,"the number of illegal immigrants in the united states is 30 million , it could be 34 million ."
 184,1,1,you can not build a little guy up by tearing a big guy down -- abraham lincoln said it .
 185,1,1,"last year , beaverton school district had the highest number of homeless students ever recorded in oregon ."
-186,0,0,the state budget has increased almost $ 800 million a year in each of the last two years .
+186,0,1,the state budget has increased almost $ 800 million a year in each of the last two years .
 187,0,1,"in the past 10 years , our ( austin ) water rates have increased by 100 percent and we now have the highest water cost of the top 10 cities in texas ."
 188,0,1,"says in this next biennium , the cost of primary and secondary education is going to increase by more that $ 1000 per student . half of that $ 1000 $ 500 per student is accounted for by the increased cost of pers alone ."
 189,0,1,says hillary clinton is the one that labeled african-american youth as superpredators .
-190,1,0,"the insurance companies are making that choice ( to cancel or change policies ) , not the president ."
+190,1,1,"the insurance companies are making that choice ( to cancel or change policies ) , not the president ."
 191,1,1,"ezekiel emanuel , one of president obama 's key health care advisers , says medical care should be reserved for the nondisabled . so watch out if you 're disabled ."
 192,1,1,on whether state employees should contribute to their pensions .
 193,1,1,ukraine was a nuclear-armed state . they gave away their nuclear arms with the understanding that we would protect them .
@@ -215,7 +215,7 @@
 213,1,1,the georgia legislatures last day of session ends at midnight .
 214,1,1,"the brutal fact is , when it comes to education , america is slipping behind other nations ."
 215,1,1,i always supported civil unions .
-216,1,0,"because gov . chris christie vetoed a 30-bill job creation package , new jersey ranks 50th in the nation in job creation ."
+216,1,1,"because gov . chris christie vetoed a 30-bill job creation package , new jersey ranks 50th in the nation in job creation ."
 217,1,1,a poll taken a few months ago found 70 percent approval or higher for the act 10 collective bargaining law .
 218,1,1,sherrod brown gave huge bonuses to executives .
 219,1,1,unfortunately everyone needs to cut back in these tough economic times . thats why i voted to cut my own pay along with the pay of our state employees .
@@ -226,7 +226,7 @@
 224,0,1,kasim reed has kept every promise he made as a candidate .
 225,1,1,wisconsins laws ranked the worst in the world for mining investment .
 226,0,1,more people now die in wisconsin from drug overdoses than car crashes .
-227,0,0,"in connecticut and new york , students at achievement first schools consistently outperform city and statewide averages ."
+227,0,1,"in connecticut and new york , students at achievement first schools consistently outperform city and statewide averages ."
 228,1,1,"rick scotts prison plan would cut floridas prison budget in half , close prisons , and release tens of thousands of prisoners early -- murderers , rapists , sex offenders , armed robbers , drug dealers ."
 229,1,1,obama 's one education accomplishment was `` legislation to teach 'comprehensive sex education ' to kindergartners . ''
 230,1,1,"forcing americans off of their current health coverage and onto a government-run plan is n't the answer , but that 's exactly what the democrats ' plan would do ."
@@ -237,7 +237,7 @@
 235,0,1,marcy kaptur voted against a ban which would have prevented the aborting of a baby girl for the sole reason that shes a girl .
 236,1,1,the health care compact bill would end medicares guaranteed benefit for tennessees medicare recipients and shift management of the federal health care plan to the states tenncare program .
 237,0,1,"barack obama supported keeping troops in iraq , but now he wants a `` precipitous withdrawal '' regardless of `` conditions on the ground '' or `` consequences of a defeat for the united states , '' an rnc radio ad ."
-238,0,0,"when mitt romney was governor , massachusetts lost 40,000 manufacturing jobs , a rate twice the national average , and fell to 47th in job creation , fourth from the bottom ."
+238,0,1,"when mitt romney was governor , massachusetts lost 40,000 manufacturing jobs , a rate twice the national average , and fell to 47th in job creation , fourth from the bottom ."
 239,0,1,barack obama is only the second democrat in the last 75 years to win ohio twice with more than 50 percent of the vote .
 240,1,1,isis is going to people showing videos of donald trump insulting islam and muslims in order to recruit more radical jihadists .
 241,0,1,the musical mamma mia ! has `` been selling out for years . ''
@@ -252,8 +252,8 @@
 250,1,1,"every time the weight of that vehicle is reduced by a hundred pounds , your chances of dying are going to go up by about 5 percent . peel three hundred pounds off youre 15 percent more likely to die in that car ."
 251,0,1,says hesso bipartisan that 12 of my bills were signed into law by democratic president bill clinton .
 252,0,1,i still live in the same working-class neighborhood i grew up in .
-253,1,0,"im running against a groundhog . he saw his shadow on the primary day , and no one has seen him since ."
-254,0,0,"says british voters under 50 , especially millennials , overwhelmingly voted to stay , in the european union . it was older voters who voted to leave ."
+253,1,1,"im running against a groundhog . he saw his shadow on the primary day , and no one has seen him since ."
+254,0,1,"says british voters under 50 , especially millennials , overwhelmingly voted to stay , in the european union . it was older voters who voted to leave ."
 255,1,1,fundamental changes made to the language describing the wisconsin idea in the university of wisconsin systems mission statement were the result of a drafting error .
 256,1,1,financed the largest parking expansion program without a rate increase .
 257,1,1,"says jeb bush and marco rubio had it set so that the winner takes everything , because they wanted to make sure that i didnt get anything in the florida primary ."
@@ -262,18 +262,18 @@
 260,0,1,"on medicare for current retirees , hes cutting $ 716 billion from the program ."
 261,0,1,sen. marco rubio refuses to accept the basic science on climate change and is a climate change denier .
 262,1,1,there are 10 or 20 deaths a year from foodborne illness in the united states .
-263,0,0,"says when republicans took over the state legislature in 2010 , new hampshires tax rate for employers was 50th in the nation , and unemployment had more than doubled under democrats ."
+263,0,1,"says when republicans took over the state legislature in 2010 , new hampshires tax rate for employers was 50th in the nation , and unemployment had more than doubled under democrats ."
 264,1,1,about 1 in 10 public school teachers in wisconsin would have been laid off without federal stimulus funds .
 265,1,1,cnn accidentally aired 30 minutes of pornography in boston on thanksgiving night .
-266,0,1,"bill mccollum voted four times to raise his own pay , by a total of $ 51,000 , and earns a congressional pension worth more than $ 75,000 a year ."
+266,0,0,"bill mccollum voted four times to raise his own pay , by a total of $ 51,000 , and earns a congressional pension worth more than $ 75,000 a year ."
 267,1,1,"the signers of the declaration of independence were `` brave people , most of whom , by the way , were clergymen . ''"
-268,1,0,"says donna campbell is pushing a 35 percent sales tax extending to medicine , groceries and real estate ."
+268,1,1,"says donna campbell is pushing a 35 percent sales tax extending to medicine , groceries and real estate ."
 269,0,1,over 40 percent of children born in america are born out of wedlock .
 270,0,1,we 're borrowing money from china and saudi arabia `` to finance this war '' in iraq .
 271,1,1,"says that in his first two years , wisconsin has seen its best two-year job growth in a decade ."
 272,1,1,"in 45 out of 50 states , on average men are seeing their premiums double , going up 99 percent . women up 62 percent ."
 273,0,1,georgia is the second-fastest growing state for international tourists .
-274,0,0,"when i left the senate , we were on a trajectory towards a balanced budget ."
+274,0,1,"when i left the senate , we were on a trajectory towards a balanced budget ."
 275,0,1,"guess what , governor ? theres no fried butter in newark . just 13 percent unemployment ."
 276,0,1,says republican-approved changes to make it more difficult to participate in ohio elections include reducing in-person early voting from 35 days to six .
 277,1,1,high-speed rail would have cost florida taxpayers $ 1 billion to build .
@@ -296,30 +296,30 @@
 294,1,1,"in florida , theyre already talking about how the ryan-romney plan will end medicare and replace it with a voucher ."
 295,0,1,i opposed the only multilateral trade deal that came before the senate while i was there .
 296,1,1,says ohios issue 2 will create a redistricting commission that will have a blank check to spend our money .
-297,0,0,"andrew jackson was the last president who actually balanced the federal budget , where we had no national debt ."
+297,0,1,"andrew jackson was the last president who actually balanced the federal budget , where we had no national debt ."
 298,0,1,sarah palin endorsed a wasilla policy that charged sexual assault victims for their `` rape kits . ''
 299,0,1,one-third of our college grads leave ohio within three years .
-300,1,0,says gwen graham was a washington lobbyist .
+300,1,1,says gwen graham was a washington lobbyist .
 301,0,1,theres no data that says a gun-free zone has saved lives .
 302,1,1,"on support for trade promotion authority , calledfast-track"
-303,1,0,republicans have already cut our neighborhood public schools three budgets in a row .
+303,1,1,republicans have already cut our neighborhood public schools three budgets in a row .
 304,1,1,says david jolly lobbied for government-run health care just last year .
 305,1,1,"the chilean privatization scheme that sharron angle supports has resulted in hidden fees , fewer benefits , and millions of people with no coverage ."
 306,0,1,"the dolphins stadium renovation will create more than 4,000 new local jobs ."
-307,0,1,says the state budget doubled property tax credits for seniors and middle class new jerseyans and had no tax increases for any new jersey family for the second year in a row .
+307,0,0,says the state budget doubled property tax credits for seniors and middle class new jerseyans and had no tax increases for any new jersey family for the second year in a row .
 308,0,1,"in june 2012 we actually had more people go on social security disability [ 85,000 ] ... than the 80,000 jobs that were created ."
-309,0,0,"between june 30 and july 10 , cnn interviewed 17 israeli public officials versus onepalestinian official ."
+309,0,1,"between june 30 and july 10 , cnn interviewed 17 israeli public officials versus onepalestinian official ."
 310,0,1,the poverty rates in america today arent much better than when we started the war on poverty .
 311,0,1,says his sons were targeted on facebook by out-of-state protesters .
 312,0,1,"the republican who was just elected governor of the great state of florida paid his campaign staffers , not with money , but with american express gift cards ."
-313,1,0,marco rubio tried to insert $ 1.5 million for a rowing institute into the state budget .
+313,1,1,marco rubio tried to insert $ 1.5 million for a rowing institute into the state budget .
 314,0,1,"up until recently , 75 percent of all the sorties that left the base came back without dropping their ordnances , because there was such a concern about making sure that there were no civilian casualties ."
 315,0,1,there is not a single documented case of abuse of the bulk metadata collectionprogram .
 316,1,1,"because of obamacare , you have so many part-time jobs ."
 317,0,1,"the confederate battle flag at the south carolina statehouse must fly at a height of 30 feet . any changes -- taken down , or even at half-staff , if that can be done -- must be passed by a supermajority of the general assembly ."
 318,1,1,every worker pays 15.3 percent payroll tax .
-319,0,0,"the walton family , which owns wal-mart , controls a fortune equal to the wealth of the bottom 42 percent of americans combined ."
-320,1,0,president obama pushed through the stimulus based on the promise of keeping unemployment under 8 percent .
+319,0,1,"the walton family , which owns wal-mart , controls a fortune equal to the wealth of the bottom 42 percent of americans combined ."
+320,1,1,president obama pushed through the stimulus based on the promise of keeping unemployment under 8 percent .
 321,1,1,ed gillespie supports a personhood amendment .
 322,1,1,( bill ) ayers and obama ran a radical education foundation together .
 323,0,1,president obama is shrinking our military .
@@ -341,17 +341,17 @@
 339,1,1,says his plan to end the toll on ga. 400 fulfills his campaign promise to commuters .
 340,0,1,"you know , when this thing first hit , i signed a declaration of emergency for the six counties that were directly affected , impacted in the panhandle , then i extended that not long thereafter down into sarasota county ."
 341,1,1,says mark pryor voted to give social security benefits to illegal immigrants .
-342,0,0,"says the central health districts tax rate is the lowest among the largest counties in texas , and it will continue to be the lowest if voters approve a proposed tax increase ."
+342,0,1,"says the central health districts tax rate is the lowest among the largest counties in texas , and it will continue to be the lowest if voters approve a proposed tax increase ."
 343,0,1,the austin tea party and an ultra-conservative millionaire are behind the campaign against the citys light-rail proposition .
 344,1,1,"under current u.s. immigration policy , literally one person with a green card can , in the extreme , bring in more than 270 of his relatives ."
 345,1,1,"obama says america is great , but let 's `` try to change it . ''"
 346,0,1,only 20 colleges and universities have athletic departments with revenue exceeding expenses .
-347,1,0,the city of charlotte passed a bathroom ordinance mandate on every private-sector employer in charlotte .
+347,1,1,the city of charlotte passed a bathroom ordinance mandate on every private-sector employer in charlotte .
 348,1,1,medicare is going broke . the trust fund goes bankrupt in 2026 .
 349,0,1,the clintons foundation took millions from foreign governments including united arab emirates and saudi arabia .
-350,0,0,"rick perry was the ( campaign ) chairman for al gore at one time , not too many years ago ."
-351,1,0,my husband and i have never gotten a penny of money from the farm .
-352,1,0,the health care law adds around $ 800 billion of taxes on the american people . it does not discriminate between rich and poor .
+350,0,1,"rick perry was the ( campaign ) chairman for al gore at one time , not too many years ago ."
+351,1,1,my husband and i have never gotten a penny of money from the farm .
+352,1,1,the health care law adds around $ 800 billion of taxes on the american people . it does not discriminate between rich and poor .
 353,1,1,says obama policies contributed to gas prices rising from $ 1.89 in january 2009 to $ 3.51 today .
 354,0,1,u.s. rep. alan grayson `` compared a former vice president to a vampire ... and compared america 's health care system to the holocaust . ''
 355,1,1,"back in the great recession , when millions of jobs across america hung in the balance , donald trump said rescuing the auto industry didnt really matter very much . he said , and i quote again , let it go ."
@@ -365,35 +365,35 @@
 363,0,1,says donald trump has the gall to say that prisoners of war like john mccain arent heroes .
 364,0,1,"this is the first time in our state , and one of the first times in the country , where benefit reductions . . . has happened to people who are retired ."
 365,0,1,"access for 12,000 women to use planned parenthood -- not for the right to choose , but for basic health care -- was taken away by wisconsin gov . scott walker and lt. gov . rebecca kleefisch ."
-366,1,0,says mark warner told politifact nationals lie of the year in 2013 .
+366,1,1,says mark warner told politifact nationals lie of the year in 2013 .
 367,1,1,there was serious voter fraud in california .
-368,0,1,"the house-passed budget proposal could cut funding for programs that help keep local neighborhoods safe , slash more than $ 1.7 million in anti-terror funds for ohio ."
-369,1,0,"says when rhode island lottery was proposed , state residents were enticed to vote for it with the promise that the money would be used for education ."
+368,0,0,"the house-passed budget proposal could cut funding for programs that help keep local neighborhoods safe , slash more than $ 1.7 million in anti-terror funds for ohio ."
+369,1,1,"says when rhode island lottery was proposed , state residents were enticed to vote for it with the promise that the money would be used for education ."
 370,0,1,cbo reports that delaying the obamacare individual mandate will reduce the deficit by $ 35 billion over ten years .
 371,1,1,voted the best specialty plate in america
 372,1,1,we dont allow filming inside of the city hall unless there is a specific reason .
-373,1,0,"says democrats racked up a $ 1 billion state deficit , while republicans under bill obrien balanced the budget ."
+373,1,1,"says democrats racked up a $ 1 billion state deficit , while republicans under bill obrien balanced the budget ."
 374,0,1,"the iaea , or the international atomic energy agency , last month said the iranians are not currently living up to their obligations ."
 375,0,1,says matt wand has sided with anti-choice activists to restrict access to reproductive health care services .
 376,0,1,"under president barack obama , weve got the lowest labor force participation in over three decades , since 1978 ."
 377,0,1,ohios electricity rates are 10 percent below the national average .
 378,0,1,"in the last 50 years , ( the federal government has ) only balanced the budget five times ."
 379,0,1,weve seen six months of positive job growth by the private sector .
-380,0,0,"gov . pence said , inarguably , vladimir putin is a better leader than president obama ."
-381,1,0,"when i left washington , we had a $ 5 trillion surplus ."
+380,0,1,"gov . pence said , inarguably , vladimir putin is a better leader than president obama ."
+381,1,1,"when i left washington , we had a $ 5 trillion surplus ."
 382,1,1,"when my grandfather came to this country back in 1925 , there were no government benefits ."
 383,0,1,"says , i-205 , six miles of which runs through my district , already carries more traffic than i-5 ."
 384,0,1,i had the lowest net worth of any american president in the 20th century when i took office .
 385,0,1,and he 's the only candidate who will fight for a national catastrophe fund to reduce insurance rates .
-386,0,1,all of liberia can produce less than one-third as much electricity as the dallas cowboys football stadium consumes at peak times .
+386,0,0,all of liberia can produce less than one-third as much electricity as the dallas cowboys football stadium consumes at peak times .
 387,1,1,the last major oil spill from a drilling accident in america happened over 40 years ago in 1969 .
 388,0,1,were borrowing 20 % of ( the federal ) budget .
-389,1,0,the medicaid expansion is going to cost florida $ 1.9 billion a year .
+389,1,1,the medicaid expansion is going to cost florida $ 1.9 billion a year .
 390,0,1,"between the year 2000 and 2006 , ( insurance ) premiums in this country doubled ."
 391,0,1,says rand paul denied that he put forward a bill ... to zero out foreign aid and specifically spoke about israel .
 392,1,1,there is long historical precedent for a supreme court with fewer justices .
 393,0,1,( george ) lemieux never requested a single earmark and pushed to ban them all .
-394,1,0,"you know what truman said , you want a friend in washington , buy a dog ."
+394,1,1,"you know what truman said , you want a friend in washington , buy a dog ."
 395,0,1,milwaukee county government employees pay much more for their health care than city of milwaukee or state of wisconsin employees .
 396,0,1,because as a senator toomey stood up for wall street . he wanted to privatize social security and invest it in the stock market . wall street would make billions in fees even if the stock market crashed .
 397,1,1,it 's `` common knowledge '' that al-qaida is receiving training from iran .
@@ -417,7 +417,7 @@
 415,1,1,"most of the stimulus money will be spent not this year , not next year , but in 2011 ."
 416,1,1,holly turner ... still takes her homestead ( property tax ) exemption in fort worth .
 417,0,1,mercedes-benz usa moving its headquarters to atlanta will create at least 800 jobs .
-418,1,0,fast and furious began under the bush administration .
+418,1,1,fast and furious began under the bush administration .
 419,0,1,"says 80 percent of north carolinians support the concept that men should not be in womens restrooms , changing rooms , bathrooms , etc ."
 420,1,1,"says alaska sen. mark begich is on record supporting a carbon tax , even pushing harry reid to make it a priority ."
 421,0,1,georgia had the worst job losses in state history under gop watch .
@@ -428,7 +428,7 @@
 426,1,1,"says barack obama endorsed a total ban on the manufacture , sale and possession of all handguns ."
 427,1,1,75 percent of the obamacare tax falls on the middle class .
 428,1,1,hartsfield-jacksons new international terminal is opening within budget .
-429,0,0,says 92 percent of texas counties had no abortion provider in 2008 .
+429,0,1,says 92 percent of texas counties had no abortion provider in 2008 .
 430,1,1,"by advocating new requirements for voters to show id cards at the polls , republicans want to literally drag us all the way back to jim crow laws ."
 431,0,1,the united states is borrowing more than 40 cents of every dollar we spend .
 432,1,1,says charlie bass forfeits right to equal cost for tv ads under fcc rules
@@ -439,20 +439,20 @@
 437,0,1,more black babies are aborted in nyc than born .
 438,1,1,martin luther king jr. was a republican .
 439,1,1,says the states rainy day fund is our insurance policy against a major natural disaster .
-440,1,0,"there comes a point in the last year of the president , especially in their second term , where you stop nominating both supreme court justices and court of appeals judges ."
-441,1,0,state rep. elena parent supported governor nathan deals plan to slash the hope scholarship .
+440,1,1,"there comes a point in the last year of the president , especially in their second term , where you stop nominating both supreme court justices and court of appeals judges ."
+441,1,1,state rep. elena parent supported governor nathan deals plan to slash the hope scholarship .
 442,0,1,"under gov . tom corbett , pennsylvania ranks 49th in job creation ."
-443,0,0,"under gov . kitzhaber , unemployment rose 65 percent , state spending went up 57 percent and personal incomes declined compared to the rest of the country ."
+443,0,1,"under gov . kitzhaber , unemployment rose 65 percent , state spending went up 57 percent and personal incomes declined compared to the rest of the country ."
 444,1,1,after the 2001 and 2003 bush tax rate cuts ... there was more money coming into the treasury .
 445,0,1,says donald trump is on record extensively supporting ( the ) intervention in libya .
 446,0,1,"says rick scott cut education to pay for even more tax breaks for big , powerful , well-connected corporations ."
 447,1,1,"says ron johnson justifies his support of trade agreements by saying the u.s. has the trade adjustment assistance program for displaced workers , but then he voted to eliminate it ."
-448,0,0,"on the night of the wisconsin state senate vote on the budget package , a mob showed up and busted down the door and took over the capitol ."
+448,0,1,"on the night of the wisconsin state senate vote on the budget package , a mob showed up and busted down the door and took over the capitol ."
 449,1,1,"in the last 24 months , 10 rural texas hospitals have been forced to shut their doors because state leaders chose not to expand medicaid ."
 450,0,1,says texas is dead last in support for mental health .
 451,1,1,says chuck hagel has called for an end to our nuclear program .
-452,0,0,ted cruz defended a chinese company that stole an invention from an american inventor .
-453,0,0,"when i was born , less than 10 percent of the federal budget was entitlement spending . its now 60 percent of the budget ."
+452,0,1,ted cruz defended a chinese company that stole an invention from an american inventor .
+453,0,1,"when i was born , less than 10 percent of the federal budget was entitlement spending . its now 60 percent of the budget ."
 454,0,1,rhode island has the highest percentage of uninsured adults of any state in new england .
 455,0,1,zika mosquitoes cant catch me .
 456,0,1,pinellas county voters elected me as their chief financial officer ( and ) elected me as ( their ) governor four years ago .
@@ -463,7 +463,7 @@
 461,1,1,house republicans `` were n't part of the negotiations '' on the wall street bailout plan .
 462,1,1,"in rhode island , there were thousands of jobs that were created by the federal stimulus program"
 463,1,1,says states not directly involved in the gay marriage lawsuits that reached the supreme court are not bound by the courts ruling .
-464,1,0,"says arizona , missouri and texas residents have a two-pet limit , so the public must surrender their third pet to the humane society ."
+464,1,1,"says arizona , missouri and texas residents have a two-pet limit , so the public must surrender their third pet to the humane society ."
 465,1,1,every bit of plastic that has ever been created still exists .
 466,1,1,clinton 's former pastor convicted of child molestation .
 467,0,1,u.s. sen. bill nelson chose to side with president obama against the keystone pipeline
@@ -475,17 +475,17 @@
 473,0,1,bing energy said it decided to move to florida because of gov . rick scotts plan to eliminate the corporate tax .
 474,0,1,"texas ranks : # 1 in worker deaths , # 1 carbon emissions , # 50 in high school graduates , # 50 in funding for mental health patients ."
 475,1,1,obamas dog has his own plane
-476,0,0,americans havent had a raise in 15 years .
+476,0,1,americans havent had a raise in 15 years .
 477,0,1,the romney-ryan plan for medicare does not affect benefits for anyone 55 or older .
 478,1,1,says the congressional ethics investigation against him was conducted by a very partisan political committee in a way that related more to the politics of the democratic party than to ethics .
-479,0,0,we lowered the business tax from 4 percent down to 1 percent .
-480,1,0,the president promised that if he spent money on a stimulus program that unemployment would go to 5.7 percent or 6 percent . those were his words .
+479,0,1,we lowered the business tax from 4 percent down to 1 percent .
+480,1,1,the president promised that if he spent money on a stimulus program that unemployment would go to 5.7 percent or 6 percent . those were his words .
 481,0,1,florida 's cost for the medicaid expansion will be $ 1.6 billion a year or more .
 482,0,1,says jeb bush -- not charlie crist -- signed legislation that let duke energy collect money for nuclear projects .
 483,0,1,the federal government is now on track for the second-largest budget deficit in 65 years .
 484,0,1,foreign aid makes up about 1 percent of our entire budget .
 485,0,1,"we have a retiree that is collecting a $ 17,000 paycheck a month . . . tax free ."
-486,0,0,a provision of the senate immigration bill would require you to have government permission to get a second job .
+486,0,1,a provision of the senate immigration bill would require you to have government permission to get a second job .
 487,1,1,says denzel washington supports donald trump and speaks out against barack obama .
 488,0,1,says state 's expected `` increase in federal political clout is almost entirely due to the growth of the african american and hispanic populations in texas in virtually every region of the state .
 489,0,1,says democratic gubernatorial candidate mary burke has proven on the madison board of education that she supports raising taxes and spending .
@@ -503,15 +503,15 @@
 501,1,1,"i have the most grammys of anyone my age , but i havent won one against a white person ."
 502,1,1,reporters rehearse questions with white house press ( secretary ) .
 503,0,1,governor deal has increased education spending every year hes been in office .
-504,1,1,from obama 's book : `` i found a solace in nursing a pervasive sense of grievance and animosity against my mother 's race . ''
+504,1,0,from obama 's book : `` i found a solace in nursing a pervasive sense of grievance and animosity against my mother 's race . ''
 505,0,1,donald trump called the military that i served in a disaster .
-506,1,0,says sen. elizabeth warren lives in a $ 5.4 million mansion .
+506,1,1,says sen. elizabeth warren lives in a $ 5.4 million mansion .
 507,1,1,the obama administration just issued instructions that terrorism training should not involve any reference to islam .
 508,0,1,60 percent of all americans do not want to see planned parenthood defunded .
 509,1,1,"says unemployment in trenton is twice as much as what we see in every other area of the state and , as a result , we have seen an increase in crime ."
-510,1,0,the bush administration had been giving ( auto companies ) billions of dollars and just asking nothing in return .
+510,1,1,the bush administration had been giving ( auto companies ) billions of dollars and just asking nothing in return .
 511,0,1,clayton county public schools recently achieved a milestone that has eluded other metropolitan districts across the state by meeting federal guidelines for having a highly qualified staff .
-512,0,0,i took the state of ohio from an $ 8 billion hole to a $ 2 billion surplus .
+512,0,1,i took the state of ohio from an $ 8 billion hole to a $ 2 billion surplus .
 513,0,1,"for thousands of public employees , wisconsin gov . scott walkers budget-repair bill would take away any say they have in the workplace , and eliminate their union ."
 514,1,1,says charlotte nash pretends to be a chicken farmer in order to get property tax exemptions .
 515,1,1,on birthright citizenship for illegal immigrants .
@@ -520,7 +520,7 @@
 518,0,1,"but it was hillary clinton , in an interview with tom brokaw , who quote 'paid tribute ' to ronald reagan 's economic and foreign policy ."
 519,1,1,hostages were released as soon as ronald reagan took office because iran perceived that america was no longer under the command of someone weak .
 520,1,1,a photo from the russia-finland hockey game shows a sad vladimir putin and dmitry medvedev .
-521,0,0,"in 1968 , a full-time worker earning minimum wage , could actually support a family of three above the poverty line . today , that same worker would earn less than the poverty line for a family of two ."
+521,0,1,"in 1968 , a full-time worker earning minimum wage , could actually support a family of three above the poverty line . today , that same worker would earn less than the poverty line for a family of two ."
 522,0,1,"republican gubernatorial candidate eric greitens spent another $ 600,000 on image consultants to rebrand his charity , the mission continues ."
 523,1,1,says his much-discussed boots are made in wisconsin .
 524,0,1,says u.s. sen. ron johnson doesnt even believe that theres a man-made role in climate change .
@@ -545,7 +545,7 @@
 543,0,1,the planned expansion of savannahs port is a jobs creating project .
 544,0,1,"says rick scott changed his promise from700,000 jobs created on top of what normal growth would be to just 700,000 jobs ."
 545,0,1,i waited until ( the trans-pacific partnership trade agreement ) had actually been negotiated before deciding whether to endorse it .
-546,0,0,"gov . romney was very clear , he would veto the dream act ."
+546,0,1,"gov . romney was very clear , he would veto the dream act ."
 547,1,1,the wisconsin economic development corp. can not account for creating one single job .
 548,0,1,"under the clear letter of the law , ( justice clarence thomas ) must recuse himself from the case challenging the constitutionality of the health care law ."
 549,0,1,collectively states are spending more on medicaid than they do on k-12 education .
@@ -554,7 +554,7 @@
 552,1,1,"recently , florida has successfully reduced the environmental permitting time down to just two days ."
 553,0,1,energy nominee steven chu has called coal `` his worst nightmare . ''
 554,1,1,gov . charlie crist sought for and got approved the automatic restoration of felon rights for nonviolent offenders for the first time in florida history .
-555,1,0,"and 100 percent , john , of your ads . . . 100 percent of them have been negative ."
+555,1,1,"and 100 percent , john , of your ads . . . 100 percent of them have been negative ."
 556,0,1,"were up 123,000 jobs over the last year and three-quarters . were actually , according to the bureau of labor statistics , down 500 ... auto jobs in ohio ."
 557,0,1,the commission form of government is definitely losing favor in the united states .
 558,0,1,"the company i created , point judith capital , `` is the only venture capital firm in rhode island . ''"
@@ -576,19 +576,19 @@
 574,0,1,ronald reagan did amnesty .
 575,0,1,every child in colorado who has been given medical marijuana for treatment for seizures has had diminished seizure activity .
 576,1,1,"says that under president barack obamas health care law , your insurance premiums could go up by 200 percent and cost as much as a new explorer ."
-577,1,0,"daraprim is still underpriced , relative to its peers ."
+577,1,1,"daraprim is still underpriced , relative to its peers ."
 578,0,1,"says out of 588 school districts , we give 31 ( former abbott ) districts 70 percent of the aid ."
 579,0,1,"since 2000 , `` the texas clean air program achieved a 22 percent reduction in ozone and a 46 percent decrease in nox emissions . ''"
-580,0,0,"the presidents party always gets shellacked in midterms . its only twice , 1934 and 2002 , that the presidents party actually gained in both the house and the senate ."
+580,0,1,"the presidents party always gets shellacked in midterms . its only twice , 1934 and 2002 , that the presidents party actually gained in both the house and the senate ."
 581,0,1,proposed fees for rhode island beaches will still be less than some of the town beaches .
 582,1,1,rick scott vetoed funding for 30 florida rape crisis centers . scott said the centers werent needed .
 583,1,1,"when george bush became president of the united states , 17 million people were in poverty . when he left , 30 million people were in poverty ."
 584,0,1,there is a situation in this country where youre nearing 50 percent of people who dont even pay income taxes .
 585,0,1,"since 2009 , the ohio republican party has made more contacts with voters nearly 6.6 million than any other gop state organization in the nation ."
 586,1,1,suntrust bank cancels account because company sells guns .
-587,0,0,"over the past five years , the american automobile industry has created about 500,000 new jobs ."
+587,0,1,"over the past five years , the american automobile industry has created about 500,000 new jobs ."
 588,1,1,"right now , the ( congressional budget office ) says up to 20 million people will lose their insurance as obamacare goes into effect next year ."
-589,0,0,"says cresent hardy agreed with mitt romney about the 47 percent and said that people with disabilities are , and i quote him , a drain on society ."
+589,0,1,"says cresent hardy agreed with mitt romney about the 47 percent and said that people with disabilities are , and i quote him , a drain on society ."
 590,1,1,one of the reasons that budweiser stayed in new jersey is the money they got from rggi to put solar on their roof to save on their energy costs .
 591,1,1,"obama said that `` since 1992 , the republicans have had all the good ideas ... ''"
 592,0,1,"the national debt of $ 16 trillion , is enough to buy both the cleveland indians and cincinnati reds 1,918 times ."
@@ -602,7 +602,7 @@
 600,1,1,a hidden provision in obamacare taxes sporting goods as medical devices .
 601,1,1,"the health care law could cost up to $ 2 trillion , double what we were promised ."
 602,1,1,"president barack obama is the first president to keep a dog-trainer on retainer for $ 102,000 a year at taxpayer expense ."
-603,0,0,greg abbott heads up a party whose platform calls for the repeal of the voting rights act .
+603,0,1,greg abbott heads up a party whose platform calls for the repeal of the voting rights act .
 604,1,1,"says clackamas county measure 3-401 will hurt our county , cripple economic growth , and increase our taxes with excessive special elections ."
 605,0,1,theres actually 600 abortions done after the 20th week of pregnancy every year in ohio .
 606,0,1,"even hunters are restricted from using large capacity magazines : there is a five cartridge limit for large game hunting , and three for bird hunting ."
@@ -619,12 +619,12 @@
 617,1,1,the united states stood alone in the war in iraq .
 618,1,1,"rob portman shares radical , ideological views toward women ."
 619,1,1,says u.s. sen. ron johnson voted to cut $ 700m from medicare .
-620,0,0,"when mitt romney was governor , massachusetts lost 40,000 manufacturing jobs , a rate twice the national average ."
+620,0,1,"when mitt romney was governor , massachusetts lost 40,000 manufacturing jobs , a rate twice the national average ."
 621,1,1,"we would create thousands of jobs in colorado , if the keystone pipeline were to be built ."
 622,1,1,"more than 7,000 americans lost their lives to climate change-fueled events last year ."
 623,1,1,the death penalty is a deterrent that does affect and impact people .
 624,1,1,says she is a registered nurse .
-625,1,0,"in 2013 , the united states accepted 67 percent of the worlds refugees ."
+625,1,1,"in 2013 , the united states accepted 67 percent of the worlds refugees ."
 626,0,1,"500,000 u.s. troops came home from iraq and afghanistan with ptsd and traumatic brain injury ."
 627,0,1,north carolina republican senate candidate thom tillis would let insurance companies deny coverage for pre-existing conditions .
 628,0,1,"says in katrina , they approved $ 60 billion within 10 days of the storm on a voice vote ."
@@ -636,7 +636,7 @@
 634,1,1,every person on death row was a foster kid .
 635,1,1,"through competition as governor , i got agreements to build a nearly $ 40-billion natural gas pipeline ."
 636,1,1,wisconsins technical college graduates have a higher employment rate and starting salaries than four-year college graduates nationwide .
-637,1,0,"the average federal employee makes $ 120,000 a year . the average private employee makes $ 60,000 a year ."
+637,1,1,"the average federal employee makes $ 120,000 a year . the average private employee makes $ 60,000 a year ."
 638,1,1,science has not shown greenhouse gases to be a problem .
 639,1,1,portland spent nearly $ 1 million in federal stimulus money to install bike path signs where they already existed .
 640,0,1,"if anyone should know irresponsible it should be senator buono . shes the one , her budget left us with a $ 2 billion budget deficit in fiscal 10 that i had to fix . her mistakes . and for fiscal year 2011 an $ 11 billion budget deficit . her mistakes , along with her partner jon corzine ."
@@ -646,7 +646,7 @@
 644,1,1,"in the florida republican primary , `` we got a very large percentage of the , quote , conservative vote . ''"
 645,1,1,says opponent chad chadwell wants condom techniques demonstrated to your children .
 646,1,1,says that politifact ohio confirms that betty sutton maxed out federal debt
-647,1,0,"the job [ of correctional officer ] lowers your life expectancy . . . metropolitan did a study in , i believe it was 1998 , and the life expectancy was 58 ."
+647,1,1,"the job [ of correctional officer ] lowers your life expectancy . . . metropolitan did a study in , i believe it was 1998 , and the life expectancy was 58 ."
 648,0,1,torture is illegal by our laws . its illegal by international laws .
 649,0,1,biden is `` one of the least wealthy members of the u.s . senate . ''
 650,1,1,says hillary clinton abided by the ethics agreement between the clinton foundation and the obama administration .
@@ -663,7 +663,7 @@
 661,1,1,the number of americans who receive means-tested government benefits -- welfare -- now outnumbers those who are year-round full-time workers .
 662,0,1,says patrick murphy has taken more money from wall street than any other member of congress other than the speaker and the majority leader .
 663,0,1,says he will protect your guaranteed benefits in medicare while mitt romney would take away medicare as guaranteed benefits .
-664,1,0,the [ georgia ] general assembly took away the atlanta board of educations oversight of the superintendent .
+664,1,1,the [ georgia ] general assembly took away the atlanta board of educations oversight of the superintendent .
 665,0,1,we caught ( the texas commission on environmental quality ) lying to us about the results of air quality studies in the barnett shale .
 666,1,1,"over the past eight years , black youth unemployment is up ."
 667,1,1,"obama , biden and their liberal allies oppose clean coal ."
@@ -674,7 +674,7 @@
 672,1,1,david cicilline was required to provide key information about city finances to an independent outside auditor . the deadlines were clear -- yet [ he intentionally ] missed them by months until after the november 2010 election .
 673,1,1,the florida house is `` holding the final public hearing '' of a controversial education bill in the middle of spring break ... '' when they hope ( teachers ) are not watching or listening . ''
 674,0,1,weare picking up oil with shovels and paper and plastic bags .
-675,1,0,the milwaukee county bus system has among the highest fares in the nation .
+675,1,1,the milwaukee county bus system has among the highest fares in the nation .
 676,0,1,president obama has raised taxes 19 times .
 677,1,1,says gm used taxpayer dollars to prop up operations in china .
 678,0,1,banks paid hillary clinton over $ 1 million and are contributing millions more to elect her .
@@ -684,9 +684,9 @@
 682,1,1,says jonathan gruber was some adviser who never worked on our staff .
 683,0,1,jennifer carroll is the first african-american republican woman to be part of a statewide ticket in florida .
 684,0,1,"georgia has more than 700 law enforcement agencies , and fewer than 20 percent of them are state-certified ."
-685,1,0,says dan sullivan approved a light sentence for a sex offenderwho got out of prison andis now charged with a gruesome murder and sexual assault .
+685,1,1,says dan sullivan approved a light sentence for a sex offenderwho got out of prison andis now charged with a gruesome murder and sexual assault .
 686,0,1,one third of our age group ( millennials ) have moved back in with their parents .
-687,1,0,"because of the current immigration crisis , republicans want to repeal a 2008law that president george w. bush signed and want to be on record as not wanting to protect children from ... sex trafficking ."
+687,1,1,"because of the current immigration crisis , republicans want to repeal a 2008law that president george w. bush signed and want to be on record as not wanting to protect children from ... sex trafficking ."
 688,0,1,it has been the law since the beginning of the country that the children of american citizens born ... abroad are american citizens by birth .
 689,0,1,owen in ma vs. owen in ri advantage : rhode island .
 690,0,1,"in 1960 , most black children were raised in two-parent , monogamous families . today we have only 20 percent of black children being raised in two-parent , monogamous families ..."
@@ -698,18 +698,18 @@
 696,1,1,obama will charge a 28 percent tax on all home sales .
 697,0,1,"a koch brothers group is going to college campuses , giving away free booze to try to bribe young folks out of getting health insurance ."
 698,0,1,said he won the democratic primary without one ... negative tv spot .
-699,0,0,about 95 percent of ( ohios ) electricity comes from burning coal .
+699,0,1,about 95 percent of ( ohios ) electricity comes from burning coal .
 700,1,1,"says over the last two years , new jersey schools development authority employees have not started or completed one single school project , and im not talking about major school renovation . im talking about replacing boilers , roofs ."
 701,1,1,says tammy baldwin voted to gut medicare for seniors .
 702,1,1,the stand your ground lawcaused the shooting death of trayvon martin .
-703,0,0,"in georgia , perdues company closed plants and moved jobs to china ."
+703,0,1,"in georgia , perdues company closed plants and moved jobs to china ."
 704,0,1,"says republican reid ribble says stimulus bill failed to jumpstart the economy , but his roofing company made almost $ 300,000 off stimulus funded projects ."
-705,1,0,"under a proposed bill , a $ 100,000 homes flood insurance premium would be maybe $ 200 or $ 300 annually ."
-706,0,0,social security has never contributed one cent to the deficit . not one cent .
+705,1,1,"under a proposed bill , a $ 100,000 homes flood insurance premium would be maybe $ 200 or $ 300 annually ."
+706,0,1,social security has never contributed one cent to the deficit . not one cent .
 707,0,1,obamacare takes $ 500 billion out of medicare and funds obamacare .
 708,0,1,the state that has the highest per capita number of guns that end up committing crimes in new york come from vermont .
-709,0,0,"over the last 10 years , incomes for the top 1 percent have grown . meanwhile , the bottom half of the country , theyve seen their wages stagnate ."
-710,0,0,"i think with the exception of the last year or maybe the last two years , we were at 100 percent when it came to contributing to the providence pension fund ."
+709,0,1,"over the last 10 years , incomes for the top 1 percent have grown . meanwhile , the bottom half of the country , theyve seen their wages stagnate ."
+710,0,1,"i think with the exception of the last year or maybe the last two years , we were at 100 percent when it came to contributing to the providence pension fund ."
 711,1,1,almost all of the polls that have come out suggest that i am a much stronger candidate against the republicans than is hillary clinton .
 712,0,1,the obama administration is allowing state waivers from welfare work requirements only if they had a credible plan to increase employment by 20 percent .
 713,0,1,all but one of the 50 states already have some form of a balanced budget amendment in their state constitutions .
@@ -727,10 +727,10 @@
 725,0,1,"if you look at latino kids between 17 and 20 who graduated high school , 36 percent of them are unemployed or underemployed . african-american kids are unemployed or underemployed to the tune of 51 percent ."
 726,1,1,says gov . rick perry is by far and away the highest-paid state employee on an hourly basis .
 727,1,1,says the hawaii governor cant find anything that says ( president barack obama ) was born in hawaii .
-728,1,0,"under president ronald reagan , illegal immigrants were not pouring in likethey are now ."
-729,0,0,house democrats have a two-to-one advantage money-wise against house republicans .
+728,1,1,"under president ronald reagan , illegal immigrants were not pouring in likethey are now ."
+729,0,1,house democrats have a two-to-one advantage money-wise against house republicans .
 730,0,1,georgia can substantially increase its funding for education by going after $ 2.5 billion in uncollected taxes .
-731,0,0,most people in new hampshire want to raise the minimum wage . ( state rep. marilinda ) garcia opposes it .
+731,0,1,most people in new hampshire want to raise the minimum wage . ( state rep. marilinda ) garcia opposes it .
 732,1,1,"says nearly 30,000 federal employees in oregon were furloughed during the government shutdown ."
 733,1,1,"after fahrenheit 9/11 came out , `` bush 's approval rating never was better , it only got worse . ''"
 734,0,1,we are making the largest investment in education in our nations history .
@@ -755,21 +755,21 @@
 753,0,1,recent record-low water levels in lake michigan are evidence that global warming is leading to the evaporation of our great lakes .
 754,1,1,says gov . scott walker has dropped wisconsin to 45th in the nation in job growth prospects while campaigning for president out of state .
 755,1,1,the senate health care bill is longer than tolstoy 's 'war and peace . '
-756,1,0,"in a watershed 1958 decision , the warren court asserted by itself that the supreme court was supreme over the president and the congress ."
+756,1,1,"in a watershed 1958 decision , the warren court asserted by itself that the supreme court was supreme over the president and the congress ."
 757,0,1,half the lottery directors across the country had not run a lottery before they were hired .
 758,0,1,"americans who get their insurance through the workplace , cost savings could be as much as $ 3,000 less per employee than if we do nothing ."
 759,1,1,the georgia lottery corp. has only once in the past 16 years paid out the agreed upon 35 percent of proceeds to the account which funds the hope scholarship .
-760,0,0,says the foreman of the jury that convicted him was a greenpeace activist .
+760,0,1,says the foreman of the jury that convicted him was a greenpeace activist .
 761,0,1,on a single-payer health care system .
-762,1,0,"says that in 2009 exxonmobil paid no federal income taxes , received a $ 156 million rebate ."
-763,1,0,"a 10-year state program that created 202 jobs at a cost of $ 247,000 per job was approved by former gov . jim doyle ."
+762,1,1,"says that in 2009 exxonmobil paid no federal income taxes , received a $ 156 million rebate ."
+763,1,1,"a 10-year state program that created 202 jobs at a cost of $ 247,000 per job was approved by former gov . jim doyle ."
 764,1,1,gop presidential hopeful herman cain called ron pauls followers ignorant .
 765,1,1,ralph hall has never voted to raise the debt ceiling .
 766,0,1,says donald trump won more counties than any candidate on our side since ronald reagan .
-767,0,0,says that to drive the length of the newly drawn 15th district youd find yourself on the road as long as it would take to drive from columbus to niagara falls .
+767,0,1,says that to drive the length of the newly drawn 15th district youd find yourself on the road as long as it would take to drive from columbus to niagara falls .
 768,0,1,there is not a single candidate in the republican primary that thinks we should do anything about climate change .
 769,1,1,says the claims that texas faces a $ 27 billion shortfall are flat-out false .
-770,0,1,"since january 2010 , new jersey has added 103,000 new private sector jobs . the last two years -- 2011 and 2012 -- have been the best two years of private sector job growth since 1999 ."
+770,0,0,"since january 2010 , new jersey has added 103,000 new private sector jobs . the last two years -- 2011 and 2012 -- have been the best two years of private sector job growth since 1999 ."
 771,0,1,congress can tell [ the supreme court ] which cases they ought to hear . we have that authority .
 772,1,1,says donald trump has given more money to democratic candidates than republican candidates .
 773,0,1,says mitt romney wants to add $ 2 trillion to defense budget that the military hasnt asked for .
@@ -778,26 +778,26 @@
 776,1,1,barack obama is the first president to file lawsuits against the states he swore an oath to protect .
 777,0,1,more than 70 percent of american adults have committed a crime that could lead to imprisonment .
 778,1,1,says ohio attorney general mike dewine is hypocritical for challenging the constitutionality of the new health care law .
-779,1,0,"a study says massachusetts has lost 18,000 jobs because residents were required to obtain health insurance under an act signed into law by mitt romney ."
+779,1,1,"a study says massachusetts has lost 18,000 jobs because residents were required to obtain health insurance under an act signed into law by mitt romney ."
 780,0,1,attorney general roy cooper refuses to do his job by not defending house bill 2 in a lawsuit .
 781,1,1,says georgia democratic senate hopeful michelle nunn supports higher taxes .
-782,1,0,"a year since the recovery summer , there has been been a fall , winter and spring of no recovery ."
+782,1,1,"a year since the recovery summer , there has been been a fall , winter and spring of no recovery ."
 783,1,1,gov . deal has the worst record on education in the history of this state .
 784,1,1,the american murder rate is 50 times that of any other developed nation .
 785,1,1,"says in the 2012 state of the union address , president obama didnt even mention the deficit or debt ."
-786,0,0,"as a former federal prosecutor , i prosecuted over 4,000 cases ."
-787,0,0,"says rep. tom reed , r-n.y. , voted to raise the social security retirement age on us ."
+786,0,1,"as a former federal prosecutor , i prosecuted over 4,000 cases ."
+787,0,1,"says rep. tom reed , r-n.y. , voted to raise the social security retirement age on us ."
 788,1,1,ive supported every investigation ( into hurricane katrina ) and ways of finding out how what caused the tragedy . ive met with people on the ground . ive met with the governor .
 789,0,1,their new york casino deal was called rigged and corrupt .
 790,0,1,says there have been 50 million abortions since roe v. wade was decided .
 791,1,1,late changes to the arizona immigration law `` lay to rest questions over the possibility of racial profiling . ''
 792,1,1,"says 13 texas universities have announced or implemented a $ 10,000 degree ."
 793,0,1,"says an illegal immigrant fraudulently claimed children who actually lived in mexico on income tax forms to collect more than $ 29,000 ."
-794,1,0,the ( state board of administration ) transparency issue got a great airing the last legislative session .
+794,1,1,the ( state board of administration ) transparency issue got a great airing the last legislative session .
 795,1,1,83 % of doctors have considered leaving the profession because of # obamacare .
 796,1,1,says scott walkers jobs agency gives financial incentives that lead wisconsin companies to look at shipping jobs elsewhere . ... a company got $ 4.6 million in taxpayer money and actually reduced its jobs by 300 people .
 797,0,1,"says that in 2001 , rick perry spoke favorably of binational health insurance between mexico and texas ."
-798,1,0,says president abraham lincoln enforced the fugitive slave act until the civil war ended .
+798,1,1,says president abraham lincoln enforced the fugitive slave act until the civil war ended .
 799,1,1,says his parents came to america following fidel castros takeover of cuba .
 800,0,1,our trade deficit in goods reached nearly $ 800 billion last year alone .
 801,0,1,"the democrats ' health care bills would end `` the denial of ... coverage to those who have a pre-existing condition , '' while the republican bill would not ."
@@ -806,21 +806,21 @@
 804,1,1,barack obama `` pays for every dime '' of his spending plans .
 805,1,1,"says there were multiple instances of voter fraud in wood county , ohio ."
 806,0,1,"says canada has one-tenth of our populationyet it issues far more high-skilled visas ( more than 150,000 ) yearly than we do ( 65,000 ) ."
-807,1,0,"says a group estimates that the annual cost to oregon taxpayers for government services to illegal aliens , after any income tax revenue from them , is $ 1 billion ."
+807,1,1,"says a group estimates that the annual cost to oregon taxpayers for government services to illegal aliens , after any income tax revenue from them , is $ 1 billion ."
 808,0,1,"says for the first time ever , texas lawmakers are not funding student population growth ."
 809,1,1,leticia van de putte voted to give illegal immigrants in this country free health care -- not emergency health care but total free health care .
 810,1,1,"since sequester began federal employment has been subtracting 6,000-7,000 jobs per month"
 811,0,1,says no austin city council member lives south of lady bird lake or north of 45th street .
-812,0,0,ohio taxpayers spent more than $ 67 million for the year on food stamps and medicaid for wal-mart workers
+812,0,1,ohio taxpayers spent more than $ 67 million for the year on food stamps and medicaid for wal-mart workers
 813,0,1,one out of every five law enforcement officers thats killed is killed with an assault weapon .
 814,1,1,mitt romney did not run his campaign on the basis of arguing his experience in the business world was a reason to vote for him .
 815,1,1,says politifact issued a true ruling on paul krugman calling governor christie a fiscal phony .
 816,1,1,alexi giannoulias top aide was a longtime bp lobbyist .
-817,1,0,the streetcar project proposed for downtown milwaukee would actually take precious revenue away from the milwaukee public schools .
+817,1,1,the streetcar project proposed for downtown milwaukee would actually take precious revenue away from the milwaukee public schools .
 818,0,1,federal spending is the highest its been as a share of our economy in 60 years ( and ) revenue is the lowest its been as a share of our economy in 60 years .
 819,0,1,"last year -- actually , this year in may -- we saw new jersey transit fares rise anywhere from 25 percent to 47 percent ."
 820,0,1,says excessive speculation is pushing up oil prices and a recent report estimates it adds 56 cents to every gallon of gasoline siphoned from the pump .
-821,0,0,weve got four supreme court justices who signed their name to a declaration that americans have no fundamental right to self-defense .
+821,0,1,weve got four supreme court justices who signed their name to a declaration that americans have no fundamental right to self-defense .
 822,1,1,says wisconsin gov . scott walker has threatened to call out the national guard if workers protest against changes to bargaining laws .
 823,1,1,"under our ( 2011-13 ) budget , the average ( wisconsin ) property taxpayer will save $ 700 ."
 824,0,1,al-qaida has grown fourfold in five years .
@@ -829,7 +829,7 @@
 827,1,1,cnns crap polling is so bad that it shows that no one under the age of 50 has an opinion of hillary clinton .
 828,1,1,our numbers are going up at the airport .
 829,0,1,"when you compare our state pension system to other systems throughout the country , our benefits are not gold-plated . they are not rich . they are actually average or below average ."
-830,0,0,texas would have to increase current state spending by 28 percent just to reach the national average for spending per resident .
+830,0,1,texas would have to increase current state spending by 28 percent just to reach the national average for spending per resident .
 831,1,1,"speaker pelosi ... has been busy sticking the taxpayer with her $ 100,000 bar tab for alcohol on the military jets that shes flying ."
 832,0,1,says studies show the average age of entry into prostitution is 12 to 14 years old .
 833,1,1,"the obama health and human services department is planning to compile a federal health record on all u.s. citizens by 2014 , including each individuals body mass index ."
@@ -845,25 +845,25 @@
 843,0,1,"in 1950 , the average american lived for 68 years and 16 workers supported one retiree . today , the average life expectancy is 78 and three workers support one retiree ."
 844,1,1,"under gov . scott walker , unemployment is increasing in wisconsin at twice the rate it is nationally ."
 845,1,1,"in mexico , they dont have birth certificates ... they dont have registration cards for voters . they have one national id ."
-846,0,0,"deficit spending exploded during the obama administration to $ 5.3 trillion over four years , compared to $ 2 trillion in eight years under president george w. bush ."
+846,0,1,"deficit spending exploded during the obama administration to $ 5.3 trillion over four years , compared to $ 2 trillion in eight years under president george w. bush ."
 847,0,1,"as governor , ted strickland left only 89 cents in ohios rainy day fund ."
 848,1,1,"under president george w. bush , `` the national debt went from $ 5 trillion to $ 12 trillion . ''"
 849,1,1,the u.s. `` only ranks 25th worldwide on defense spending as a percentage of gdp . ''
-850,1,0,"under gov . scott walker , employer confidence now stands at 95 percent , compared to only 10 percent at the end of the gov . jim doyle-mary burke administration ."
+850,1,1,"under gov . scott walker , employer confidence now stands at 95 percent , compared to only 10 percent at the end of the gov . jim doyle-mary burke administration ."
 851,1,1,we have the lowest beer tax in the nation .
-852,1,0,john boehner said the jobs of teachers and nurses and police officers and firefighters are government jobs that werent worth saving .
+852,1,1,john boehner said the jobs of teachers and nurses and police officers and firefighters are government jobs that werent worth saving .
 853,0,1,[ e ] xcise tax increases drive commerce across state lines .
 854,1,1,obama 's ten point plan to 'change ' the second amendmentban use of firearms for home defense .
 855,1,1,"if we manufactured 5-million of these 2.5-meg windmills across the country , we could electrify the entire nation the entire nation ."
 856,0,1,says tennessee has some of the lowest beer excise tax rates in the country .
-857,0,0,buying the naming rights to the new falcons stadium is the largest marketing deal in mercedes-benz history .
+857,0,1,buying the naming rights to the new falcons stadium is the largest marketing deal in mercedes-benz history .
 858,0,1,"for the first time in over a decade , business leaders around the world have declared that china is no longer the worlds no . 1 place to invest ; america is ."
-859,0,1,his proposed budget would `` cut our deficit in half by the end of my first term . ''
-860,0,0,"as governor , [ mitt romney ] balanced the budget without raising taxes and created jobs ."
+859,0,0,his proposed budget would `` cut our deficit in half by the end of my first term . ''
+860,0,1,"as governor , [ mitt romney ] balanced the budget without raising taxes and created jobs ."
 861,0,1,( obamacare ) is a bill which has never once had a majority of americans favor it .
 862,0,1,97 percent of the 100 poorest counties in america are in red states .
 863,0,1,"despite the passage of hb2 , towns , cities and counties in north carolina are still allowed to set stricter non-discrimination policies for their own employees if they choose ."
-864,0,0,"when we got the income tax in 1913 , the top rate was 7 percent . by 1980 , the top rate was 70 percent ."
+864,0,1,"when we got the income tax in 1913 , the top rate was 7 percent . by 1980 , the top rate was 70 percent ."
 865,1,1,cnn did a poll recently where obama and i are statistically tied .
 866,0,1,nascar fans are twice as likely as non fans to serve in the military and 37 percent of active servicemembers and veterans are nascar fans .
 867,0,1,says president dwight eisenhower moved 1.5 million illegal immigrants out of this country .
@@ -873,7 +873,7 @@
 871,0,1,[ appalachian power ] wants another 10 percent rate increase . the compensation package for ceo mike morris rose 22 percent to $ 8.7 million in 2010 .
 872,0,1,"by the time ( mitt romney ) left office , massachusetts was 47th in the nation in job creation ."
 873,0,1,"in states where the federal government helps run these ( health care ) marketplaces , the average american will have more than 50 different plans to choose from , with different levels of coverage ."
-874,0,0,"florida unemployment has dropped more than 2 percentage points , down from 12 percent to 9.9 percent , the second-largest drop in the nation ."
+874,0,1,"florida unemployment has dropped more than 2 percentage points , down from 12 percent to 9.9 percent , the second-largest drop in the nation ."
 875,1,1,"the consumer financial protection bureau passed a rule giving the agency unprecedented power to shut down businesses , no matter what the reason , at any time it wishes ."
 876,1,1,dnc chair debbie wasserman schultz denied unemployment went up under obama .
 877,0,1,"mccain , `` voted against renewable sources of energy , against biofuels , against solar power , against wind power ... . ``"
@@ -884,14 +884,14 @@
 882,0,1,"says the federal stimulus program was ineffective because the number of jobs has actually decreased by 18,300 through july 2011 ."
 883,1,1,the united states regulations are among the most difficult in the world .
 884,0,1,says sherrod brown voted for the $ 1.17 trillion health care law that adds a new tax on ohio manufacturers .
-885,0,0,sen. mcconnell offered a fully paid two-month extension of unemployment insurance .
+885,0,1,sen. mcconnell offered a fully paid two-month extension of unemployment insurance .
 886,0,1,the video does n't show the broader picture of the firing that was going on at american troops .
 887,1,1,"under obamacare , 75 percent of small businesses now say they are going to be forced to either fire workers or cut their hours ."
 888,1,1,"when peppers tax was finally voted down , pepper laid off cops and closed jails and let criminals run free in the streets ."
 889,0,1,''both democrats and republicans are advocating for the use of student test scores to measure teacher effectiveness . ''
 890,0,1,we borrow a million dollars every minute .
 891,1,1,"there are over 700,000 americans on some watch list or another that would all be captured in a democratic amendment intended to stop suspected terrorists from buying guns ."
-892,0,0,the ( ohio ) economy is on the mend . it is in better shape than it was when we took office .
+892,0,1,the ( ohio ) economy is on the mend . it is in better shape than it was when we took office .
 893,0,1,the republican presidential nominee hasnt won women since 1988 .
 894,0,1,says michelle nunn has acknowledged allowing a convicted felon to hold a fundraiser for her .
 895,0,1,"a national poll found that among people who oppose the democratic health care reform bill , `` almost 40 percent '' opposed it not because it goes too far , but because `` they dont think it goes far enough . ... they will not be unhappy when we pass health care reform . ''"
@@ -937,9 +937,9 @@
 935,1,1,"eric cantor took $ 5 million from sheldon adelson , a las vegas casino owner ."
 936,0,1,"literally , by the time a child is 18 years of age , theyve killed over 100,000 people in video games and other online things ."
 937,1,1,bill mccollum voted for higher taxes and fees 42 times while he was in congress .
-938,0,0,says sen. kay hagan has missed half of the ( senate armed services ) committees hearings in 2014 .
+938,0,1,says sen. kay hagan has missed half of the ( senate armed services ) committees hearings in 2014 .
 939,1,1,"sheldon whitehouse [ got ] a secret closed-door briefing , warning of the [ 2008 economic ] crash ."
-940,0,0,says the federal government is supporting a study in hawaii to develop a menu for when we colonize mars .
+940,0,1,says the federal government is supporting a study in hawaii to develop a menu for when we colonize mars .
 941,0,1,"and by the way , when i was governor , i did make the payment into the pension fund ."
 942,1,1,obamacare enrollment lie : obama counts an enrollee as a web user putting a plan in their online shopping carts .
 943,0,1,"while the government grew , we lost more than 2 million jobs ."
@@ -948,17 +948,17 @@
 946,0,1,the states overall revenues only returned this year to 2007 levels .
 947,1,1,president barack obama attended an islamic madrassa .
 948,0,1,2014 midterm election spending by the left and the right are both equal .
-949,1,1,"the expiration of the bush-era tax cuts ... would be the biggest tax increase in the history of the country , about $ 4.6 trillion over 10 years ."
-950,0,0,violent crime is up since the last year of sharpe james administration . this year its higher . the unemployment rate is almost 15 percent . the high school dropout rate is over 50 percent .
+949,1,0,"the expiration of the bush-era tax cuts ... would be the biggest tax increase in the history of the country , about $ 4.6 trillion over 10 years ."
+950,0,1,violent crime is up since the last year of sharpe james administration . this year its higher . the unemployment rate is almost 15 percent . the high school dropout rate is over 50 percent .
 951,1,1,i have voted every year in wisconsin .
 952,1,1,"were spending tremendous amounts of money to educate our kids . in the world , were no . 1 per pupil by a factor of four ."
 953,0,1,obama has admitted a cap and trade plan would cause electricity bills to skyrocket .
 954,1,1,says john cornyn dodged the draft during the vietnam war .
-955,0,0,baltimore spends the third highest per capita on its public schools .
+955,0,1,baltimore spends the third highest per capita on its public schools .
 956,0,1,the final pitch of don larsens perfect game in the 1956 world series was a foot and half probably high and outside .
 957,1,1,the financial services bill will end `` too-big-to-fail . ''
 958,0,1,"when social security first started , there was 16 workers for every retiree . today there are three workers for every retiree and soon there will be only two for every retiree ."
-959,0,0,medicare and medicaid are the single biggest drivers of the federal deficit and the federal debt by a huge margin .
+959,0,1,medicare and medicaid are the single biggest drivers of the federal deficit and the federal debt by a huge margin .
 960,0,1,"every republican nominee since richard nixon , who at one time was under an audit , has released their tax returns ."
 961,1,1,says abortion increases the risk of breast cancer .
 962,1,1,"says a rape kit can be used to clean out women , basically like dilation and curettage ."
@@ -968,25 +968,25 @@
 966,0,1,"we ( georgia ) collect fewer state taxes per capita than any other state although state taxes are low , georgia is the eighth-most-dependent state on the federal government ."
 967,1,1,"action by the milwaukee county board will provide the county executive with the same level of security as the governor and the mayor of milwaukee while saving taxpayers $ 300,000 ."
 968,0,1,says lebron james stops paying his social security taxes at the beginning of the second quarter of the first game of the season .
-969,1,1,"in wisconsin , the stimulus paid for a bridge to a bar called rusty 's backwater saloon . they 've got great burgers , but no new jobs ."
+969,1,0,"in wisconsin , the stimulus paid for a bridge to a bar called rusty 's backwater saloon . they 've got great burgers , but no new jobs ."
 970,0,1,says more than $ 3.5 billion in state revenue that is supposed to be dedicated to basic needs and functions is being diverted to make the books look balanced .
 971,1,1,bill white spent his city billions of dollars into debt ( and ) saw crime rates soar while he backed gun control .
 972,1,1,"blue cross blue shield cancelled all their individual ( health care ) policies in the state of texas , effective dec. 31 ."
 973,0,1,recent reports state that the u.s. customs and border protection has apprehended several members of known islamist terrorist organizations crossing the southern border in recent years .
 974,0,1,says gas pumps in different parts of texas are missing state inspection stickers and/or their inspections are out of date -- and thats cheating consumers .
 975,0,1,says gov . scott walkers budget includes tax breaks for corporations and the rich that will cost the state of wisconsin taxpayers $ 2.3 billion over the next decade .
-976,0,0,the state budget will include scholarship money for minority students as a concession to senate democrats for supporting the gop-initiated transportation bill .
-977,1,0,the president flagrantly defies the 2006 federal law ordering the construction of a secure border fence along the entire mexican border .
+976,0,1,the state budget will include scholarship money for minority students as a concession to senate democrats for supporting the gop-initiated transportation bill .
+977,1,1,the president flagrantly defies the 2006 federal law ordering the construction of a secure border fence along the entire mexican border .
 978,1,1,corrupt political bosses . money laundering . fraud . its just another day at the office for vin gopal .
 979,0,1,"these people that we were going to deport for good reason ended up becoming citizens . ended up becoming citizens . and it was 800. and now it turns out it might be 1,800 , and they dont even know ."
-980,0,0,"according to an article in the economist magazine , americans are guaranteed to live above the poverty line if they graduate from high school , keep their first job for over a year and get and stay married ."
+980,0,1,"according to an article in the economist magazine , americans are guaranteed to live above the poverty line if they graduate from high school , keep their first job for over a year and get and stay married ."
 981,0,1,we ( in illinois ) have the fifth-highest tax burden in the country .
-982,0,0,"says the new york giants train in new jersey , they play in new jersey and most of their players live in new jersey ."
+982,0,1,"says the new york giants train in new jersey , they play in new jersey and most of their players live in new jersey ."
 983,0,1,"in chicago , theyve had thousands of shootings , thousands since jan. 1. thousands of shootings ."
-984,0,0,"if you have a union job , youre making on average $ 950 a week . if you have a non-union job , youre making $ 750 a week ."
+984,0,1,"if you have a union job , youre making on average $ 950 a week . if you have a non-union job , youre making $ 750 a week ."
 985,1,1,we flood communities with so many guns that it is easier for a teenager to buy a glock than get his hands on a computer or even a book .
 986,0,1,says mitt romney flip-flopped on a taxpayer protection pledge .
-987,1,0,gerry connolly and his fellow democrats went on a spending spree and now their credit card is maxed out .
+987,1,1,gerry connolly and his fellow democrats went on a spending spree and now their credit card is maxed out .
 988,1,1,"in the united states , 50 percent of social services are provided by the catholic church ."
 989,0,1,"jeff mann has an ethics complaint against him alleging he used county workers for campaign work , which is an indictable offense ."
 990,0,1,central falls schools are overfunded by state money by as much as $ 8 million .
@@ -1006,7 +1006,7 @@
 1004,1,1,says the public option considered in the health care law backed by u.s. senate candidate tammy baldwin was wildly unpopular .
 1005,0,1,"since 1981 , reconciliation has been used 21 times . most of it 's been used by republicans ."
 1006,0,1,"we admit more than 100,000 lifetime migrants from the middle east each year ."
-1007,1,0,"weve seen local union after local union rush to their school boards , their city councils , their technical school boards and rush through contracts in the past two weeks that had no contributions to the pension and no contribution to health care ."
+1007,1,1,"weve seen local union after local union rush to their school boards , their city councils , their technical school boards and rush through contracts in the past two weeks that had no contributions to the pension and no contribution to health care ."
 1008,1,1,most polls show foreign nations have lower regard for the u.s. now than they did before obamas time .
 1009,0,1,says ron paul doesnt believe in marriage licenses .
 1010,1,1,scott walker supported the same transportation bill hes attacking me for . he said at the time it would save the taxpayers money .
@@ -1050,7 +1050,7 @@
 1048,0,1,"in ad attacking rick scott , says three executives of the columbia/hcahospital chain he ran were indicted ."
 1049,0,1,"jeb bush recently noted , reagan himself would have been too moderate , too reasonable for todays gop ."
 1050,0,1,"more than one person , on average , a day is murdered in philadelphia ."
-1051,0,0,says the tax code is effectively subsidizing the marketing efforts of fast food and junk food companies by as much as $ 19 billion over 10 years .
+1051,0,1,says the tax code is effectively subsidizing the marketing efforts of fast food and junk food companies by as much as $ 19 billion over 10 years .
 1052,0,1,says he has sued the obama administration 25 times .
 1053,0,1,the poorest counties in the u.s. are in appalachia and happen to be more than 90 percent white .
 1054,0,1,"in 2011 , milwaukee public schools will provide 77 cents in employee benefits for every dollar it spends on wages ."
@@ -1058,21 +1058,21 @@
 1056,1,1,"in catherine cortez mastos last term as attorney general , nevada murder went up 11 percent , robbery went up 28 percent , rape 51 percent . when cortez masto left office , nevada ranked as americas third most dangerous state ."
 1057,1,1,"the z-visa that was offered in that senate bill let everybody who 's here illegally , other than criminals , stay here for the rest of their lives ."
 1058,0,1,says thatrepublican darryl glennhas described democrats as evil and has said hes tired of hearing about republicans reaching across the aisle .
-1059,0,0,"taxes and fees amount to about 20 percent of a typical $ 300 round-trip domestic ticket . thats higher than taxes on products like alcohol , tobacco and firearms ."
-1060,0,0,the stock market does better when you have a democratic president in the white house .
+1059,0,1,"taxes and fees amount to about 20 percent of a typical $ 300 round-trip domestic ticket . thats higher than taxes on products like alcohol , tobacco and firearms ."
+1060,0,1,the stock market does better when you have a democratic president in the white house .
 1061,1,1,"californias marijuana legalization initiative , prop . 64 allows marijuana smoking ads in prime time , on programs with millions of children and teenage viewers ."
-1062,1,0,"in 2009 , jim doyle and the democrats rushed through a budget repair bill with billions in tax increases and held no public hearings ."
+1062,1,1,"in 2009 , jim doyle and the democrats rushed through a budget repair bill with billions in tax increases and held no public hearings ."
 1063,1,1,michelle nunn has praised the occupy movement .
-1064,0,1,austin has gone from being the 24th most congested city just about 10 years ago to being the fourth most congested more congested than nyc .
-1065,1,0,says gov . chris christies proposed budget is the biggest spending budget in the history of the state of new jersey . it is the largest in the nation at this point in time .
+1064,0,0,austin has gone from being the 24th most congested city just about 10 years ago to being the fourth most congested more congested than nyc .
+1065,1,1,says gov . chris christies proposed budget is the biggest spending budget in the history of the state of new jersey . it is the largest in the nation at this point in time .
 1066,1,1,"says president barackobama has issued upwards of 1,000 executive orders , more than any modern president ."
-1067,0,0,"says state sen. paul sarlo said in february on njtv , there will be no tax increases in this budget and voted the other night in the senate budget committee to raise income taxes $ 800 million ."
+1067,0,1,"says state sen. paul sarlo said in february on njtv , there will be no tax increases in this budget and voted the other night in the senate budget committee to raise income taxes $ 800 million ."
 1068,1,1,"in countries that allow gay marriage , the rates of heterosexual marriage `` have plummeted to where you have counties now in northern europe where 80 percent of the first-born children are born out of wedlock . ''"
 1069,0,1,"the director of the fbi said that we can not figure out who ( syrian refugees ) are , what their intentions are , because we have no information on them , because we dont have any contact with the syrian government or any people on the ground to be able to determine that ."
-1070,0,0,"in a poll , 53 percent of young republican voters . . . under age 35 said that they would describe a climate [ change ] denier as ignorant , out of touch or crazy ."
+1070,0,1,"in a poll , 53 percent of young republican voters . . . under age 35 said that they would describe a climate [ change ] denier as ignorant , out of touch or crazy ."
 1071,0,1,says out-of-state abortion clinics have marketed their services to minors in states with parental consent laws .
-1072,1,0,"president obamas american recovery and reinvestment act ( was ) a fancy name for almost a trillion-dollar spending bill . the arra was supposed to fix our crumbling roads and bridges , but now , we have absolutely nothing to show for it ."
-1073,0,0,louie gohmert of texas compared the current general-in-charge in egypt to george washington .
+1072,1,1,"president obamas american recovery and reinvestment act ( was ) a fancy name for almost a trillion-dollar spending bill . the arra was supposed to fix our crumbling roads and bridges , but now , we have absolutely nothing to show for it ."
+1073,0,1,louie gohmert of texas compared the current general-in-charge in egypt to george washington .
 1074,0,1,"if florida had not taken the stimulus , it would have led to the firing of 20,000 teachers ."
 1075,1,1,"says the kkk marched in mebane , n.c. , after trumps victory"
 1076,0,1,illegal immigrants currently occupy 8 million jobs .
@@ -1082,7 +1082,7 @@
 1080,0,1,there was a recent report out that the premiums for medicare and the payroll withholdings are only paying about half the program . so it is not financially solvent .
 1081,0,1,closing our states wage gap would make a $ 9 billion difference to missouri women .
 1082,0,1,"right now , one third of all illegal aliens are going to california ."
-1083,1,0,"if you look worldwide , the number of terrorist incidents have not substantially increased ."
+1083,1,1,"if you look worldwide , the number of terrorist incidents have not substantially increased ."
 1084,0,1,"the israelisgave up 1,000 terrorists in return for one sergeant ."
 1085,1,1,national studies are already showing the negative effects that the health care law is having on businesses and our economy . businesses across the country are raising their prices ( or ) cutting jobs as a result of the added cost .
 1086,1,1,says the human rights campaign is secretly funded
@@ -1093,11 +1093,11 @@
 1091,1,1,"in his first meeting with university of wisconsin system officials , republican governor elect scott walker told them to prepare for cuts ."
 1092,1,1,we have never gone a year in virginia -- ever -- without passing a budget -- ever .
 1093,1,1,says only about 2 percent of gunsales in virginia are not subject to background checks .
-1094,0,0,says 90 percent of americans and 74 percent of national rifle association members support background checks of gun purchasers .
+1094,0,1,says 90 percent of americans and 74 percent of national rifle association members support background checks of gun purchasers .
 1095,1,1,illegal immigration costs our country more than $ 113 billion a year .
 1096,0,1,"uw-madison spent down reserves as it was told to do two years ago and , facing new state budget cuts , has no more reserves to spend down ."
 1097,1,1,"in the health care bill , `` the 'health choices commissioner ' will decide health benefits for you . you will have no choice . none . ''"
-1098,1,0,76 percent of americans want a public health care option .
+1098,1,1,76 percent of americans want a public health care option .
 1099,0,1,"in 1960 , we spent more than 3 percent of our gdp on infrastructure projects like the interstate highway . today we spend less than 1 percent of our gdp on these vital investments ."
 1100,0,1,"at present spending levels , only citizens of new york have a greater local debt burden than texans ."
 1101,0,1,"says the texas board of nursing has a backlog of 3,000 complaints against nurses , many of them sexual assaults , malfeasance ."
@@ -1120,8 +1120,8 @@
 1118,1,1,u.s. military involvement in libya allowed thousands of surface-to-air missiles to fall into the hands of radical islamists .
 1119,1,1,marijuana contains 50 to 70 percent more carcinogenic hydrocarbons than tobacco .
 1120,1,1,"the u.s. wont default , because default means that you dont pay your creditors . and it takes about 10 percent of the money thats coming in right now to pay interest to bondholders ."
-1121,1,0,"in the first year of the obama administration , more jobs were created in the private sector than in the eight years of the bush administration ."
-1122,0,0,"in austin , ive got half-a-dozen or more schools on a list to be closed one of which i presented a federal blue-ribbon award to for excellence . and several hundred school personnel on the list for possible terminations ."
+1121,1,1,"in the first year of the obama administration , more jobs were created in the private sector than in the eight years of the bush administration ."
+1122,0,1,"in austin , ive got half-a-dozen or more schools on a list to be closed one of which i presented a federal blue-ribbon award to for excellence . and several hundred school personnel on the list for possible terminations ."
 1123,0,1,"when carly fiorina says hewlett-packard revenues went up , thats because she bought compaq . it was a terrible deal ."
 1124,0,1,latinos are 17 percent of our countrys population but hold only 2 percent of its wealth .
 1125,1,1,says hillary clinton filibustered legislation to reform fannie mae and freddie mac .
@@ -1132,22 +1132,22 @@
 1130,0,1,"were talking right now about a $ 12 billion hole in our current , so-called balanced state budget ."
 1131,0,1,says ron paul insisted fema should be shut down .
 1132,0,1,"under president barack obamas watch , oil production on federal lands has decreased 14 percent over the past year ."
-1133,0,0,"in her first appellate argument , ms. kagan told the court that the speech and press guarantees in the first amendment would allow the federal government to ban the publication of pamphlets discussing political issues before an election ."
+1133,0,1,"in her first appellate argument , ms. kagan told the court that the speech and press guarantees in the first amendment would allow the federal government to ban the publication of pamphlets discussing political issues before an election ."
 1134,0,1,"says barack obama has pension investments that include chinese firms , and investments through a caymans trust ."
 1135,0,1,says sen. thad cochran voted to spend hundreds of millions of dollars on ... the bridge to nowhere in alaska instead of shifting the money to repair a bridge damaged by hurricane katrina .
 1136,1,1,"a study showed that president barack obamas health-care reforms will devastate wisconsin by pushing people off employer-sponsored insurance , driving up premiums , increasing dependency and making 122,000 people ineligible for medicaid ."
-1137,0,0,says ted cruz represents a chinese company found guilty of stealing blueprints from an american manufacturer .
+1137,0,1,says ted cruz represents a chinese company found guilty of stealing blueprints from an american manufacturer .
 1138,0,1,"if you look at last year 's presidential campaign , `` you ca n't find a mention of public option . ''"
 1139,1,1,"with a stroke of a pen , the ( u.s. supreme court ) decided to overrule the 100-year-old ban on corporate expenditures ."
 1140,0,1,says rick scott oversaw the largest medicare fraud in the nations history .
-1141,1,0,says new jersey has fewer jobs since gov . chris christie took office .
+1141,1,1,says new jersey has fewer jobs since gov . chris christie took office .
 1142,1,1,rosalyn dance voted against president obamas medicaid expansion .
 1143,1,1,says donald trump wants us to pull out of nato .
-1144,0,0,"the wisconsin state assembly chambers extend to the bathroom and the parlor , and rules allow members to vote for each other if the member is in the chambers ."
+1144,0,1,"the wisconsin state assembly chambers extend to the bathroom and the parlor , and rules allow members to vote for each other if the member is in the chambers ."
 1145,1,1,"says president barack obama doubled the national debt , which had taken more than two centuries to accumulate , in one year ."
 1146,0,1,"says texas has the fourth-lowest debt per capita of any state in the nation , and we are the lowest of any of the big states ."
 1147,0,1,wisconsin still ranks first among the 50 states in manufacturing jobs per capita .
-1148,0,0,"after a decade of decline , this country created over half a million manufacturing jobs in the last two and a half years ."
+1148,0,1,"after a decade of decline , this country created over half a million manufacturing jobs in the last two and a half years ."
 1149,0,1,"in the last 29 months , our economy has produced about 4.5 million private-sector jobs ."
 1150,1,1,the fed created $ 15 trillion in the bailout process and $ 5 trillion went overseas .
 1151,1,1,new jersey taxpayers will now face the highest tolls in the country .
@@ -1174,21 +1174,21 @@
 1172,1,1,japans interest on its own debt is 25 percent of its national budget
 1173,1,1,"did obama know that tony rezko was saving him $ 300,000 on the purchase of his home ?"
 1174,1,1,barack obama has written and co-sponsored more bills in three years than hillary clinton has in seven .
-1175,0,0,"sewer backups into basements caused the vast majority of the damage to homes and buildings in milwaukees july floods , but federal flood insurance doesnt cover them ."
-1176,0,0,claims ohio gov . john kasich says climate change is a problem .
+1175,0,1,"sewer backups into basements caused the vast majority of the damage to homes and buildings in milwaukees july floods , but federal flood insurance doesnt cover them ."
+1176,0,1,claims ohio gov . john kasich says climate change is a problem .
 1177,0,1,"americans will pay more in taxes in 2011 than they will spend on groceries , clothing and shelter combined ."
 1178,1,1,i also voted 98 percent of the time with republicans in the oregon legislature .
 1179,1,1,"the u.s. army had a training program that put evangelical christians , catholics and mormons in the same category of religious extremism as we do al-qaida ."
 1180,0,1,"the port provides more than 297,000 jobs directly to the state of georgia ."
-1181,1,0,the atlanta beltline paid nearly $ 3.5 million for less than a quarter-acre .
+1181,1,1,the atlanta beltline paid nearly $ 3.5 million for less than a quarter-acre .
 1182,0,1,"says leah vukmir supports allowing people to carry concealed weapons into day care centers , churches , health care clinics and playgrounds ."
-1183,1,0,"says sen. robert cowles , her recall opponent , supported the sale of state-owned power plants not to the highest bidder , but to the biggest donors with no oversight ."
+1183,1,1,"says sen. robert cowles , her recall opponent , supported the sale of state-owned power plants not to the highest bidder , but to the biggest donors with no oversight ."
 1184,1,1,west linn has one of the highest per capita rates of home-based businesses in the united states .
-1185,0,0,the new york police department used to have surveillance going on in and around mosques in new york city . ... our mayor totally cut that out .
+1185,0,1,the new york police department used to have surveillance going on in and around mosques in new york city . ... our mayor totally cut that out .
 1186,1,1,says al franken voted to exempt himself and congress from enrolling in ( the affordable care act marketplaces ) .
 1187,0,1,youve got almost twice as many cops in new york city as you do on our entire border . thats nuts .
-1188,1,0,"under gov . bob mcdonnell , more jobs have been lost than created in southside and southwest virginia ."
-1189,1,0,patrick rose voted to explore a state income tax .
+1188,1,1,"under gov . bob mcdonnell , more jobs have been lost than created in southside and southwest virginia ."
+1189,1,1,patrick rose voted to explore a state income tax .
 1190,0,1,john mccain stood up to the president and sounded the alarm on global warming ... five years ago .
 1191,0,1,the recent process of awarding $ 3 billion worth of airport vending contracts was the most open and transparent procurement process in the citys history .
 1192,1,1,says new mandates are already reducing full-time employment .
@@ -1206,12 +1206,12 @@
 1204,1,1,"the dodd-frank financial-reform laws hundreds of new rules will force small banks and credit unions to burn up an estimated 2,260,631 labor hours just for compliance ."
 1205,1,1,the families that are covered through the low income pool is a different group of individuals than are covered by obamacare .
 1206,0,1,obamas approval numbers are in the low 40s .
-1207,1,0,the president is brain-dead .
+1207,1,1,the president is brain-dead .
 1208,0,1,"barack obama will somehow manage to add more than $ 8 trillion to the national debt , which is more debt than the 43 presidents who held office before him compiled together ."
 1209,1,1,rhode island has the highest percentage of lawyers per capita in the country .
 1210,1,1,"i was the first presidential candidate to lay out a specific , truly universal health care plan ."
 1211,0,1,"he voted twice for a budget resolution that increases the taxes on individuals making $ 42,000 a year ."
-1212,0,0,democrats have failed to answer the most basic question of how they want to pay for the more than $ 1 trillion of health care spending .
+1212,0,1,democrats have failed to answer the most basic question of how they want to pay for the more than $ 1 trillion of health care spending .
 1213,0,1,"over the past eight years , the united states has reduced our total carbon pollution more than any other nation on earth ."
 1214,0,1,"more than half of all black children live in single-parent households , a number that has doubled doubled since we were children ."
 1215,1,1,says the democrats told the catholic church that theyll use federal powers to shut down church charities and hospitals if the church doesnt change its beliefs .
@@ -1220,44 +1220,44 @@
 1218,1,1,the health care law is accelerating our country toward bankruptcy .
 1219,1,1,foreign chinese prostitution money is allegedly behind the groups funding congressman scott desjarlaiss ( tn-04 ) republican majority .
 1220,1,1,the state department asked all secretaries of state to send their emails over . hillary clintonsthe only one whos done it .
-1221,1,0,"when it comes to urgency on passing a budget repair bill , theres no rush on this thing because the fiscal year doesnt end until june 30 , 2011 ."
+1221,1,1,"when it comes to urgency on passing a budget repair bill , theres no rush on this thing because the fiscal year doesnt end until june 30 , 2011 ."
 1222,0,1,"under ( obamacare ) , you cant reward a person for better behavior . you cant have incentives to be healthier ."
 1223,1,1,"says unlike tim kaine , who investedin education , indiana gov . mike pence slashed education funding ."
 1224,0,1,the federal deficit is growing .
 1225,0,1,says the new years day fiscal cliff deal reduces the deficit .
 1226,1,1,obamacare provision will allow forcedhome inspections by government agents .
 1227,1,1,"throughout , we have kept congress fully informed of our efforts to create a legal framework on counterterrorism ."
-1228,0,0,the arizona law basically parrots the federal immigration law .
+1228,0,1,the arizona law basically parrots the federal immigration law .
 1229,0,1,more than 80 percent of sex trafficking victims in america are u.s. citizens .
 1230,0,1,kathryn starkey aided and abetted the continued taxation on residents properties over 70 percent of the time by seconding motions and voting to keep the millage rate the same .
 1231,0,1,"h.b . 194 , the voter suppression bill , invalidates a vote where a voter properly marks the ballot in support of a particular candidate , but also writes in the name of that same candidate ."
 1232,0,1,"approximately 43 percent of all college grades today are as , an increase of 28 percentage points since 1960 ."
 1233,0,1,new hampshire is currently the only state in the nation that does not have a full-service veterans hospital or equivalent access .
 1234,0,1,says rick scotts per-pupil education spending is about $ 200 less than what it was under charlie crist during the recession .
-1235,1,0,says sen. jeanneshaheens wealth has surged while in public office .
-1236,0,0,a bill to eliminate delta air lines jet fuel tax breaks violates federal law and puts the state at risk of losing critical funding from the federal aviation administration .
+1235,1,1,says sen. jeanneshaheens wealth has surged while in public office .
+1236,0,1,a bill to eliminate delta air lines jet fuel tax breaks violates federal law and puts the state at risk of losing critical funding from the federal aviation administration .
 1237,0,1,says he was the only statewide elected official to speak in favor of a federal guest worker plan at the 2012 republican party of texas convention .
 1238,0,1,austin mayoral candidate steve adler opposed an injunction to stop a company from dumping petrochemicals directly into the barton springs aquifer .
 1239,0,1,the ( florida ) casino proposed by malaysian gambling conglomerate genting would be nearly double the size of the largest casino in the world .
 1240,0,1,suzanne bonamici votes with her party a partisan 98 percent of the time .
 1241,0,1,"since the democrats stimulus went into effect last year , ohio has lost about 150,000 jobs ."
 1242,0,1,the obama administration has put out more of these major rules than the clinton administration or the bush administration during comparable times .
-1243,1,1,"says marco rubio sold a home to a chiropractor who had been lobbying him on automobile insurance legislation and once he sold the home , for $ 380,000 cash , the speakers position on the issue changed ."
+1243,1,0,"says marco rubio sold a home to a chiropractor who had been lobbying him on automobile insurance legislation and once he sold the home , for $ 380,000 cash , the speakers position on the issue changed ."
 1244,1,1,on the cuba embargo
 1245,1,1,says democratic party created planned parenthood
-1246,1,0,"as governor , kasich delivered the largest tax cut in the nation ."
+1246,1,1,"as governor , kasich delivered the largest tax cut in the nation ."
 1247,1,1,"in the health care bill , were now offering insurance for dogs ."
 1248,0,1,"in 2013 we had the largest , the best , private sector job growth weve had in this state since the 1990s ."
 1249,1,1,the federal government now tells us which light bulbs to buy .
 1250,1,1,congressman patrick murphy voted to keep the scandal-ridden irs in charge of enforcing obamacare .
 1251,0,1,we really do have the highest corporate tax rate in the world .
-1252,0,0,heroin comes in the united states from the southern border .
+1252,0,1,heroin comes in the united states from the southern border .
 1253,1,1,a socially conservative group sponsored a prayer vigil to stop people from buying girl scout cookies because it thinks the girl scouts are affiliated with planned parenthood .
 1254,1,1,"says ron saunders made the choice to stand with rick scott on expanding school vouchers , restricting scholarships and giving tax breaks to the wealthy ."
 1255,0,1,"since president obama took office , there are over 450,000 more unemployed women ."
 1256,1,1,"people in the top tax bracket , these so-called wealthy , most of them are small-business owners ."
 1257,1,1,barack obama has `` pledged to reduce the size of the military . ''
-1258,0,0,large majorities of the public oppose major changes to medicare and favor higher taxes on the wealthy .
+1258,0,1,large majorities of the public oppose major changes to medicare and favor higher taxes on the wealthy .
 1259,1,1,fidel castro endorses obama .
 1260,0,1,says spending in the fiscal 2009 budget was lower than spending in the fiscal 2014 budget
 1261,1,1,there is no statistical evidence that bail bonds increase the likelihood of those awaiting trial returning to court for their scheduled hearings .
@@ -1278,8 +1278,8 @@
 1276,1,1,says u.s. rep. charles bass wants to privatize social security .
 1277,0,1,more americans believe the moon landing was fake than believe obamacare is affordable .
 1278,1,1,"in the past two years , democrats have spent more money than this country has spent in the last 200 years combined ."
-1279,0,0,"for the first time in more than a decade , imports accounted for less than half of ( the oil ) we consumed ."
+1279,0,1,"for the first time in more than a decade , imports accounted for less than half of ( the oil ) we consumed ."
 1280,0,1,"says donald trump has bankrupted his companies not once , not twice but four times ."
 1281,0,1,john mccain and george bush have `` absolutely no plan for universal health care . ''
 1282,1,1,a new poll shows 62 percent support the president 's plan to reform health care . that means ... letting you choose between keeping the private insurance you have and a public health insurance plan .
-1283,1,0,no one claims the report vindicating new jersey gov . chris christie in the bridge scandal is conclusive .
+1283,1,1,no one claims the report vindicating new jersey gov . chris christie in the bridge scandal is conclusive .
