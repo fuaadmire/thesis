@@ -58,9 +58,9 @@ NUM_LAYERS = 1
 print("NUMBER OF LAYERS:", NUM_LAYERS)
 
 # kør med forskellige random seeds og tag gennemsnit. eller cross-validate.
-random.seed(16)
-np.random.seed(16)
-set_random_seed(16)
+random.seed(42)
+np.random.seed(42)
+set_random_seed(42)
 
 
 
@@ -80,6 +80,12 @@ test = [nltk.word_tokenize(i.lower()) for i in test]
 
 if trainingdata == "liar":
     dev = [nltk.word_tokenize(i.lower()) for i in dev]
+else:
+    dev = train[int(abs((len(train_lab)/3)*2)):]
+    dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
+    train = train[:int(abs((len(train_lab)/3)*2))]
+    train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
+    print(len(train), len(dev))
 
 
 all_train_tokens = []
@@ -98,8 +104,8 @@ trainTextsSeq = np.array([[word2id[w] for w in sent] for sent in train])
 
 testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
 
-if trainingdata == "liar":
-    devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
+#if trainingdata == "liar":
+devTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in dev])
 
 # PARAMETERS
 vocab_size = len(word2id)+1 # vocab_size: number of tokens in vocabulary
@@ -108,8 +114,8 @@ max_doc_length = 100 # LIAR 100 (like Wang), Kaggle 3391, FakeNewsCorpus 2669
 num_samples = len(train_lab) # num_samples: number of training/testing data samples
 num_time_steps = max_doc_length # num_time_steps: number of time steps in LSTM cells, usually equals to the size of input, i.e., max_doc_length
 embedding_size = 300
-num_cells = 64 # num_cells: number of LSTM cells
-num_epochs = 10
+#num_cells = 64 # num_cells: number of LSTM cells
+#num_epochs = 10
 num_batch = 64
 
 # PREPARING DATA
@@ -118,22 +124,22 @@ num_batch = 64
 seq = sequence.pad_sequences(trainTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 print("train seq shape",seq.shape)
 test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
-if trainingdata == "liar":
-    dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+#if trainingdata == "liar":
+dev_seq = sequence.pad_sequences(devTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
 
 if TIMEDISTRIBUTED:
     train_lab = tile_reshape(train_lab, num_time_steps)
     test_lab = tile_reshape(test_lab, num_time_steps)
     print(train_lab.shape)
-    if trainingdata == "liar":
-        dev_lab = tile_reshape(dev_lab, num_time_steps)
+    #if trainingdata == "liar":
+    dev_lab = tile_reshape(dev_lab, num_time_steps)
 else:
     train_lab = to_categorical(train_lab, 2)
     test_lab = to_categorical(test_lab, 2)
     print(train_lab.shape)
-    if trainingdata == "liar":
-        dev_lab = to_categorical(dev_lab, 2)
-        print("validation target shape", dev_lab.shape)
+    #if trainingdata == "liar":
+    dev_lab = to_categorical(dev_lab, 2)
+    print("validation target shape", dev_lab.shape)
 print("train target shape",train_lab.shape)
 
 #print("Parameters:: num_cells: "+str(num_cells)+" num_samples: "+str(num_samples)+" embedding_size: "+str(embedding_size)+" epochs: "+str(num_epochs)+" batch_size: "+str(num_batch))
@@ -210,20 +216,20 @@ param_dist = dict(num_cells=num_cells,
                   verbose=[0]
                  )
 
-if trainingdata == "liar":
-    my_val_fold = [-1 for i in range(len(seq))]+[0 for i in range(len(dev_seq))]
+#if trainingdata == "liar":
+my_val_fold = [-1 for i in range(len(seq))]+[0 for i in range(len(dev_seq))]
 
-    X = np.concatenate((seq, dev_seq))
-    y = np.concatenate((train_lab, dev_lab))
+X = np.concatenate((seq, dev_seq))
+y = np.concatenate((train_lab, dev_lab))
 
-    ps = PredefinedSplit(test_fold=my_val_fold)
-else:
-    X = seq
-    y = train_lab
-    ps=3
+ps = PredefinedSplit(test_fold=my_val_fold)
+#else:
+#    X = seq
+#    y = train_lab
+#    ps=3
 
 # Search in action!
-n_iter_search = 96 # Number of parameter settings that are sampled.
+n_iter_search = 25 # Number of parameter settings that are sampled.
 # RandomizedSearchCV swithed with GridSearchCV for second run
 random_search = RandomizedSearchCV(estimator=model,
                                    param_distributions=param_dist, #for rs
