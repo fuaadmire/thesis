@@ -436,4 +436,4 @@ def run_model_example(trainingdata):
                                         TIMEDISTRIBUTED=False,
                                         dev_seq=dev_seq,
                                         dev_lab=dev_lab)
-        evaluting_model(model, trainingdata)
+    evaluting_model(model, trainingdata)
