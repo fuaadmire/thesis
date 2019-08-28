@@ -60,7 +60,7 @@ print(datetime.now())
 
 
 
-datapath = "/Users/Terne/Documents/KU/Speciale/thesis/data/"#"/home/ktj250/thesis/data/"
+datapath = "/home/ktj250/thesis/data/" #"/Users/Terne/Documents/KU/Speciale/thesis/data/"#"/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
 TIMEDISTRIBUTED = True
