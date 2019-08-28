@@ -63,7 +63,7 @@ print(datetime.now())
 datapath = "/Users/Terne/Documents/KU/Speciale/thesis/data/"#"/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
-TIMEDISTRIBUTED = False
+TIMEDISTRIBUTED = True
 
 use_pretrained_embeddings = True
 
@@ -75,28 +75,61 @@ print("trainingdata=",trainingdata)
 
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
-    num_cells = 32
-    num_epochs = 100
-    r_dropout = 0.4
-    dropout = 0.4
-    learning_rate = 0.00001
+    if not TIMEDISTRIBUTED:
+        num_cells = 32
+        num_epochs = 100
+        r_dropout = 0.4
+        dropout = 0.4
+        learning_rate = 0.00001
+    else:
+        num_cells = 64
+        num_epochs = 5
+        r_dropout = 0.6
+        dropout = 0.8
+        learning_rate = 0.001
+
 elif trainingdata == "kaggle":
     train, test, train_lab, test_lab = load_kaggle_data(datapath)
-    num_cells = 64
-    num_epochs = 10
-    r_dropout = 0.2
-    dropout = 0.6
-    learning_rate = 0.001
+    if not TIMEDISTRIBUTED:
+        num_cells = 64
+        num_epochs = 10
+        r_dropout = 0.2
+        dropout = 0.6
+        learning_rate = 0.001
+    else:
+        num_cells = 128
+        num_epochs = 11
+        r_dropout = 0.4
+        dropout = 0.6
+        learning_rate = 0.001
+
 elif trainingdata == "FNC":
     train, test, train_lab, test_lab = load_FNC_data(datapath)
+    if not TIMEDISTRIBUTED:
+        pass
+    else:
+        num_cells = 64
+        num_epochs = 5
+        r_dropout = 02
+        dropout = 0.6
+        learning_rate = 0.001
 
 elif trainingdata == "BS":
-    train, test, train_lab, test_lab = load_BS_data(datapath)
-    num_cells = 256
-    num_epochs = 10
-    r_dropout = 0.4
-    dropout = 0.2
-    learning_rate = 0.0001
+    if not TIMEDISTRIBUTED:
+        train, test, train_lab, test_lab = load_BS_data(datapath)
+        num_cells = 256
+        num_epochs = 10
+        r_dropout = 0.4
+        dropout = 0.2
+        learning_rate = 0.0001
+    else:
+        num_cells = 256
+        num_epochs = 10
+        r_dropout = 0.4
+        dropout = 0.2
+        learning_rate = 0.0001
+
+
 
 
 train = [nltk.word_tokenize(i.lower()) for i in train]
@@ -345,34 +378,34 @@ def test_on_kaggle():
     print("Testing on kaggle")
     train, test, train_lab, test_lab = load_kaggle_data(datapath)
     model_loaded = load_model(model_path+'.h5')
-    commons_testing(model_loaded, test, test_lab, "kaggle")
+    commons_testing(model_loaded, test, test_lab, trainingdata+"_kaggle")
 
 
 def test_on_FNC():
     print("Testing on FNC")
     train, test, train_lab, test_lab = load_FNC_data(datapath)
     model_loaded2 = load_model(model_path+'.h5')
-    commons_testing(model_loaded2, test, test_lab, "FNC")
+    commons_testing(model_loaded2, test, test_lab, trainingdata+"_FNC")
 
 def test_on_BS():
     print("Testing on BS")
     train, test, train_lab, test_lab = load_BS_data(datapath)
     model_loaded3 = load_model(model_path+'.h5')
-    commons_testing(model_loaded3, test, test_lab, "BS")
+    commons_testing(model_loaded3, test, test_lab, trainingdata+"_BS")
 
 def test_on_liar():
     print("Testing on Liar")
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
     model_loaded4 = load_model(model_path+'.h5')
-    commons_testing(model_loaded4, test, test_lab, "Liar test set")
-    commons_testing(model_loaded4, dev, dev_lab, "Liar dev set")
+    commons_testing(model_loaded4, test, test_lab, trainingdata+"_Liar test set")
+    commons_testing(model_loaded4, dev, dev_lab, trainingdata+"_Liar dev set")
 
 
 def test_on_learnerdata():
-    prof_test = codecs.open(directory_path+"fce_text_entire_docs.txt", "r", "utf-8").read().split("\n")
+    prof_test = codecs.open(datapath+"proficiency/fce_text_entire_docs.txt", "r", "utf-8").read().split("\n")
     prof_test = prof_test[:len(prof_test)-1]
     test = [nltk.word_tokenize(i.lower()) for i in prof_test]
-    test_lab = codecs.open(directory_path+"proficiency_entire_docs.txt", "r", "utf-8").read().split("\r\n")
+    test_lab = codecs.open(datapath+"proficiency/proficiency_entire_docs.txt", "r", "utf-8").read().split("\r\n")
     test_lab = test_lab[:len(test_lab)-1]
 
     pr = []
@@ -389,7 +422,7 @@ def test_on_learnerdata():
     model_loaded3 = load_model(model_path+'.h5')
     if TIMEDISTRIBUTED:
         test_preds = model_loaded3.predict(test_seq)
-        retrieve_lstmvis_files(model_loaded3, test_seq, test_lab, test_preds, "FCE")
+        retrieve_lstmvis_files(model_loaded3, test_seq, test_lab, test_preds, trainingdata+"_FCE")
     else:
         test_preds = model.predict(test_seq)
         print(len(test_preds))
@@ -407,19 +440,19 @@ def commons_testing(model_loaded, test, test_lab, identifier_string):
         test_lab = tile_reshape(test_lab, num_time_steps)
     else:
         test_lab = to_categorical(test_lab, 2)
-    preds = model.predict(test_seq)
-    prediction = pd.DataFrame(list(zip(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), [" ".join(i[:100]) for i in test])), columns=['label','prediction','text']).to_csv(identifier_string+'_prediction.csv')
+        preds = model.predict(test_seq)
+        prediction = pd.DataFrame(list(zip(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), [" ".join(i[:100]) for i in test])), columns=['label','prediction','text']).to_csv(identifier_string+'_prediction.csv')
 
-    accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
-    print("accuracy:", accuracy)
-    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
-    print("F1=", f1)
-    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
-    print("tn, fp, fn, tp")
-    print(tn, fp, fn, tp)
-    #test_score = model_loaded.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
-    #print("Test loss:", test_score[0])
-    #print("Test accuracy:", test_score[1])
+        accuracy = accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+        print("accuracy:", accuracy)
+        f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+        print("F1=", f1)
+        tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+        print("tn, fp, fn, tp")
+        print(tn, fp, fn, tp)
+    test_score = model_loaded.evaluate(test_seq, test_lab, batch_size=num_batch, verbose=0)
+    print("Test loss:", test_score[0])
+    print("Test accuracy:", test_score[1])
     if TIMEDISTRIBUTED:
         test_preds = model_loaded.predict(test_seq)
         retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds, identifier_string)
@@ -460,4 +493,4 @@ test_on_BS()
 
 test_on_liar()
 
-#test_on_learnerdata()
+test_on_learnerdata()
