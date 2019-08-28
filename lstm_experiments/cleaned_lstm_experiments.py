@@ -110,13 +110,13 @@ elif trainingdata == "FNC":
     else:
         num_cells = 64
         num_epochs = 5
-        r_dropout = 02
+        r_dropout = 0.2
         dropout = 0.6
         learning_rate = 0.001
 
 elif trainingdata == "BS":
+    train, test, train_lab, test_lab = load_BS_data(datapath)
     if not TIMEDISTRIBUTED:
-        train, test, train_lab, test_lab = load_BS_data(datapath)
         num_cells = 256
         num_epochs = 10
         r_dropout = 0.4
