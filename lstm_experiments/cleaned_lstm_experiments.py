@@ -211,7 +211,7 @@ if use_pretrained_embeddings:
     # https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html
     # Load Google's pre-trained Word2Vec model.
     # /home/ktj250/thesis/
-    model = gensim.models.KeyedVectors.load_word2vec_format('/Users/Terne/Documents/KU/Speciale/thesis/GoogleNews-vectors-negative300.bin', binary=True)
+    model = gensim.models.KeyedVectors.load_word2vec_format('/home/ktj250/thesis/GoogleNews-vectors-negative300.bin', binary=True)
 
     embedding_matrix = np.zeros((len(word2id) + 1, 300))
     for word, i in word2id.items():
