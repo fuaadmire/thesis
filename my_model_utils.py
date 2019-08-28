@@ -49,7 +49,7 @@ def plot_loss(history, filename):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig("loss"+filename, dpi=300)
+    plt.savefig("loss"+filename, dpi=100)
 
     fig2, ax2 = plt.subplots()
     ax2.plot(history.history['acc'])
@@ -59,7 +59,7 @@ def plot_loss(history, filename):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
-    plt.savefig("accuracy"+filename, dpi=300)
+    plt.savefig("accuracy"+filename, dpi=100)
 
 
 def train_and_test(datapath="/home/ktj250/thesis/data/",
