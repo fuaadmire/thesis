@@ -44,7 +44,7 @@ for i in [2, 16, 42, 1, 4]:
     np.random.seed(i)
     set_random_seed(i)
 
-    score, dev_score, history = train_and_test(TIMEDISTRIBUTED=False, trainingdata="FNC", num_epochs=values.index(max(values)+1, num_cells=32, dropout=0.6, r_dropout=0.4, learning_rate=0.001)
+    score, dev_score, history = train_and_test(TIMEDISTRIBUTED=False, trainingdata="FNC", num_epochs=values.index(max(values))+1, num_cells=32, dropout=0.6, r_dropout=0.4, learning_rate=0.001)
     scores.append(score)
 
 FNC_avg = np.mean(scores)
