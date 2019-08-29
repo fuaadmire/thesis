@@ -296,8 +296,8 @@ else:
 
 model.save(model_path+'.h5')
 
-d_write("words.dict", word2id)
-d_write("words.dict", {"PADDING": 0})
+d_write(trainingdata+"words.dict", word2id)
+d_write(trainingdata+"words.dict", {"PADDING": 0})
 
 
 
@@ -310,12 +310,12 @@ if TIMEDISTRIBUTED:
 
     # text files
     trainTextsSeq_flatten = np.array(seq).flatten()
-    hf = h5py.File("train.hdf5", "w") # need this file for LSTMVis
+    hf = h5py.File(trainingdata+"train.hdf5", "w") # need this file for LSTMVis
     hf.create_dataset('words', data=trainTextsSeq_flatten)
     hf.close()
 
     testTextsSeq_flatten = np.array(test_seq).flatten()
-    hf_t = h5py.File("test.hdf5", "w") # need this file for LSTMVis
+    hf_t = h5py.File(trainingdata+"test.hdf5", "w") # need this file for LSTMVis
     hf_t.create_dataset('words', data=testTextsSeq_flatten)
     hf_t.close()
 
@@ -337,7 +337,7 @@ if TIMEDISTRIBUTED:
 
     # save predicted classes!
     predicted_train_classes_flatten = np.array(y_classes_train).flatten()
-    hf_p = h5py.File("predictions.hdf5", "w")
+    hf_p = h5py.File(trainingdata+"predictions.hdf5", "w")
     hf_p.create_dataset('preds_train', data=predicted_train_classes_flatten)
     #hf_p.close()
     predicted_test_classes_flatten = np.array(y_classes_test).flatten()
@@ -362,7 +362,7 @@ if TIMEDISTRIBUTED:
 
     states_model = model_RetreiveStates.predict(seq, batch_size=num_batch)
     states_model_flatten = states_model.reshape(num_samples * num_time_steps, num_cells)# Flatten first and second dimension for LSTMVis
-    hf = h5py.File("states.hdf5", "w")
+    hf = h5py.File(trainingdata+"states.hdf5", "w")
     hf.create_dataset('states_train', data=states_model_flatten)
     #hf.close()
 
@@ -398,7 +398,7 @@ def test_on_liar():
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
     model_loaded4 = load_model(model_path+'.h5')
     commons_testing(model_loaded4, test, test_lab, trainingdata+"_Liar test set")
-    commons_testing(model_loaded4, dev, dev_lab, trainingdata+"_Liar dev set")
+    #commons_testing(model_loaded4, dev, dev_lab, trainingdata+"_Liar dev set")
 
 
 def test_on_learnerdata():
@@ -407,16 +407,15 @@ def test_on_learnerdata():
     test = [nltk.word_tokenize(i.lower()) for i in prof_test]
     test_lab = codecs.open(datapath+"proficiency/proficiency_entire_docs.txt", "r", "utf-8").read().split("\r\n")
     test_lab = test_lab[:len(test_lab)-1]
-
-    pr = []
-    ID = []
-    for i in test_lab:
-        s = i.split("\t")
+    #pr = []
+    #ID = []
+    #for i in test_lab:
+    #    s = i.split("\t")
         #print(s[0])
-        pr.append(int(np.float(s[0])))
-        ID.append(s[1])
-    np.savetxt("IDs_entire_docs", ID)
-    np.savetxt("prof_score_entire_docs", pr)
+    #    pr.append(int(np.float(s[0])))
+    #    ID.append(s[1])
+    #np.savetxt("IDs_entire_docs", ID)
+    #np.savetxt("prof_score_entire_docs", pr)
     testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
     test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
     model_loaded3 = load_model(model_path+'.h5')
