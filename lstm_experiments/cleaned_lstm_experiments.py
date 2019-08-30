@@ -63,7 +63,7 @@ print(datetime.now())
 datapath = "/home/ktj250/thesis/data/" #"/Users/Terne/Documents/KU/Speciale/thesis/data/"#"/home/ktj250/thesis/data/"
 #directory_path = "/gdrive/My Drive/Thesis/"
 
-TIMEDISTRIBUTED = True
+TIMEDISTRIBUTED = False
 
 use_pretrained_embeddings = True
 
@@ -106,7 +106,11 @@ elif trainingdata == "kaggle":
 elif trainingdata == "FNC":
     train, test, train_lab, test_lab = load_FNC_data(datapath)
     if not TIMEDISTRIBUTED:
-        pass
+        num_cells = 32
+        num_epochs = 17
+        r_dropout = 0.4
+        dropout = 0.6
+        learning_rate = 0.001
     else:
         num_cells = 64
         num_epochs = 5
