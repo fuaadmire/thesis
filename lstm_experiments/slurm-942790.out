@@ -1,0 +1,118 @@
+1
+2019-08-30 10:39:55.508435: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-30 10:39:56.777906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-30 10:39:56.777947: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-30 10:39:57.191922: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-30 10:39:57.191974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-30 10:39:57.191982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-30 10:39:57.192125: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-08-30 10:33:24.686016
+trainingdata= FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+22333 11167
+train seq shape (22333, 100)
+(22333, 2)
+Parameters:: num_cells: 32 num_samples: 22333 embedding_size: 300 epochs: 17 batch_size: 64
+(?, 100)
+fitting model..
+Train on 22333 samples, validate on 11167 samples
+Epoch 1/17
+ - 108s - loss: 0.1574 - acc: 0.9389 - val_loss: 0.0547 - val_acc: 0.9828
+Epoch 2/17
+ - 104s - loss: 0.0498 - acc: 0.9825 - val_loss: 0.0437 - val_acc: 0.9852
+Epoch 3/17
+ - 104s - loss: 0.0249 - acc: 0.9912 - val_loss: 0.0385 - val_acc: 0.9890
+Epoch 4/17
+ - 104s - loss: 0.0111 - acc: 0.9965 - val_loss: 0.0388 - val_acc: 0.9893
+Epoch 5/17
+ - 104s - loss: 0.0071 - acc: 0.9976 - val_loss: 0.0390 - val_acc: 0.9901
+Epoch 6/17
+ - 104s - loss: 0.0034 - acc: 0.9988 - val_loss: 0.0485 - val_acc: 0.9895
+Epoch 7/17
+ - 104s - loss: 0.0025 - acc: 0.9993 - val_loss: 0.0459 - val_acc: 0.9894
+Epoch 8/17
+ - 104s - loss: 0.0010 - acc: 0.9998 - val_loss: 0.0480 - val_acc: 0.9901
+Epoch 9/17
+ - 104s - loss: 0.0012 - acc: 0.9996 - val_loss: 0.0481 - val_acc: 0.9901
+Epoch 10/17
+ - 104s - loss: 7.3390e-04 - acc: 0.9998 - val_loss: 0.0598 - val_acc: 0.9896
+Epoch 11/17
+ - 104s - loss: 0.0013 - acc: 0.9996 - val_loss: 0.0563 - val_acc: 0.9898
+Epoch 12/17
+ - 104s - loss: 7.2288e-04 - acc: 0.9998 - val_loss: 0.0609 - val_acc: 0.9897
+Epoch 13/17
+ - 104s - loss: 5.1853e-04 - acc: 0.9999 - val_loss: 0.0688 - val_acc: 0.9893
+Epoch 14/17
+ - 104s - loss: 4.2661e-04 - acc: 1.0000 - val_loss: 0.0680 - val_acc: 0.9894
+Epoch 15/17
+ - 105s - loss: 1.2678e-04 - acc: 1.0000 - val_loss: 0.0660 - val_acc: 0.9897
+Epoch 16/17
+ - 105s - loss: 8.8574e-04 - acc: 0.9998 - val_loss: 0.0755 - val_acc: 0.9887
+Epoch 17/17
+ - 106s - loss: 3.4086e-04 - acc: 1.0000 - val_loss: 0.0784 - val_acc: 0.9891
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.08937979218010636
+Test accuracy: 0.9867878787011811
+Valid loss: 0.07837783297239946
+Valid accuracy: 0.989074952986478
+tn, fp, fn, tp
+8156 21 197 8126
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          58134000  
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 64)                85248     
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 130       
+=================================================================
+Total params: 58,219,378
+Trainable params: 58,219,378
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+accuracy: 0.6004756242568371
+F1= 0.3991953509164059
+tn, fp, fn, tp
+3147 242 2446 893
+Test loss: 3.357619841116858
+Test accuracy: 0.6004756242568371
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+accuracy: 0.9867878787878788
+F1= 0.9867638129933212
+tn, fp, fn, tp
+8156 21 197 8126
+Test loss: 0.08937979218010636
+Test accuracy: 0.9867878787011811
+Testing on BS
+BS labels: 1=fake, 0=real
+accuracy: 0.48504891828579305
+F1= 0.19304685812999353
+tn, fp, fn, tp
+3073 155 3582 447
+Test loss: 4.590970760044257
+Test accuracy: 0.4850489183350734
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+accuracy: 0.5595895816890292
+F1= 0.19364161849710984
+tn, fp, fn, tp
+642 72 486 67
+Test loss: 3.0767907307857403
+Test accuracy: 0.5595895828180832
+194
