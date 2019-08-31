@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import re
 import pickle
 from sklearn.utils import shuffle
-
+import pandas as pd
 
 
 def binarize_labels(labels, FAKE):
