@@ -139,7 +139,7 @@ def load_TP_data_all_vs_us(datapath):
     us = load_TP_US_sample(datapath, "TP/TP_US.tmp.csv", num_us_samples)
     data = da+de+es+fr+it+nl+se+us
     labels = ["da"]*len(da)+["de"]*len(de)+["es"]*len(es)+["fr"]*len(fr)+["it"]*len(it)+["nl"]*len(nl)+["se"]*len(se)+["us"]*len(us)
-    data, labels = sklearn.utils.shuffle(data,labels, random_state=42)
+    data, labels = shuffle(data,labels, random_state=42)
     return data, labels
 
 
@@ -152,7 +152,7 @@ def load_TP_data_one_vs_us(datapath, lang_file):
     us = load_TP_US_sample(datapath, "TP/TP_US.tmp.csv", len(other))
     data = other+us
     labels = [lab]*len(other)+["us"]*len(us)
-    data, labels = sklearn.utils.shuffle(data,labels, random_state=42)
+    data, labels = shuffle(data,labels, random_state=42)
     return data, labels
 
 
