@@ -111,7 +111,7 @@ def load_TP_US_sample(datapath, file, n):
     df = df.sample(n=n, random_state=42)
     return list(df["review"])
 
-def load_TP_data_all_vs_us(datapath):
+def load_TP_data_all_vs_us(path):
     da = codecs.open(path+"TP/da.test.txt", "r", "utf-8").read().split("\n")
     da = da[:len(da)-1]
     print("da",len(da))
@@ -136,7 +136,7 @@ def load_TP_data_all_vs_us(datapath):
     print("method = all vs US")
     num_us_samples = len(da)+len(de)+len(es)+len(fr)+len(it)+len(nl)+len(se)
     print("us",num_us_samples)
-    us = load_TP_US_sample(datapath, "TP/TP_US.tmp.csv", num_us_samples)
+    us = load_TP_US_sample(path, "TP/TP_US.tmp.csv", num_us_samples)
     data = da+de+es+fr+it+nl+se+us
     labels = ["da"]*len(da)+["de"]*len(de)+["es"]*len(es)+["fr"]*len(fr)+["it"]*len(it)+["nl"]*len(nl)+["se"]*len(se)+["us"]*len(us)
     data, labels = shuffle(data,labels, random_state=42)
@@ -145,7 +145,7 @@ def load_TP_data_all_vs_us(datapath):
 
 def load_TP_data_one_vs_us(datapath, lang_file):
     print("method = one vs US")
-    other = codecs.open(path+lang_file, "r", "utf-8").read().split("\n")
+    other = codecs.open(datapath+lang_file, "r", "utf-8").read().split("\n")
     other = other[:len(other)-1]
     lab = lang_file[3:5]
     print(lab, len(other))
