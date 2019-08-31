@@ -442,12 +442,12 @@ def test_on_TP():
         model_loaded4 = load_model(model_path+'.h5')
         if TIMEDISTRIBUTED:
             test_preds = model_loaded4.predict(test_seq)
-            retrieve_lstmvis_files(model_loaded4, test_seq, test_lab, test_preds, trainingdata+"_TP_"+lang_file[3:5]+"_vs_us_")
+            retrieve_lstmvis_files(model_loaded4, test_seq, test_lab, test_preds, trainingdata+"_TP_"+i[3:5]+"_vs_us_")
         else:
             test_preds = model.predict(test_seq)
             print(len(test_preds))
-            np.savetxt(trainingdata+"_"+lang_file[3:5]+"_vs_us_"+"preds.txt",test_preds)
-            np.savetxt(trainingdata+"_"+lang_file[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
+            np.savetxt(trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
+            np.savetxt(trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
 
     test, test_lab = load_TP_data_all_vs_us(datapath)
     testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
