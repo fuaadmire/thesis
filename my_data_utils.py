@@ -102,24 +102,58 @@ def load_BS_data(datapath):
     X_train, X_test, y_train, y_test = train_test_split(samples, labels, test_size=0.33, random_state=42)
     return X_train, X_test, y_train, y_test
 
-def load_TP_data(datapath):
-    da = codecs.open("da.test.txt", "r", "utf-8").read().split("\n")
-    da = da[:len(da)-1]
-    de = codecs.open("de.test.txt", "r", "utf-8").read().split("\n")
-    de = de[:len(de)-1]
-    es = codecs.open("es.test.txt", "r", "utf-8").read().split("\n")
-    es = es[:len(es)-1]
-    fr = codecs.open("fr.test.txt", "r", "utf-8").read().split("\n")
-    fr = fr[:len(fr)-1]
-    it = codecs.open("it.test.txt", "r", "utf-8").read().split("\n")
-    it = it[:len(it)-1]
-    nl = codecs.open("nl.test.txt", "r", "utf-8").read().split("\n")
-    nl = nl[:len(nl)-1]
-    se = codecs.open("se.test.txt", "r", "utf-8").read().split("\n")
-    se = se[:len(se)-1]
-    
+def load_TP_US_sample(datapath, file, n):
+    df = pd.read_csv(datapath+file)
+    #print("number of reviews not nan:",len(df)-pd.isnull(df["review"]).sum()) # number of actual reviews
+    df = df[pd.notnull(df["review"])]
+    #print("number of reviews and gender not nan:",len(df)-pd.isnull(df["gender"]).sum())# reviews with gender as well
+    df = df[pd.notnull(df["gender"])]
+    df = df.sample(n=n, random_state=42)
+    return list(df["review"])
 
-    pass
+def load_TP_data_all_vs_us(datapath):
+    da = codecs.open(path+"TP/da.test.txt", "r", "utf-8").read().split("\n")
+    da = da[:len(da)-1]
+    print("da",len(da))
+    de = codecs.open(path+"TP/de.test.txt", "r", "utf-8").read().split("\n")
+    de = de[:len(de)-1]
+    print("de",len(de))
+    es = codecs.open(path+"TP/es.test.txt", "r", "utf-8").read().split("\n")
+    es = es[:len(es)-1]
+    print("es",len(es))
+    fr = codecs.open(path+"TP/fr.test.txt", "r", "utf-8").read().split("\n")
+    fr = fr[:len(fr)-1]
+    print("fr",len(fr))
+    it = codecs.open(path+"TP/it.test.txt", "r", "utf-8").read().split("\n")
+    it = it[:len(it)-1]
+    print("it",len(it))
+    nl = codecs.open(path+"TP/nl.test.txt", "r", "utf-8").read().split("\n")
+    nl = nl[:len(nl)-1]
+    print("nl",len(nl))
+    se = codecs.open(path+"TP/se.test.txt", "r", "utf-8").read().split("\n")
+    se = se[:len(se)-1]
+    print("se",len(se))
+    print("method = all vs US")
+    num_us_samples = len(da)+len(de)+len(es)+len(fr)+len(it)+len(nl)+len(se)
+    print("us",num_us_samples)
+    us = load_TP_US_sample(datapath, "TP/TP_US.tmp.csv", num_us_samples)
+    data = da+de+es+fr+it+nl+se+us
+    labels = ["da"]*len(da)+["de"]*len(de)+["es"]*len(es)+["fr"]*len(fr)+["it"]*len(it)+["nl"]*len(nl)+["se"]*len(se)+["us"]*len(us)
+    data, labels = sklearn.utils.shuffle(data,labels, random_state=42)
+    return data, labels
+
+
+def load_TP_data_one_vs_us(datapath, lang_file):
+    print("method = one vs US")
+    other = codecs.open(path+lang_file, "r", "utf-8").read().split("\n")
+    other = other[:len(other)-1]
+    lab = lang_file[3:5]
+    print(lab, len(other))
+    us = load_TP_US_sample(datapath, "TP/TP_US.tmp.csv", len(other))
+    data = other+us
+    labels = [lab]*len(other)+["us"]*len(us)
+    data, labels = sklearn.utils.shuffle(data,labels, random_state=42)
+    return data, labels
 
 
 # Reshaping function for labels

@@ -46,7 +46,7 @@ import gensim
 #from thesis.get_liar_binary_data import *
 import random
 
-from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data
+from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data, load_TP_US_sample, load_TP_data_all_vs_us, load_TP_data_one_vs_us
 
 random.seed(42)
 np.random.seed(42)
@@ -429,11 +429,40 @@ def test_on_learnerdata():
     else:
         test_preds = model.predict(test_seq)
         print(len(test_preds))
-        np.savetxt("student_preds_softmax_entire_docs.txt",test_preds)
+        np.savetxt(trainingdata+"_student_preds_softmax_entire_docs.txt",test_preds)
+
 
 def test_on_TP():
+    lang_files = ["TP/da.test.txt", "TP/de.test.txt", "TP/es.test.txt", "TP/fr.test.txt",
+                  "TP/it.test.txt", "TP/nl.test.txt", "TP/se.test.txt"]
+    for i in lang_files:
+        test, test_lab = load_TP_data_one_vs_us(datapath, i)
+        testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
+        test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+        model_loaded4 = load_model(model_path+'.h5')
+        if TIMEDISTRIBUTED:
+            test_preds = model_loaded4.predict(test_seq)
+            retrieve_lstmvis_files(model_loaded4, test_seq, test_lab, test_preds, trainingdata+"_TP_"+lang_file[3:5]+"_vs_us_")
+        else:
+            test_preds = model.predict(test_seq)
+            print(len(test_preds))
+            np.savetxt(trainingdata+"_"+lang_file[3:5]+"_vs_us_"+"preds.txt",test_preds)
+            np.savetxt(trainingdata+"_"+lang_file[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
 
-    pass
+    test, test_lab = load_TP_data_all_vs_us(datapath)
+    testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
+    test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
+    model_loaded5 = load_model(model_path+'.h5')
+    if TIMEDISTRIBUTED:
+        test_preds = model_loaded5.predict(test_seq)
+        retrieve_lstmvis_files(model_loaded5, test_seq, test_lab, test_preds, trainingdata+"_TP_all_vs_us_")
+    else:
+        test_preds = model.predict(test_seq)
+        print(len(test_preds))
+        np.savetxt(trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
+        np.savetxt(trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
+
+
 
 def commons_testing(model_loaded, test, test_lab, identifier_string):
     test = [nltk.word_tokenize(i.lower()) for i in test]
@@ -488,12 +517,14 @@ def retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds,identifi
     hf.close()
 
 
-test_on_kaggle()
+#test_on_kaggle()
 
-test_on_FNC()
+#test_on_FNC()
 
-test_on_BS()
+#test_on_BS()
 
-test_on_liar()
+#test_on_liar()
+
+test_on_TP()
 
 test_on_learnerdata()
