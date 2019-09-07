@@ -1,0 +1,99 @@
+2
+2019-08-27 16:44:44.168230: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-27 16:44:44.822088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:83:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-27 16:44:44.822130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-27 16:44:45.276006: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-27 16:44:45.276054: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-27 16:44:45.276061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-27 16:44:45.276200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:83:00.0, compute capability: 6.1)
+2019-08-27 16:41:08.895426
+trainingdata= kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+9106 4553
+train seq shape (9106, 100)
+(9106, 2)
+Parameters:: num_cells: 64 num_samples: 9106 embedding_size: 300 epochs: 10 batch_size: 64
+(?, 100)
+fitting model..
+Train on 9106 samples, validate on 4553 samples
+Epoch 1/10
+ - 44s - loss: 0.4159 - acc: 0.7995 - val_loss: 0.1787 - val_acc: 0.9282
+Epoch 2/10
+ - 41s - loss: 0.1599 - acc: 0.9387 - val_loss: 0.1425 - val_acc: 0.9464
+Epoch 3/10
+ - 41s - loss: 0.0904 - acc: 0.9672 - val_loss: 0.1201 - val_acc: 0.9561
+Epoch 4/10
+ - 41s - loss: 0.0518 - acc: 0.9826 - val_loss: 0.1218 - val_acc: 0.9598
+Epoch 5/10
+ - 41s - loss: 0.0303 - acc: 0.9901 - val_loss: 0.1366 - val_acc: 0.9598
+Epoch 6/10
+ - 41s - loss: 0.0213 - acc: 0.9918 - val_loss: 0.1889 - val_acc: 0.9543
+Epoch 7/10
+ - 41s - loss: 0.0140 - acc: 0.9956 - val_loss: 0.1612 - val_acc: 0.9580
+Epoch 8/10
+ - 41s - loss: 0.0088 - acc: 0.9973 - val_loss: 0.1643 - val_acc: 0.9624
+Epoch 9/10
+ - 41s - loss: 0.0074 - acc: 0.9982 - val_loss: 0.1630 - val_acc: 0.9607
+Epoch 10/10
+ - 41s - loss: 0.0072 - acc: 0.9982 - val_loss: 0.1514 - val_acc: 0.9594
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.14523693580885266
+Test accuracy: 0.9625445897740785
+Valid loss: 0.15144204072263145
+Valid accuracy: 0.9593674500460366
+tn, fp, fn, tp
+3270 119 133 3206
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          44446500  
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 128)               186880    
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 258       
+=================================================================
+Total params: 44,633,638
+Trainable params: 44,633,638
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+accuracy: 0.9625445897740785
+F1= 0.9621848739495799
+tn, fp, fn, tp
+3270 119 133 3206
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+accuracy: 0.5591515151515152
+F1= 0.693209616195698
+tn, fp, fn, tp
+1008 7169 105 8218
+Testing on BS
+BS labels: 1=fake, 0=real
+accuracy: 0.7187543061871297
+F1= 0.7553637780174999
+tn, fp, fn, tp
+2065 1163 878 3151
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+accuracy: 0.46250986582478293
+F1= 0.592946802151823
+tn, fp, fn, tp
+90 624 57 496
+accuracy: 0.4968847352024922
+F1= 0.6278801843317972
+tn, fp, fn, tp
+93 575 71 545

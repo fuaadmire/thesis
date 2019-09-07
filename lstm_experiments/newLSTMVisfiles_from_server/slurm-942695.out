@@ -1,0 +1,318 @@
+1
+2019-08-29 10:59:35.624600: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-29 10:59:36.771359: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-29 10:59:36.771403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-29 10:59:37.212060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-29 10:59:37.212110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-29 10:59:37.212117: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-29 10:59:37.212254: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-08-29 10:58:19.900181
+trainingdata= liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+train seq shape (10240, 100)
+(10240, 100, 1)
+Parameters:: num_cells: 64 num_samples: 10240 embedding_size: 300 epochs: 5 batch_size: 64
+(?, 100)
+fitting model..
+Train on 10240 samples, validate on 1284 samples
+Epoch 1/5
+ - 21s - loss: 0.6862 - acc: 0.5572 - val_loss: 0.6921 - val_acc: 0.5223
+Epoch 2/5
+ - 20s - loss: 0.6839 - acc: 0.5638 - val_loss: 0.6923 - val_acc: 0.5278
+Epoch 3/5
+ - 20s - loss: 0.6778 - acc: 0.5800 - val_loss: 0.6623 - val_acc: 0.6178
+Epoch 4/5
+ - 20s - loss: 0.6652 - acc: 0.6151 - val_loss: 0.6662 - val_acc: 0.6191
+Epoch 5/5
+ - 20s - loss: 0.6497 - acc: 0.6438 - val_loss: 0.6644 - val_acc: 0.6236
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.6679683606174863
+Test accuracy: 0.6168350435752237
+Valid loss: 0.6644123057338679
+Valid accuracy: 0.6236370705369848
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          4084500   
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 100, 64)           93440     
+_________________________________________________________________
+time_distributed_1 (TimeDist (None, 100, 1)            65        
+=================================================================
+Total params: 4,178,005
+Trainable params: 4,178,005
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+Test loss: 0.7303994549936687
+Test accuracy: 0.5391988695447425
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+Test loss: 0.7594300886645462
+Test accuracy: 0.51634666743423
+Testing on BS
+BS labels: 1=fake, 0=real
+Test loss: 0.7669526721732387
+Test accuracy: 0.4915722747578081
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+Test loss: 0.6679683606174863
+Test accuracy: 0.6168350435752237
+2019-08-29 11:08:48.629930: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-29 11:08:49.780281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-29 11:08:49.780325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-29 11:08:50.197904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-29 11:08:50.197962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-29 11:08:50.197969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-29 11:08:50.198107: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-08-29 11:06:39.658682
+trainingdata= BS
+BS labels: 1=fake, 0=real
+9822 4911
+train seq shape (9822, 100)
+(9822, 100, 1)
+Parameters:: num_cells: 256 num_samples: 9822 embedding_size: 300 epochs: 10 batch_size: 64
+(?, 100)
+fitting model..
+Train on 9822 samples, validate on 4911 samples
+Epoch 1/10
+ - 24s - loss: 0.6510 - acc: 0.6033 - val_loss: 0.5655 - val_acc: 0.7180
+Epoch 2/10
+ - 22s - loss: 0.5503 - acc: 0.7283 - val_loss: 0.4985 - val_acc: 0.7691
+Epoch 3/10
+ - 22s - loss: 0.5073 - acc: 0.7651 - val_loss: 0.4674 - val_acc: 0.7860
+Epoch 4/10
+ - 22s - loss: 0.4631 - acc: 0.7934 - val_loss: 0.4583 - val_acc: 0.7876
+Epoch 5/10
+ - 22s - loss: 0.4409 - acc: 0.8119 - val_loss: 0.4616 - val_acc: 0.7921
+Epoch 6/10
+ - 22s - loss: 0.4175 - acc: 0.8238 - val_loss: 0.4247 - val_acc: 0.8113
+Epoch 7/10
+ - 22s - loss: 0.3879 - acc: 0.8399 - val_loss: 0.4173 - val_acc: 0.8131
+Epoch 8/10
+ - 22s - loss: 0.3665 - acc: 0.8512 - val_loss: 0.4212 - val_acc: 0.8157
+Epoch 9/10
+ - 22s - loss: 0.3491 - acc: 0.8589 - val_loss: 0.4108 - val_acc: 0.8192
+Epoch 10/10
+ - 22s - loss: 0.3361 - acc: 0.8657 - val_loss: 0.4316 - val_acc: 0.8172
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.4181513802496316
+Test accuracy: 0.8240498836595395
+Valid loss: 0.4315844289981234
+Valid accuracy: 0.8171553694772226
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          14038200  
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 100, 256)          570368    
+_________________________________________________________________
+time_distributed_1 (TimeDist (None, 100, 1)            257       
+=================================================================
+Total params: 14,608,825
+Trainable params: 14,608,825
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+Test loss: 1.0172307840000294
+Test accuracy: 0.6312529714368328
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+Test loss: 1.408402281399929
+Test accuracy: 0.5000600000150276
+Testing on BS
+BS labels: 1=fake, 0=real
+Test loss: 0.4181513802496316
+Test accuracy: 0.8240498836595395
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+Test loss: 1.6283877578982238
+Test accuracy: 0.47684293651355
+2019-08-29 11:23:39.578258: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-29 11:23:40.211327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-29 11:23:40.211369: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-29 11:23:40.669690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-29 11:23:40.669738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-29 11:23:40.669751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-29 11:23:40.669899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-08-29 11:19:58.068286
+trainingdata= kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+9106 4553
+train seq shape (9106, 100)
+(9106, 100, 1)
+Parameters:: num_cells: 128 num_samples: 9106 embedding_size: 300 epochs: 11 batch_size: 64
+(?, 100)
+fitting model..
+Train on 9106 samples, validate on 4553 samples
+Epoch 1/11
+ - 26s - loss: 0.5081 - acc: 0.7533 - val_loss: 0.3036 - val_acc: 0.8920
+Epoch 2/11
+ - 23s - loss: 0.3031 - acc: 0.8924 - val_loss: 0.2682 - val_acc: 0.9144
+Epoch 3/11
+ - 23s - loss: 0.2165 - acc: 0.9252 - val_loss: 0.1983 - val_acc: 0.9255
+Epoch 4/11
+ - 23s - loss: 0.1658 - acc: 0.9408 - val_loss: 0.2018 - val_acc: 0.9258
+Epoch 5/11
+ - 23s - loss: 0.1372 - acc: 0.9527 - val_loss: 0.1948 - val_acc: 0.9308
+Epoch 6/11
+ - 23s - loss: 0.1028 - acc: 0.9646 - val_loss: 0.2076 - val_acc: 0.9247
+Epoch 7/11
+ - 23s - loss: 0.0846 - acc: 0.9702 - val_loss: 0.2009 - val_acc: 0.9302
+Epoch 8/11
+ - 22s - loss: 0.0694 - acc: 0.9747 - val_loss: 0.2217 - val_acc: 0.9308
+Epoch 9/11
+ - 23s - loss: 0.0577 - acc: 0.9789 - val_loss: 0.2575 - val_acc: 0.9299
+Epoch 10/11
+ - 23s - loss: 0.0557 - acc: 0.9804 - val_loss: 0.2163 - val_acc: 0.9314
+Epoch 11/11
+ - 23s - loss: 0.0498 - acc: 0.9822 - val_loss: 0.2794 - val_acc: 0.9297
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.2667642402485917
+Test accuracy: 0.9319797871937792
+Valid loss: 0.27938841940504155
+Valid accuracy: 0.9296749404255386
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          44446500  
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 100, 128)          219648    
+_________________________________________________________________
+time_distributed_1 (TimeDist (None, 100, 1)            129       
+=================================================================
+Total params: 44,666,277
+Trainable params: 44,666,277
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+Test loss: 0.2667642402485917
+Test accuracy: 0.9319797871937792
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+Test loss: 2.627350420171564
+Test accuracy: 0.55919333486846
+Testing on BS
+BS labels: 1=fake, 0=real
+Test loss: 1.3269221477474378
+Test accuracy: 0.6999655489227045
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+Test loss: 2.175352247850859
+Test accuracy: 0.49838989980124826
+2019-08-29 11:41:58.116466: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-08-29 11:41:58.823911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: TITAN X (Pascal) major: 6 minor: 1 memoryClockRate(GHz): 1.531
+pciBusID: 0000:03:00.0
+totalMemory: 11.91GiB freeMemory: 11.77GiB
+2019-08-29 11:41:58.823956: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-08-29 11:41:59.234679: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-29 11:41:59.234730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-08-29 11:41:59.234738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-08-29 11:41:59.234892: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11387 MB memory) -> physical GPU (device: 0, name: TITAN X (Pascal), pci bus id: 0000:03:00.0, compute capability: 6.1)
+2019-08-29 11:35:07.566628
+trainingdata= FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+22333 11167
+train seq shape (22333, 100)
+(22333, 100, 1)
+Parameters:: num_cells: 64 num_samples: 22333 embedding_size: 300 epochs: 5 batch_size: 64
+(?, 100)
+fitting model..
+Train on 22333 samples, validate on 11167 samples
+Epoch 1/5
+ - 63s - loss: 0.2209 - acc: 0.9066 - val_loss: 0.1060 - val_acc: 0.9637
+Epoch 2/5
+ - 59s - loss: 0.1003 - acc: 0.9638 - val_loss: 0.0746 - val_acc: 0.9720
+Epoch 3/5
+ - 59s - loss: 0.0687 - acc: 0.9747 - val_loss: 0.0660 - val_acc: 0.9746
+Epoch 4/5
+ - 59s - loss: 0.0524 - acc: 0.9802 - val_loss: 0.0683 - val_acc: 0.9743
+Epoch 5/5
+ - 59s - loss: 0.0400 - acc: 0.9852 - val_loss: 0.0710 - val_acc: 0.9748
+Using TensorFlow backend.
+[nltk_data] Downloading package punkt to /home/ktj250/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Testing...
+Test loss: 0.06885060502904834
+Test accuracy: 0.9754030303377094
+Valid loss: 0.07101475189528272
+Valid accuracy: 0.9748141803811484
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input (InputLayer)           (None, 100)               0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 100, 300)          58134000  
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 100, 64)           93440     
+_________________________________________________________________
+time_distributed_1 (TimeDist (None, 100, 1)            65        
+=================================================================
+Total params: 58,227,505
+Trainable params: 58,227,505
+Non-trainable params: 0
+_________________________________________________________________
+Testing on kaggle
+Kaggle labels: 
+ 1: unreliable, 0: reliable
+Test loss: 1.2765197751425676
+Test accuracy: 0.6614580833387431
+Testing on FNC
+FNC labels: 
+ 1: Fake, 0: Reliable
+Test loss: 0.06885060502904834
+Test accuracy: 0.9754030303377094
+Testing on BS
+BS labels: 1=fake, 0=real
+Test loss: 1.8158882838463806
+Test accuracy: 0.5293537265951843
+Testing on Liar
+Training with Fake= 1
+Training with Fake= 1
+Training with Fake= 1
+Test loss: 1.5782977640864033
+Test accuracy: 0.5612154654047107

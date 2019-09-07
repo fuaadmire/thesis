@@ -1,11 +1,6 @@
 
 
-def feature_model(max_doc_length=100,
-                    embedding_size=300,
-                    TIMEDISTRIBUTED=False,
-                    dev_seq=None,
-                    dev_lab=None,
-                    seq,
+def feature_model(seq,
                     test_seq,
                     train_lab,
                     test_lab,
@@ -16,10 +11,14 @@ def feature_model(max_doc_length=100,
                     num_cells,
                     learning_rate,
                     num_epochs,
-                    trainingdata):
+                    trainingdata,
+                    max_doc_length=100,
+                    embedding_size=300,
+                    TIMEDISTRIBUTED=False,
+                    dev_seq=None,
+                    dev_lab=None,
+                    datapath="/home/ktj250/thesis/data/"):
 
-
-    datapath = "/home/ktj250/thesis/data/"
 
     if trainingdata == "liar":
         train_tags, test_tags, dev_tags = load_pos_tags(trainingdata, datapath)
