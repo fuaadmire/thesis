@@ -444,7 +444,7 @@ def test_on_TP():
             test_preds = model_loaded4.predict(test_seq)
             retrieve_lstmvis_files(model_loaded4, test_seq, test_lab, test_preds, trainingdata+"_TP_"+i[3:5]+"_vs_us_")
         else:
-            test_preds = model.predict(test_seq)
+            test_preds = model_loaded4.predict(test_seq)
             print(len(test_preds))
             np.savetxt(trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
             np.savetxt(trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
@@ -457,7 +457,7 @@ def test_on_TP():
         test_preds = model_loaded5.predict(test_seq)
         retrieve_lstmvis_files(model_loaded5, test_seq, test_lab, test_preds, trainingdata+"_TP_all_vs_us_")
     else:
-        test_preds = model.predict(test_seq)
+        test_preds = model_loaded5.predict(test_seq)
         print(len(test_preds))
         np.savetxt(trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
         np.savetxt(trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
@@ -527,4 +527,4 @@ def retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds,identifi
 
 test_on_TP()
 
-test_on_learnerdata()
+#test_on_learnerdata()

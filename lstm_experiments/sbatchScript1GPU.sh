@@ -5,7 +5,7 @@
 #SBATCH --time=30:00:00
 
 echo $CUDA_VISIBLE_DEVICES
-python3 cleaned_lstm_experiments.py "BS"
-python3 cleaned_lstm_experiments.py "liar"
 python3 cleaned_lstm_experiments.py "kaggle"
+python3 cleaned_lstm_experiments.py "BS"
+#python3 cleaned_lstm_experiments.py "liar"
 python3 cleaned_lstm_experiments.py "FNC"
