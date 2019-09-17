@@ -437,6 +437,7 @@ def test_on_TP():
                   "TP/it.test.txt", "TP/nl.test.txt", "TP/se.test.txt"]
     for i in lang_files:
         test, test_lab = load_TP_data_one_vs_us(datapath, i)
+        test = [nltk.word_tokenize(i.lower()) for i in test]
         testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
         test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
         model_loaded4 = load_model(model_path+'.h5')
