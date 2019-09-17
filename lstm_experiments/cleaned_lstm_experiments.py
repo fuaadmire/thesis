@@ -451,6 +451,7 @@ def test_on_TP():
             np.savetxt(trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
 
     test, test_lab = load_TP_data_all_vs_us(datapath)
+    test = [nltk.word_tokenize(i.lower()) for i in test]
     testTextsSeq = np.array([[word2id.get(w, word2id["UNK"]) for w in sent] for sent in test])
     test_seq = sequence.pad_sequences(testTextsSeq, maxlen=max_doc_length, dtype='int32', padding='post', truncating='post', value=0.0)
     model_loaded5 = load_model(model_path+'.h5')
