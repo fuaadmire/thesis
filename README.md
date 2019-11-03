@@ -4,6 +4,9 @@
 #### Code for LSTM models and tests and retrieving files for LSTMVis:
 ##### lstm_experiments/cleaned_lstm_experiments.py
 
+#### Taking average of model accuracy over 5 random seeds:
+##### validate.py
+
 #### Code for Error Analysis:
 ##### lstm_experiments/Error Analysis.ipynb
  
