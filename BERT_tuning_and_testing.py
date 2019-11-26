@@ -54,9 +54,8 @@ with codecs.open(vocab_path, 'r', 'utf8') as reader:
 
 tokenizer = Tokenizer(token_dict)
 
-
+datapath = "/home/ktj250/thesis/data/"
 trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
-
 print("trainingdata=",trainingdata)
 
 if trainingdata == "liar":
