@@ -18,6 +18,7 @@ from keras_bert import load_trained_model_from_checkpoint
 from keras_bert import Tokenizer
 import os
 import numpy as np
+import sys
 
 # TF_KERAS must be added to environment variables in order to use TPU
 os.environ['TF_KERAS'] = '1'
