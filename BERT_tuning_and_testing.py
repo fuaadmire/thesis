@@ -61,11 +61,11 @@ print("trainingdata=",trainingdata)
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
 
-train = [nltk.word_tokenize(i.lower()) for i in train]
-test = [nltk.word_tokenize(i.lower()) for i in test]
+train = [i.lower() for i in train]
+test = [i.lower() for i in test]
 
 if trainingdata == "liar":
-    dev = [nltk.word_tokenize(i.lower()) for i in dev]
+    dev = [i.lower() for i in dev]
 else:
     dev = train[int(abs((len(train_lab)/3)*2)):]
     dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
