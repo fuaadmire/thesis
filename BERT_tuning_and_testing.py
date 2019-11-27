@@ -14,6 +14,8 @@ import keras
 from keras_radam import RAdam
 from keras.optimizers import Adam
 from keras import backend as K
+from keras.utils.np_utils import to_categorical
+from keras.optimizers import Adam
 from keras_bert import load_trained_model_from_checkpoint
 from keras_bert import Tokenizer
 import os
@@ -99,7 +101,7 @@ opt = Adam(lr=LR)
 inputs = model.inputs[:2]
 dense = model.get_layer("NSP-Dense").output
 outputs = keras.layers.Dense(2, activation='softmax')(dense)
-model.keras.models.Model(inputs, outputs)
+model = keras.models.Model(inputs, outputs)
 model.compile(
         opt,
         loss="categorical_crossentropy",
