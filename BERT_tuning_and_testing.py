@@ -116,7 +116,7 @@ init_op = tf.variables_initializer(
 )
 sess.run(init_op)
 
-model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE)
+model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=2)
 
 preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
 print("len preds:", len(preds))
