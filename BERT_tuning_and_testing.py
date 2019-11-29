@@ -5,7 +5,7 @@
 
 # my own data
 from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_BS_data, load_TP_US_sample, load_TP_data_all_vs_us, load_TP_data_one_vs_us
-
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 import codecs
 import tensorflow as tf
 from tqdm import tqdm
@@ -21,7 +21,9 @@ from keras_bert import Tokenizer
 import os
 import numpy as np
 import sys
+import time
 
+starttime = time.time()
 # TF_KERAS must be added to environment variables in order to use TPU
 os.environ['TF_KERAS'] = '1'
 
@@ -62,18 +64,26 @@ print("trainingdata=",trainingdata)
 
 if trainingdata == "liar":
     train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+elif trainingdata == "kaggle":
+    train, test, train_lab, test_lab = load_kaggle_data(datapath)
+elif trainingdata == "BS":
+    train, test, train_lab, test_lab = load_BS_data(datapath)
 
 train = [i.lower() for i in train]
 test = [i.lower() for i in test]
 
-if trainingdata == "liar":
-    dev = [i.lower() for i in dev]
-else:
+def make_dev_from_train(train):
     dev = train[int(abs((len(train_lab)/3)*2)):]
     dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
     train = train[:int(abs((len(train_lab)/3)*2))]
     train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
     print(len(train), len(dev))
+    return dev, dev_lab, train, train_lab
+
+if trainingdata == "liar":
+    dev = [i.lower() for i in dev]
+else:
+    dev, dev_lab, train, train_lab = make_dev_from_train(train)
 
 train_indices = []
 test_indices = []
@@ -122,4 +132,46 @@ preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], ver
 print("len preds:", len(preds))
 print("len y_test", len(test_lab))
 print(preds)
-print(np.mean([preds.argmax(axis=-1)==test_lab]))
+print("Accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+
+middletime = time.time()
+print("Time taken to train and test first part: ", middletime-starttime)
+
+def test(model, test_string):
+    global SEQ_LEN
+    print("Testing on "+test_string)
+    if test_string == "kaggle":
+        _, test, _, test_lab = load_kaggle_data(datapath)
+    elif test_string == "BS":
+        _, test, _, test_lab = load_BS_data(datapath)
+    elif test_string == "liar":
+        _, _, test, _, _, test_lab = load_liar_data(datapath)
+    test_lab = to_categorical(test_lab, 2)
+    indices = []
+    for i in test:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        test_indices.append(ids)
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
+    print("len "+test_string+" preds:", len(preds))
+    print("len "+test_string+" y_test", len(test_lab))
+    print(preds)
+    print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
+
+if trainingdata == "liar":
+    test(model, "kaggle")
+    test(model, "BS")
+elif trainingdata == "kaggle":
+    test(model, "liar")
+    test(model, "BS")
+elif trainingdata == "BS":
+    test(model, "liar")
+    test(model, "kaggle")
+
+print("Done.")
+endtime = time.time()
+print(endtime-starttime)
