@@ -105,9 +105,11 @@ train_lab = to_categorical(train_lab, 2)
 test_lab = to_categorical(test_lab, 2)
 dev_lab = to_categorical(dev_lab, 2)
 
+assert len(train_lab) == len(train_indices)
+
+
 opt = Adam(lr=LR)
 #opt = RAdam(learning_rate=LR)
-
 inputs = model.inputs[:2]
 dense = model.get_layer("NSP-Dense").output
 outputs = keras.layers.Dense(2, activation='softmax')(dense)
@@ -149,14 +151,13 @@ def test(model, test_string):
     elif test_string == "liar":
         _, _, test, _, _, test_lab = load_liar_data(datapath)
     test_lab = to_categorical(test_lab, 2)
-    indices = []
+    test_indices = []
     for i in test:
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
     print("len "+test_string+" preds:", len(preds))
     print("len "+test_string+" y_test", len(test_lab))
-    assert len(preds) == len(test_lab)
-    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
     print(preds)
     print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
     print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
