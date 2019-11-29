@@ -140,6 +140,7 @@ print("Time taken to train and test first part: ", middletime-starttime)
 
 def test(model, test_string):
     global SEQ_LEN
+    global tokenizer
     print("Testing on "+test_string)
     if test_string == "kaggle":
         _, test, _, test_lab = load_kaggle_data(datapath)
@@ -152,9 +153,10 @@ def test(model, test_string):
     for i in test:
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
-    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
     print("len "+test_string+" preds:", len(preds))
     print("len "+test_string+" y_test", len(test_lab))
+    assert len(preds) == len(test_lab)
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
     print(preds)
     print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
     print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))

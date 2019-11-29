@@ -5,4 +5,4 @@
 #SBATCH --time=1-20:00:00
 
 echo $CUDA_VISIBLE_DEVICES
-python3 BERT_tuning_and_testing.py "liar"
+python3 BERT_tuning_and_testing.py "kaggle"
