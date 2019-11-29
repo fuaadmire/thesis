@@ -22,159 +22,170 @@ import os
 import numpy as np
 import sys
 import time
-
-starttime = time.time()
-# TF_KERAS must be added to environment variables in order to use TPU
-os.environ['TF_KERAS'] = '1'
-
-# Parameters
-SEQ_LEN = 100
-BATCH_SIZE = 64
-EPOCHS = 7
-LR = 1e-4
-
-# Pretrained model path
-pretrained_path = 'uncased_L-12_H-768_A-12'
-config_path = os.path.join(pretrained_path, 'bert_config.json')
-checkpoint_path = os.path.join(pretrained_path, 'bert_model.ckpt')
-vocab_path = os.path.join(pretrained_path, 'vocab.txt')
+from tensorflow import set_random_seed
 
 
+for i in [2, 16, 42, 1, 4]:
+    print("--------------------------------------")
+    print("------------RANDOM SEED:",i,"------")
+    model = None
 
-model = load_trained_model_from_checkpoint(
-        config_path,
-        checkpoint_path,
-        training=True,
-        trainable=True,
-        seq_len=SEQ_LEN,
-)
+    random.seed(i)
+    np.random.seed(i)
+    set_random_seed(i)
 
+    starttime = time.time()
+    # TF_KERAS must be added to environment variables in order to use TPU
+    os.environ['TF_KERAS'] = '1'
 
-token_dict = {}
-with codecs.open(vocab_path, 'r', 'utf8') as reader:
-    for line in reader:
-        token = line.strip()
-        token_dict[token] = len(token_dict)
+    # Parameters
+    SEQ_LEN = 100
+    BATCH_SIZE = 64
+    EPOCHS = 10
+    LR = 1e-4
 
-tokenizer = Tokenizer(token_dict)
-
-datapath = "/home/ktj250/thesis/data/"
-trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
-print("trainingdata=",trainingdata)
-
-if trainingdata == "liar":
-    train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
-elif trainingdata == "kaggle":
-    train, test, train_lab, test_lab = load_kaggle_data(datapath)
-elif trainingdata == "BS":
-    train, test, train_lab, test_lab = load_BS_data(datapath)
-
-train = [i.lower() for i in train]
-test = [i.lower() for i in test]
-
-def make_dev_from_train(train, train_lab):
-    dev = train[int(abs((len(train_lab)/3)*2)):]
-    dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
-    train = train[:int(abs((len(train_lab)/3)*2))]
-    train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
-    print(len(train), len(dev))
-    return dev, dev_lab, train, train_lab
-
-if trainingdata == "liar":
-    dev = [i.lower() for i in dev]
-else:
-    dev, dev_lab, train, train_lab = make_dev_from_train(train, train_lab)
-
-train_indices = []
-test_indices = []
-dev_indices = []
-
-for i in train:
-    ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-    train_indices.append(ids)
-
-for i in test:
-    ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-    test_indices.append(ids)
-
-for i in dev:
-    ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-    dev_indices.append(ids)
-
-train_lab = to_categorical(train_lab, 2)
-test_lab = to_categorical(test_lab, 2)
-dev_lab = to_categorical(dev_lab, 2)
-
-assert len(train_lab) == len(train_indices)
+    # Pretrained model path
+    pretrained_path = 'uncased_L-12_H-768_A-12'
+    config_path = os.path.join(pretrained_path, 'bert_config.json')
+    checkpoint_path = os.path.join(pretrained_path, 'bert_model.ckpt')
+    vocab_path = os.path.join(pretrained_path, 'vocab.txt')
 
 
-opt = Adam(lr=LR)
-#opt = RAdam(learning_rate=LR)
-inputs = model.inputs[:2]
-dense = model.get_layer("NSP-Dense").output
-outputs = keras.layers.Dense(2, activation='softmax')(dense)
-model = keras.models.Model(inputs, outputs)
-model.compile(
-        opt,
-        loss="categorical_crossentropy",
-        metrics=["accuracy"],
-)
 
-# not sure whether this is needed or why?
-sess = K.get_session()
-uninitialized_variables = set([i.decode('ascii') for i in sess.run(tf.report_uninitialized_variables())])
-init_op = tf.variables_initializer(
-    [v for v in tf.global_variables() if v.name.split(':')[0] in uninitialized_variables]
-)
-sess.run(init_op)
+    model = load_trained_model_from_checkpoint(
+            config_path,
+            checkpoint_path,
+            training=True,
+            trainable=True,
+            seq_len=SEQ_LEN,
+    )
 
-model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=2)
 
-preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
-print("len preds:", len(preds))
-print("len y_test", len(test_lab))
-print(preds)
-print("Accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    token_dict = {}
+    with codecs.open(vocab_path, 'r', 'utf8') as reader:
+        for line in reader:
+            token = line.strip()
+            token_dict[token] = len(token_dict)
 
-middletime = time.time()
-print("Time taken to train and test first part: ", middletime-starttime)
+    tokenizer = Tokenizer(token_dict)
 
-def test(model, test_string):
-    global SEQ_LEN
-    global tokenizer
-    print("Testing on "+test_string)
-    if test_string == "kaggle":
-        _, test, _, test_lab = load_kaggle_data(datapath)
-    elif test_string == "BS":
-        _, test, _, test_lab = load_BS_data(datapath)
-    elif test_string == "liar":
-        _, _, test, _, _, test_lab = load_liar_data(datapath)
-    test_lab = to_categorical(test_lab, 2)
+    datapath = "/home/ktj250/thesis/data/"
+    trainingdata = sys.argv[1] #"liar" # kaggle, FNC, BS
+    print("trainingdata=",trainingdata)
+
+    if trainingdata == "liar":
+        train, dev, test, train_lab, dev_lab, test_lab = load_liar_data(datapath)
+    elif trainingdata == "kaggle":
+        train, test, train_lab, test_lab = load_kaggle_data(datapath)
+    elif trainingdata == "BS":
+        train, test, train_lab, test_lab = load_BS_data(datapath)
+
+    train = [i.lower() for i in train]
+    test = [i.lower() for i in test]
+
+    def make_dev_from_train(train, train_lab):
+        dev = train[int(abs((len(train_lab)/3)*2)):]
+        dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
+        train = train[:int(abs((len(train_lab)/3)*2))]
+        train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
+        print(len(train), len(dev))
+        return dev, dev_lab, train, train_lab
+
+    if trainingdata == "liar":
+        dev = [i.lower() for i in dev]
+    else:
+        dev, dev_lab, train, train_lab = make_dev_from_train(train, train_lab)
+
+    train_indices = []
     test_indices = []
+    dev_indices = []
+
+    for i in train:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        train_indices.append(ids)
+
     for i in test:
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
-    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=True)
-    print("len "+test_string+" preds:", len(preds))
-    print("len "+test_string+" y_test", len(test_lab))
+
+    for i in dev:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        dev_indices.append(ids)
+
+    train_lab = to_categorical(train_lab, 2)
+    test_lab = to_categorical(test_lab, 2)
+    dev_lab = to_categorical(dev_lab, 2)
+
+    assert len(train_lab) == len(train_indices)
+
+
+    opt = Adam(lr=LR)
+    #opt = RAdam(learning_rate=LR)
+    inputs = model.inputs[:2]
+    dense = model.get_layer("NSP-Dense").output
+    outputs = keras.layers.Dense(2, activation='softmax')(dense)
+    model = keras.models.Model(inputs, outputs)
+    model.compile(
+            opt,
+            loss="categorical_crossentropy",
+            metrics=["accuracy"],
+    )
+
+    # not sure whether this is needed or why?
+    sess = K.get_session()
+    uninitialized_variables = set([i.decode('ascii') for i in sess.run(tf.report_uninitialized_variables())])
+    init_op = tf.variables_initializer(
+        [v for v in tf.global_variables() if v.name.split(':')[0] in uninitialized_variables]
+    )
+    sess.run(init_op)
+
+    model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=2)
+
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+    print("len preds:", len(preds))
+    print("len y_test", len(test_lab))
     print(preds)
-    print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-    print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
-    print("tn, fp, fn, tp")
-    print(tn, fp, fn, tp)
+    print("Accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
 
-if trainingdata == "liar":
-    test(model, "kaggle")
-    test(model, "BS")
-elif trainingdata == "kaggle":
-    test(model, "liar")
-    test(model, "BS")
-elif trainingdata == "BS":
-    test(model, "liar")
-    test(model, "kaggle")
+    middletime = time.time()
+    print("Time taken to train and test first part: ", middletime-starttime)
 
-print("Done.")
-endtime = time.time()
-print(endtime-starttime)
+    def test(model, test_string):
+        global SEQ_LEN
+        global tokenizer
+        print("Testing on "+test_string)
+        if test_string == "kaggle":
+            _, test, _, test_lab = load_kaggle_data(datapath)
+        elif test_string == "BS":
+            _, test, _, test_lab = load_BS_data(datapath)
+        elif test_string == "liar":
+            _, _, test, _, _, test_lab = load_liar_data(datapath)
+        test_lab = to_categorical(test_lab, 2)
+        test_indices = []
+        for i in test:
+            ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+            test_indices.append(ids)
+        preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+        print("len "+test_string+" preds:", len(preds))
+        print("len "+test_string+" y_test", len(test_lab))
+        print(preds)
+        print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+        print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+        tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+        print("tn, fp, fn, tp")
+        print(tn, fp, fn, tp)
+
+    if trainingdata == "liar":
+        test(model, "kaggle")
+        test(model, "BS")
+    elif trainingdata == "kaggle":
+        test(model, "liar")
+        test(model, "BS")
+    elif trainingdata == "BS":
+        test(model, "liar")
+        test(model, "kaggle")
+
+    print("Done.")
+    endtime = time.time()
+    print(endtime-starttime)

@@ -6,3 +6,5 @@
 
 echo $CUDA_VISIBLE_DEVICES
 python3 BERT_tuning_and_testing.py "liar"
+python3 BERT_tuning_and_testing.py "kaggle"
+python3 BERT_tuning_and_testing.py "BS"
