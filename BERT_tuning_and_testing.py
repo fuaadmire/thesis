@@ -72,7 +72,7 @@ elif trainingdata == "BS":
 train = [i.lower() for i in train]
 test = [i.lower() for i in test]
 
-def make_dev_from_train(train):
+def make_dev_from_train(train, train_lab):
     dev = train[int(abs((len(train_lab)/3)*2)):]
     dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
     train = train[:int(abs((len(train_lab)/3)*2))]
@@ -83,7 +83,7 @@ def make_dev_from_train(train):
 if trainingdata == "liar":
     dev = [i.lower() for i in dev]
 else:
-    dev, dev_lab, train, train_lab = make_dev_from_train(train)
+    dev, dev_lab, train, train_lab = make_dev_from_train(train, train_lab)
 
 train_indices = []
 test_indices = []
