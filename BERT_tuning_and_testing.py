@@ -25,14 +25,14 @@ import time
 from tensorflow import set_random_seed
 
 
-for i in [2, 16, 42, 1, 4]:
+for seed in [2, 16, 42, 1, 4]:
     print("--------------------------------------")
-    print("------------RANDOM SEED:",i,"------")
+    print("------------RANDOM SEED:",seed,"------")
     model = None
 
-    random.seed(i)
-    np.random.seed(i)
-    set_random_seed(i)
+    random.seed(seed)
+    np.random.seed(seed)
+    set_random_seed(seed)
 
     starttime = time.time()
     # TF_KERAS must be added to environment variables in order to use TPU
