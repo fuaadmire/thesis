@@ -27,6 +27,46 @@ from keras import backend as K
 import random
 
 
+# Parameters
+SEQ_LEN = 100
+BATCH_SIZE = 64
+EPOCHS = 10
+LR = 1e-4
+
+
+def make_dev_from_train(train, train_lab):
+    dev = train[int(abs((len(train_lab)/3)*2)):]
+    dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
+    train = train[:int(abs((len(train_lab)/3)*2))]
+    train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
+    print(len(train), len(dev))
+    return dev, dev_lab, train, train_lab
+
+def test_f(model, tokenizer, test_string):
+    global SEQ_LEN
+    #global tokenizer
+    print("Testing on "+test_string)
+    if test_string == "kaggle":
+        _, test, _, test_lab = load_kaggle_data(datapath)
+    elif test_string == "BS":
+        _, test, _, test_lab = load_BS_data(datapath)
+    elif test_string == "liar":
+        _, _, test, _, _, test_lab = load_liar_data(datapath)
+    test_lab = to_categorical(test_lab, 2)
+    test_indices = []
+    for i in test:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        test_indices.append(ids)
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+    print("len "+test_string+" preds:", len(preds))
+    print("len "+test_string+" y_test", len(test_lab))
+    print(preds)
+    print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
+
 
 for seed in [2, 16, 42, 1, 4]:
     K.clear_session()
@@ -41,13 +81,8 @@ for seed in [2, 16, 42, 1, 4]:
 
     starttime = time.time()
     # TF_KERAS must be added to environment variables in order to use TPU
-    os.environ['TF_KERAS'] = '1'
+    #os.environ['TF_KERAS'] = '1'
 
-    # Parameters
-    SEQ_LEN = 100
-    BATCH_SIZE = 64
-    EPOCHS = 10
-    LR = 1e-4
 
     # Pretrained model path
     pretrained_path = 'uncased_L-12_H-768_A-12'
@@ -153,50 +188,15 @@ for seed in [2, 16, 42, 1, 4]:
 
 
     if trainingdata == "liar":
-        test(model, "kaggle")
-        test(model, "BS")
+        test_f(model, tokenizer, "kaggle")
+        test_f(model, tokenizer, "BS")
     elif trainingdata == "kaggle":
-        test(model, "liar")
-        test(model, "BS")
+        test_f(model, tokenizer, "liar")
+        test_f(model, tokenizer, "BS")
     elif trainingdata == "BS":
-        test(model, "liar")
-        test(model, "kaggle")
+        test_f(model, tokenizer, "liar")
+        test_f(model, tokenizer, "kaggle")
 
     print("Done.")
     endtime = time.time()
     print(endtime-starttime)
-
-
-
-def make_dev_from_train(train, train_lab):
-    dev = train[int(abs((len(train_lab)/3)*2)):]
-    dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
-    train = train[:int(abs((len(train_lab)/3)*2))]
-    train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
-    print(len(train), len(dev))
-    return dev, dev_lab, train, train_lab
-
-def test(model, test_string):
-    global SEQ_LEN
-    global tokenizer
-    print("Testing on "+test_string)
-    if test_string == "kaggle":
-        _, test, _, test_lab = load_kaggle_data(datapath)
-    elif test_string == "BS":
-        _, test, _, test_lab = load_BS_data(datapath)
-    elif test_string == "liar":
-        _, _, test, _, _, test_lab = load_liar_data(datapath)
-    test_lab = to_categorical(test_lab, 2)
-    test_indices = []
-    for i in test:
-        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-        test_indices.append(ids)
-    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-    print("len "+test_string+" preds:", len(preds))
-    print("len "+test_string+" y_test", len(test_lab))
-    print(preds)
-    print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-    print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
-    print("tn, fp, fn, tp")
-    print(tn, fp, fn, tp)
