@@ -23,12 +23,16 @@ import numpy as np
 import sys
 import time
 from tensorflow import set_random_seed
+from keras import backend as K
+
 
 
 for seed in [2, 16, 42, 1, 4]:
+    K.clear_session()
+    model = None
     print("--------------------------------------")
     print("------------RANDOM SEED:",seed,"------")
-    model = None
+
 
     random.seed(seed)
     np.random.seed(seed)
@@ -83,13 +87,7 @@ for seed in [2, 16, 42, 1, 4]:
     train = [i.lower() for i in train]
     test = [i.lower() for i in test]
 
-    def make_dev_from_train(train, train_lab):
-        dev = train[int(abs((len(train_lab)/3)*2)):]
-        dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
-        train = train[:int(abs((len(train_lab)/3)*2))]
-        train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
-        print(len(train), len(dev))
-        return dev, dev_lab, train, train_lab
+
 
     if trainingdata == "liar":
         dev = [i.lower() for i in dev]
@@ -151,30 +149,7 @@ for seed in [2, 16, 42, 1, 4]:
     middletime = time.time()
     print("Time taken to train and test first part: ", middletime-starttime)
 
-    def test(model, test_string):
-        global SEQ_LEN
-        global tokenizer
-        print("Testing on "+test_string)
-        if test_string == "kaggle":
-            _, test, _, test_lab = load_kaggle_data(datapath)
-        elif test_string == "BS":
-            _, test, _, test_lab = load_BS_data(datapath)
-        elif test_string == "liar":
-            _, _, test, _, _, test_lab = load_liar_data(datapath)
-        test_lab = to_categorical(test_lab, 2)
-        test_indices = []
-        for i in test:
-            ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-            test_indices.append(ids)
-        preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-        print("len "+test_string+" preds:", len(preds))
-        print("len "+test_string+" y_test", len(test_lab))
-        print(preds)
-        print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-        print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-        tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
-        print("tn, fp, fn, tp")
-        print(tn, fp, fn, tp)
+
 
     if trainingdata == "liar":
         test(model, "kaggle")
@@ -189,3 +164,38 @@ for seed in [2, 16, 42, 1, 4]:
     print("Done.")
     endtime = time.time()
     print(endtime-starttime)
+
+
+
+def make_dev_from_train(train, train_lab):
+    dev = train[int(abs((len(train_lab)/3)*2)):]
+    dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
+    train = train[:int(abs((len(train_lab)/3)*2))]
+    train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
+    print(len(train), len(dev))
+    return dev, dev_lab, train, train_lab
+
+def test(model, test_string):
+    global SEQ_LEN
+    global tokenizer
+    print("Testing on "+test_string)
+    if test_string == "kaggle":
+        _, test, _, test_lab = load_kaggle_data(datapath)
+    elif test_string == "BS":
+        _, test, _, test_lab = load_BS_data(datapath)
+    elif test_string == "liar":
+        _, _, test, _, _, test_lab = load_liar_data(datapath)
+    test_lab = to_categorical(test_lab, 2)
+    test_indices = []
+    for i in test:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        test_indices.append(ids)
+    preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+    print("len "+test_string+" preds:", len(preds))
+    print("len "+test_string+" y_test", len(test_lab))
+    print(preds)
+    print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+    print("tn, fp, fn, tp")
+    print(tn, fp, fn, tp)
