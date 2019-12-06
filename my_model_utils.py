@@ -231,7 +231,7 @@ def train_and_test(datapath="/home/ktj250/thesis/data/",
     #if trainingdata=="liar":
     #    return dev_score[1], history
     #else:
-    return test_score[1], dev_score[1], history
+    return test_score[1], dev_score[1], history, f1
 
 
 
