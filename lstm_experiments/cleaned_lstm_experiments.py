@@ -48,11 +48,13 @@ import random
 
 from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_FNC_data, load_BS_data, load_TP_US_sample, load_TP_data_all_vs_us, load_TP_data_one_vs_us
 
-random.seed(42)
-np.random.seed(42)
+r_seed = sys.argv[2]
+print("------------------ RANDOM SEED: {}-----------------".format(r_seed))
+random.seed(r_seed)
+np.random.seed(r_seed)
 
 from tensorflow import set_random_seed
-set_random_seed(42)
+set_random_seed(r_seed)
 
 from datetime import datetime
 
@@ -285,6 +287,7 @@ if not TIMEDISTRIBUTED:
     preds = model.predict(test_seq)
     f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
     tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
+    print("F1=", f1)
     print("tn, fp, fn, tp")
     print(tn, fp, fn, tp)
 
@@ -519,14 +522,14 @@ def retrieve_lstmvis_files(model_loaded, test_seq, test_lab, test_preds,identifi
     hf.close()
 
 
-#test_on_kaggle()
+test_on_kaggle()
 
 #test_on_FNC()
 
-#test_on_BS()
+test_on_BS()
 
-#test_on_liar()
+test_on_liar()
 
-test_on_TP()
+#test_on_TP()
 
 #test_on_learnerdata()
