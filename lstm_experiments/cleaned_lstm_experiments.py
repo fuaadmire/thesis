@@ -50,11 +50,11 @@ from my_data_utils import load_liar_data, tile_reshape, load_kaggle_data, load_F
 
 r_seed = sys.argv[2]
 print("------------------ RANDOM SEED: {}-----------------".format(r_seed))
-random.seed(r_seed)
-np.random.seed(r_seed)
+random.seed(int(r_seed))
+np.random.seed(int(r_seed))
 
 from tensorflow import set_random_seed
-set_random_seed(r_seed)
+set_random_seed(int(r_seed))
 
 from datetime import datetime
 
