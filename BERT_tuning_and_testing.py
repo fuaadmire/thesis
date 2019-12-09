@@ -94,17 +94,17 @@ def test_on_TP(model, tokenizer):
                   "TP/it.test.txt", "TP/nl.test.txt", "TP/se.test.txt"]
     for i in lang_files:
         test, test_lab = load_TP_data_one_vs_us(datapath, i)
-        test = [i.lower() for i in test]
+        test = [t.lower() for t in test]
         test_indices = []
-        for i in test:
-            ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        for t in test:
+            ids, segments = tokenizer.encode(t, max_len=SEQ_LEN)
             test_indices.append(ids)
         test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
         print(len(test_preds))
         np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
         np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
     test, test_lab = load_TP_data_all_vs_us(datapath)
-    test = [i.lower() for i in test]
+    test = [t.lower() for t in test]
     test_indices = []
     for i in test:
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bert
+#SBATCH --job-name=bert2
 #SBATCH --ntasks=1 --cpus-per-task=12 --mem=9000M
 #SBATCH -p gpu --gres=gpu:titanx:1
 #SBATCH --time=1-20:00:00
