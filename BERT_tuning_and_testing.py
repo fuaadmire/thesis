@@ -39,7 +39,7 @@ def make_dev_from_train(train, train_lab):
     dev_lab = train_lab[int(abs((len(train_lab)/3)*2)):]
     train = train[:int(abs((len(train_lab)/3)*2))]
     train_lab = train_lab[:int(abs((len(train_lab)/3)*2))]
-    print(len(train), len(dev))
+    #print(len(train), len(dev))
     return dev, dev_lab, train, train_lab
 
 def test_f(model, tokenizer, test_string):
@@ -59,11 +59,11 @@ def test_f(model, tokenizer, test_string):
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
     preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-    print("len "+test_string+" preds:", len(preds))
-    print("len "+test_string+" y_test", len(test_lab))
-    np.savetxt("BERT"+trainingdata+"_"+test_string+"_labels.txt",test_lab)
-    np.savetxt("BERT"+trainingdata+"_"+test_string+"_preds.txt",preds)
-    print(preds)
+    #print("len "+test_string+" preds:", len(preds))
+    #print("len "+test_string+" y_test", len(test_lab))
+    #np.savetxt("BERT"+trainingdata+"_"+test_string+"_labels.txt",test_lab)
+    #np.savetxt("BERT"+trainingdata+"_"+test_string+"_preds.txt",preds)
+    #print(preds)
     print(test_string+" accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
     print(test_string+" F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), average="weighted"))
     tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
@@ -83,8 +83,8 @@ def test_on_learnerdata(model, tokenizer):
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
     test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-    print(len(test_preds))
-    np.savetxt("BERT"+trainingdata+"_student_preds_softmax_entire_docs.txt",test_preds)
+    #print(len(test_preds))
+    #np.savetxt("BERT"+trainingdata+"_student_preds_softmax_entire_docs.txt",test_preds)
 
 
 def test_on_TP(model, tokenizer):
@@ -100,9 +100,9 @@ def test_on_TP(model, tokenizer):
             ids, segments = tokenizer.encode(t, max_len=SEQ_LEN)
             test_indices.append(ids)
         test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-        print(len(test_preds))
-        np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
-        np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
+        #print(len(test_preds))
+        #np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
+        #np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
     test, test_lab = load_TP_data_all_vs_us(datapath)
     test = [t.lower() for t in test]
     test_indices = []
@@ -110,12 +110,12 @@ def test_on_TP(model, tokenizer):
         ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
         test_indices.append(ids)
     test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-    print(len(test_preds))
-    np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
-    np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
+    #print(len(test_preds))
+    #np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
+    #np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
 
 
-for seed in [2]:#[2, 16, 42, 1, 4]:
+for seed in [16, 42, 1, 4]: #[2]
     K.clear_session()
     model = None
     print("--------------------------------------")
@@ -220,14 +220,14 @@ for seed in [2]:#[2, 16, 42, 1, 4]:
     )
     sess.run(init_op)
 
-    model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=2)
+    model.fit([np.array(train_indices), np.zeros_like(train_indices)], train_lab, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=0)
 
     preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-    print("len preds:", len(preds))
-    np.savetxt("BERT"+trainingdata+"_"+trainingdata+"_labels.txt",test_lab)
-    np.savetxt("BERT"+trainingdata+"_"+trainingdata+"_preds.txt",preds)
-    print("len y_test", len(test_lab))
-    print(preds)
+    #print("len preds:", len(preds))
+    #np.savetxt("BERT"+trainingdata+"_"+trainingdata+"_labels.txt",test_lab)
+    #np.savetxt("BERT"+trainingdata+"_"+trainingdata+"_preds.txt",preds)
+    #print("len y_test", len(test_lab))
+    #print(preds)
     print("Accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
     print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), average="weighted"))
 
@@ -246,8 +246,8 @@ for seed in [2]:#[2, 16, 42, 1, 4]:
         test_f(model, tokenizer, "liar")
         test_f(model, tokenizer, "kaggle")
 
-    test_on_learnerdata(model, tokenizer)
-    test_on_TP(model, tokenizer)
+    #test_on_learnerdata(model, tokenizer)
+    #test_on_TP(model, tokenizer)
 
     print("Done.")
     endtime = time.time()
