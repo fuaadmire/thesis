@@ -70,40 +70,30 @@ def test_f(model, tokenizer, test_string):
     print("tn, fp, fn, tp")
     print(tn, fp, fn, tp)
 
-    def test_on_learnerdata(model, tokenizer):
-        global SEQ_LEN
-        global trainingdata
-        prof_test = codecs.open(datapath+"proficiency/fce_text_entire_docs.txt", "r", "utf-8").read().split("\n")
-        prof_test = prof_test[:len(prof_test)-1]
-        test = [i.lower() for i in prof_test]
-        test_lab = codecs.open(datapath+"proficiency/proficiency_entire_docs.txt", "r", "utf-8").read().split("\r\n")
-        test_lab = test_lab[:len(test_lab)-1]
-        test_indices = []
-        for i in test:
-            ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-            test_indices.append(ids)
-        test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-        print(len(test_preds))
-        np.savetxt("BERT"+trainingdata+"_student_preds_softmax_entire_docs.txt",test_preds)
+def test_on_learnerdata(model, tokenizer):
+    global SEQ_LEN
+    global trainingdata
+    prof_test = codecs.open(datapath+"proficiency/fce_text_entire_docs.txt", "r", "utf-8").read().split("\n")
+    prof_test = prof_test[:len(prof_test)-1]
+    test = [i.lower() for i in prof_test]
+    test_lab = codecs.open(datapath+"proficiency/proficiency_entire_docs.txt", "r", "utf-8").read().split("\r\n")
+    test_lab = test_lab[:len(test_lab)-1]
+    test_indices = []
+    for i in test:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        test_indices.append(ids)
+    test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+    print(len(test_preds))
+    np.savetxt("BERT"+trainingdata+"_student_preds_softmax_entire_docs.txt",test_preds)
 
 
-    def test_on_TP(model, tokenizer):
-        global SEQ_LEN
-        global trainingdata
-        lang_files = ["TP/da.test.txt", "TP/de.test.txt", "TP/es.test.txt", "TP/fr.test.txt",
-                      "TP/it.test.txt", "TP/nl.test.txt", "TP/se.test.txt"]
-        for i in lang_files:
-            test, test_lab = load_TP_data_one_vs_us(datapath, i)
-            test = [i.lower() for i in test]
-            test_indices = []
-            for i in test:
-                ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
-                test_indices.append(ids)
-            test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
-            print(len(test_preds))
-            np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
-            np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
-        test, test_lab = load_TP_data_all_vs_us(datapath)
+def test_on_TP(model, tokenizer):
+    global SEQ_LEN
+    global trainingdata
+    lang_files = ["TP/da.test.txt", "TP/de.test.txt", "TP/es.test.txt", "TP/fr.test.txt",
+                  "TP/it.test.txt", "TP/nl.test.txt", "TP/se.test.txt"]
+    for i in lang_files:
+        test, test_lab = load_TP_data_one_vs_us(datapath, i)
         test = [i.lower() for i in test]
         test_indices = []
         for i in test:
@@ -111,11 +101,21 @@ def test_f(model, tokenizer, test_string):
             test_indices.append(ids)
         test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
         print(len(test_preds))
-        np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
-        np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
+        np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"preds.txt",test_preds)
+        np.savetxt("BERT"+trainingdata+"_"+i[3:5]+"_vs_us_"+"labels.txt",test_lab, fmt="%s")
+    test, test_lab = load_TP_data_all_vs_us(datapath)
+    test = [i.lower() for i in test]
+    test_indices = []
+    for i in test:
+        ids, segments = tokenizer.encode(i, max_len=SEQ_LEN)
+        test_indices.append(ids)
+    test_preds = model.predict([np.array(test_indices), np.zeros_like(test_indices)], verbose=0)
+    print(len(test_preds))
+    np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"preds.txt",test_preds)
+    np.savetxt("BERT"+trainingdata+"_TP_all_vs_us_"+"labels.txt",test_lab, fmt="%s")
 
 
-for seed in [42]:#[2, 16, 42, 1, 4]:
+for seed in [2]:#[2, 16, 42, 1, 4]:
     K.clear_session()
     model = None
     print("--------------------------------------")
