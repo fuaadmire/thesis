@@ -68,7 +68,7 @@ def test_f(model, tokenizer, test_string):
     print(tn, fp, fn, tp)
 
 
-for seed in [2, 16, 42, 1, 4]:
+for seed in [42]:#[2, 16, 42, 1, 4]:
     K.clear_session()
     model = None
     print("--------------------------------------")
@@ -180,7 +180,7 @@ for seed in [2, 16, 42, 1, 4]:
     print("len y_test", len(test_lab))
     print(preds)
     print("Accuracy: ",accuracy_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
-    print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)))
+    print("F1 score: ",f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), average="weighted"))
 
     middletime = time.time()
     print("Time taken to train and test first part: ", middletime-starttime)

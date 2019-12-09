@@ -285,7 +285,7 @@ print("Valid accuracy:", dev_score[1])
 
 if not TIMEDISTRIBUTED:
     preds = model.predict(test_seq)
-    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1))
+    f1 = f1_score(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1), average="weighted")
     tn, fp, fn, tp = confusion_matrix(np.argmax(test_lab,axis=1), np.argmax(preds, axis=1)).ravel()
     print("F1=", f1)
     print("tn, fp, fn, tp")
